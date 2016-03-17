@@ -1,6 +1,7 @@
 webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
 path             = require "path"
+HandlebarsPlugin = require "handlebars-webpack-plugin"
 
 
 # Webpack configs.
@@ -11,6 +12,15 @@ loaders  = [
 ,
   test:    /\.coffee$/
   loader:  "coffee"
+,
+  test:    /index.hbs/
+  loader:  "handlebars"
+]
+plugins  = [
+  new HandlebarsPlugin
+    entry: "./index.hbs"
+    output: "./index.html"
+    partials: []
 ]
 config   =
   entry:        "./Application/boot"
@@ -19,6 +29,7 @@ config   =
     filename:   "bundle.js"
   module:
     loaders:    loaders
+  plugins:      plugins
   resolve:
     extensions: [".elm", ".coffee"]
 setting  =

@@ -24,6 +24,9 @@
     "coffee-script": "^1.10.0",
     "elm-hot-loader": "^0.2.2",
     "elm-webpack-loader": "^2.0.1",
+    "handlebars": "^4.0.5",
+    "handlebars-loader": "^1.2.0",
+    "handlebars-webpack-plugin": "0.0.6",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   }
