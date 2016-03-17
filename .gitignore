@@ -1,5 +1,13 @@
+## Frontend 
+
 # elm-package generated files
-elm-package.json
-elm-stuff/
+Frontend/elm-package.json
+Frontend/elm-stuff/
 # elm-repl generated files
-repl-temp-*
+Frontend/repl-temp-*
+# js
+Frontend/*.js
+# node_modules
+Frontend/node_modules
+
+## Bankend
