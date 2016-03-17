@@ -12,15 +12,12 @@ loaders  = [
 ,
   test:    /\.coffee$/
   loader:  "coffee"
-,
-  test:    /index.hbs/
-  loader:  "handlebars"
 ]
 plugins  = [
   new HandlebarsPlugin
-    entry: "./index.hbs"
-    output: "./index.html"
-    partials: []
+    entry:      "./index.hbs"
+    output:     "./index.html"
+    partials:   []
 ]
 config   =
   entry:        "./Application/boot"
