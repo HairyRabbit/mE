@@ -4,6 +4,8 @@ import Graphics.Element exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 
+import Application.Style.Flex exposing (..)
+
 main : Html
 main =
   main' [ mainStyle ]
@@ -37,34 +39,27 @@ main =
 
 mainStyle : Attribute
 mainStyle =
-  style [ ("max-width", "1000px")
-        , ("margin", "0 auto")
-        , ("position", "fixed")
-        , ("top", "0")
-        , ("right", "0")
-        , ("bottom", "0")
-        , ("left", "0")
-        , ("display", "flex")
-        , ("padding", "5% 0")
-        ]
+  style <| [ ("max-width", "1000px")
+           , ("margin", "0 auto")
+           , ("position", "fixed")
+           , ("top", "0")
+           , ("right", "0")
+           , ("bottom", "0")
+           , ("left", "0")
+           , ("padding", "5% 0")
+           ] ++ flexStyle flex
 
 mainLeftStyle : Attribute
 mainLeftStyle =
-  style [ ("position", "relative")
-        , ("display", "flex")
-        , ("justify-content", "center")
-        , ("flex", "1 1 auto")
-        , ("align-items", "center")
-        ]
+  style <| [ ("position", "relative")
+           , ("flex", "1 1 auto")
+           ] ++ flexStyle flexCenter
 
 mainRightStyle : Attribute
 mainRightStyle =
-  style [ ("position", "relative")
-        , ("display", "flex")
-        , ("justify-content", "center")
-        , ("flex", "1 1 auto")
-        , ("align-items", "center")
-        ]
+  style <| [ ("position", "relative")
+           , ("flex", "1 1 auto")
+           ] ++ flexStyle flexCenter
 
 
 logoStyle : Attribute
@@ -97,22 +92,15 @@ introStyle =
 
 headerStyle : Attribute
 headerStyle =
-  style [ ("display", "flex") ]
+  style <| flexStyle flex
 
 headerLeftStyle : Attribute
 headerLeftStyle =
-  style [ ("display", "flex")
-        , ("justify-content", "center")
-        , ("align-items", "center")
-        ]
+  style <| flexStyle flexCenter
 
 headerRightStyle : Attribute
 headerRightStyle =
-  style [ ("display", "flex")
-        , ("justify-content", "center")
-        , ("align-items", "flex-start")
-        , ("flex-flow", "column nowrap")
-        ]
+  style <| flexStyle flexColumn
 
 navigateStyle : Attribute
 navigateStyle =

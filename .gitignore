@@ -12,3 +12,21 @@ Frontend/node_modules
 Frontend/index.html
 
 ## Bankend
+Bankend/dist*
+Bankend/static/tmp/
+Bankend/static/combined/
+Bankend/config/client_session_key.aes
+Bankend/*.hi
+Bankend/*.o
+Bankend/*.sqlite3
+Bankend/*.sqlite3-shm
+Bankend/*.sqlite3-wal
+Bankend/.hsenv*
+Bankend/cabal-dev/
+Bankend/.stack-work/
+Bankend/yesod-devel/
+Bankend/.cabal-sandbox
+Bankend/cabal.sandbox.config
+Bankend/.DS_Store
+Bankend/*.swp
+Bankend/*.keter
