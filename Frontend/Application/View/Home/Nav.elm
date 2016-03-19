@@ -1,11 +1,11 @@
-module Application.View.Home.Nav where
+module Application.View.Home.Nav (navView) where
 
 import Html exposing (..)
-import Attribtes exposing (..)
+import Html.Attributes exposing (..)
 
-nav : Html
-nav =
-  nav []
+navView : Html
+navView =
+  nav [navigateStyle]
         [ ul [ menuStyle ]
             [ li [ menuItemStyle ]
                 [ a []
@@ -41,3 +41,8 @@ menuItemStyle =
         , ("color", "rgba(0, 0, 0, 0.56)")
         , ("margin", "0.5rem 0")
         ]
+
+
+resetFont : String
+resetFont =
+  "Robot" ++ "Ubuntu,\"微软雅黑\", \"华文黑体\""
