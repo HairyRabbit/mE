@@ -22,9 +22,12 @@
   "devDependencies": {
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.10.0",
+    "css-loader": "^0.23.1",
     "elm-hot-loader": "^0.2.2",
     "elm-webpack-loader": "^2.0.1",
     "handlebars-webpack-plugin": "0.0.6",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.5.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   }

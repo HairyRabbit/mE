@@ -1,3 +1,4 @@
 # Bootstrapper
-Elm = require "./Main"
-elm = Elm.fullscreen Elm.Main
+Style = require "./glob"
+Elm   = require "./Main"
+elm   = Elm.fullscreen Elm.Main

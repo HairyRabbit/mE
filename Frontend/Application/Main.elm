@@ -14,11 +14,11 @@ app =
         , view = view
         , inputs = []
         }
-    
+
 main : Signal Html
 main =
   app.html
-    
+
 port tasks : Signal (Task Never ())
 port tasks =
   app.tasks

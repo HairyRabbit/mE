@@ -12,6 +12,10 @@ loaders  = [
 ,
   test:    /\.coffee$/
   loader:  "coffee"
+,
+  test:    /\.styl$/,
+  exclude: [/node_modules/]
+  loader:  "style!css!stylus"
 ]
 plugins  = [
   new HandlebarsPlugin
@@ -28,7 +32,7 @@ config   =
     loaders:    loaders
   plugins:      plugins
   resolve:
-    extensions: [".elm", ".coffee"]
+    extensions: ["", ".elm", ".coffee", ".styl"]
 setting  =
   hot:      true
   inlien:   true
