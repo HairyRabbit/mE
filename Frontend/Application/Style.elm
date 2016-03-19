@@ -1,6 +1,4 @@
 module Application.Style where
 
--- e.g ("margin", "10em")
+{- | Defind Style type -} 
 type alias Style = (String, String)
-
-
