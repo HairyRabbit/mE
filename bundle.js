@@ -13588,7 +13588,7 @@
 	                                                    ,_U.list([rectLeftTopStyle])
 	                                                    ,_U.list([rectView]))
 	                                                 ,A2($Html.section
-	                                                    ,_U.list([A3(rectStyle,"26","20",deg)])
+	                                                    ,_U.list([A3(rectStyle,"26px","20px",deg)])
 	                                                    ,_U.list([rectView]))]));
 	                            });
 	       return _elm.Application.View.Rect.values = {_op: _op
