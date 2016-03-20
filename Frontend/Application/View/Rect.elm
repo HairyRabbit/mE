@@ -23,7 +23,7 @@ rectGroupView1 : String -> String -> Int -> Html
 rectGroupView1 x y deg =
   section [ rectStyle x y 0 ]
             [ section [ rectLeftTopStyle ] [ rectView ]
-            , section [ rectStyle "26" "20" deg] [ rectView ]
+            , section [ rectStyle "26px" "20px" deg] [ rectView ]
             ]
 
 rectStyle : String -> String -> Int -> Html.Attribute
