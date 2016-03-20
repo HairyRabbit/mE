@@ -2,6 +2,7 @@ module Application.View.Home.Greet (greetView) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Application.Style.Color exposing (grey4)
 
 greetView : Html
 greetView =
@@ -10,6 +11,6 @@ greetView =
 greetStyle : Attribute
 greetStyle =
   style [ ("font-size", "1.25rem")
-        , ("color", "rgba(0, 0, 0, 0.72)")
+        , ("color", grey4)
         , ("margin", "0 0 0.5rem 0")
         ]

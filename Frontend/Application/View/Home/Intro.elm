@@ -2,6 +2,7 @@ module Application.View.Home.Intro (introView) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Application.Style.Color exposing (grey3)
 
 introView : Html
 introView =
@@ -10,5 +11,5 @@ introView =
 introStyle : Attribute
 introStyle =
   style [ ("font-size", "0.85rem")
-        , ("color", "rgba(0, 0, 0, 0.56)")
+        , ("color", grey3)
         ]
