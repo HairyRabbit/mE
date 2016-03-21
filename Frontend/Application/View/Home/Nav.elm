@@ -2,6 +2,8 @@ module Application.View.Home.Nav (navView) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Application.Style.Color exposing (fcPc, fcG3)
+
 
 navView : Html
 navView =
@@ -9,11 +11,17 @@ navView =
         [ ul [ menuStyle ]
             [ li [ menuItemStyle ]
                 [ a []
-                    [ text "BloG" ]
+                    [ text "Not"
+                    , span [ jColor ] [ text "E" ]
+                    , text " on"
+                    ]
                 ]
             , li [ menuItemStyle ]
                 [ a []
-                    [ text "aBouT" ]
+                    [ text "Fin"
+                    , span [ jColor ] [ text "D" ]
+                    , text " me"
+                    ]
                 ]
             ]
         ]
@@ -21,8 +29,8 @@ navView =
 navigateStyle : Attribute
 navigateStyle =
   style [ ("position", "absolute")
-        , ("top", "0")
-        , ("left", "0")
+        , ("bottom", "20%")
+        , ("right", "50%")
         ]
 
 menuStyle : Attribute
@@ -34,15 +42,12 @@ menuStyle =
 
 menuItemStyle : Attribute
 menuItemStyle =
-  style [ ("font-size", "1.5rem")
-        , ("font-family", "Ubuntu")
+  style [ ("font-size", "1.4rem")
+        , fcG3
         , ("font-weight", "100")
-        , ("line-height", "1")
-        , ("color", "rgba(0, 0, 0, 0.56)")
         , ("margin", "0.5rem 0")
         ]
 
-
-resetFont : String
-resetFont =
-  "Robot" ++ "Ubuntu,\"微软雅黑\", \"华文黑体\""
+jColor : Attribute
+jColor =
+  style [ fcPc ]
