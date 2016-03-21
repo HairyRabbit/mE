@@ -9,15 +9,17 @@ import Effects exposing (Effects, none)
 import Task exposing (..)
 import Route exposing (..)
 import Application.Home exposing (init, update, view)
-
-type Sitemap
-  = HomeR ()
-  | AboutR ()
+import Application.Page exposing (..)
+import Application.Sitemap exposing (..)
 
 homeR = HomeR := static ""
 aboutR = AboutR := static "about"
+postsR = PostsR := static "posts"
 
-sitemap = router [ homeR, aboutR ]
+sitemap = router [ homeR
+                 , aboutR
+                 , postsR
+                 ]
 
 match : String -> Maybe Sitemap
 match = Route.match sitemap
@@ -27,11 +29,7 @@ route route =
   case route of
     HomeR () -> reverse homeR []
     AboutR () -> reverse aboutR []
-
-type Page =
-  Home
-  | About
-  | NotFound
+    PostsR () -> reverse postsR []
 
 type alias Model = { page: Page }
 
@@ -39,19 +37,20 @@ type Action
   = NoOp
   | PathChange String
   | UpdatePath Sitemap
-          
+
 routeToPath : Sitemap -> Page
 routeToPath route =
   case route of
     HomeR () -> Home
     AboutR () -> About
-              
+    PostsR () -> Posts
+
 pathToPage :  String -> Page
 pathToPage path =
   case match path of
     Nothing -> NotFound
     Just route -> routeToPath route
-                  
+
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
@@ -76,8 +75,10 @@ update action model =
 
 init : String -> (Model, Effects Action)
 init path =
-  ( { page = pathToPage path }, none )
-              
+  ( { page = pathToPage path }
+  , none
+  )
+
 
 type alias Linker = Sitemap -> String -> Html
 
@@ -88,26 +89,31 @@ notFound = text "Page not found"
 home : Html
 home = text "Home page"
 
+posts : Html
+posts = text "施工中..."
 
 about :  Html
-about = text "About Page"
+about = text "施工中..."
 
 view : Signal.Address Action -> Model -> Html
 view address model =
   let
-    link route content =
-      a [ onClick address (UpdatePath route) ] [ text content ]
+    link route =
+      a [ onClick address (UpdatePath route) ]
+    postsLink  = link (PostsR ())
+    aboutLink = link (AboutR ())
 
   in
     div [] [case model.page of
-               Home -> Application.Home.view
-               About -> about
-               NotFound -> notFound
+              Home -> Application.Home.view postsLink aboutLink
+              About -> about
+              Posts -> posts
+              NotFound -> notFound
            ]
-   
-          {-
-          ul []
-          [ li [] [ link (HomeR ()) "Home" ]
-          , li [] [ link (AboutR ()) "About" ]
-          ]
-           -}
+
+  {-
+  ul []
+  [ li [] [ link (HomeR ()) "Home" ]
+  , li [] [ link (AboutR ()) "About" ]
+  ]
+   -}
