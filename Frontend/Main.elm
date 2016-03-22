@@ -6,7 +6,7 @@ import Effects exposing (Never)
 import StartApp exposing (App, start)
 import Task exposing (Task)
 
--- import Application.Home exposing (init, update, view)
+
 import Application.Router as Router
 
 app =

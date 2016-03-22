@@ -68,7 +68,7 @@ view link1 link2 =
 mainStyle : Attribute
 mainStyle =
   style <| [ ("width", "64rem")
-           , ("height", "40rem")
+           , ("height", "100%")
            , ("position", "relative")
            ] ++ flexStyle flex
 

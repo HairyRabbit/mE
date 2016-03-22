@@ -1,7 +1,7 @@
-module Application.Style.Flex ( flex
+module Application.Style.Flex ( flex, flexRowReverse
                               , flexStart
                               , flexCenter
-                              , flexColumn
+                              , flexColumn, flexColumnEnd
                               , flexStyle
                               ) where
 
@@ -108,6 +108,13 @@ flex =
   , flow    = flowStyle Row NoWrap
   }
 
+flexRowReverse : Flex
+flexRowReverse =
+  { justify = justifyContentStyle Start
+  , align   = alignItemsStyle Stretch
+  , flow    = flowStyle RowReverse NoWrap
+  }
+
 flexStart : Flex
 flexStart =
   { justify = justifyContentStyle Center
@@ -126,6 +133,13 @@ flexColumn : Flex
 flexColumn =
   { justify = justifyContentStyle Center
   , align   = alignItemsStyle Start
+  , flow    = flowStyle Column NoWrap
+  }
+
+flexColumnEnd : Flex
+flexColumnEnd =
+  { justify = justifyContentStyle Center
+  , align   = alignItemsStyle End
   , flow    = flowStyle Column NoWrap
   }
 

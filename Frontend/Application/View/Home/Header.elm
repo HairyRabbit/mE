@@ -3,18 +3,18 @@ module Application.View.Home.Header (headerView) where
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Application.Style.Flex exposing (..)
-import Application.View.Home.Logo exposing (logoView)
-import Application.View.Home.Greet exposing (greetView)
-import Application.View.Home.Intro exposing (introView)
+import Application.View.Header.Logo as Logo
+import Application.View.Header.Greet as Greet
+import Application.View.Header.Intro as Intro
 
 headerView : Html
 headerView =
   header [ headerStyle ]
            [ section [ headerLeftStyle ]
-               [ logoView ]
+               [ Logo.view ]
            , section [ headerRightStyle ]
-               [ greetView
-               , introView
+               [ Greet.view "Welcome"
+               , Intro.view
                ]
            ]
 
