@@ -32,11 +32,17 @@ config   =
     loaders:    loaders
   plugins:      plugins
   resolve:
-    extensions: ["", ".elm", ".coffee", ".styl"]
+    extensions: ["", ".elm", ".coffee", ".styl"]  
 setting  =
   hot:      true
   inlien:   true
   progress: true
+  proxy:
+    "/api/*": "http://localhost:9090"
+  historyApiFallback:
+    index: '/'
+  stats:
+    colors: true
 
 
 # Construct dev server.
