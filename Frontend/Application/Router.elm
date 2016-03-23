@@ -9,7 +9,7 @@ import Effects exposing (Effects, none)
 import Task exposing (..)
 import Route exposing (..)
 import Application.Home
-import Application.Posts
+import Application.View.Posts.Posts as Posts
 import Application.Page exposing (..)
 import Application.Sitemap exposing (..)
 
@@ -108,7 +108,7 @@ view address model =
     div [] [case model.page of
               Home -> Application.Home.view postsLink aboutLink
               About -> about
-              Posts -> Application.Posts.view
+              Posts -> Posts.view
               NotFound -> notFound
            ]
 

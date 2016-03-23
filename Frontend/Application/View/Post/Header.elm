@@ -10,7 +10,7 @@ view : Html
 view =
   section
     [ headerStyle ]
-    [ Header.view (PostsR ()) Header.Left ]
+    [ Header.view (PostsR ()) Header.Right ]
 
 
 headerStyle : Attribute
