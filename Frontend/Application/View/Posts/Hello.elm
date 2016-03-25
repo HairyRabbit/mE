@@ -23,6 +23,6 @@ imagePath =
 
 imageStyle : Attribute
 imageStyle =
-  style [ ("width", "60%")
+  style [ ("width", "100%")
         , ("height", "auto")
         ]

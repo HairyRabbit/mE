@@ -15,4 +15,4 @@ view =
 
 headerStyle : Attribute
 headerStyle =
-  style <| [ ("padding", "10rem 0") ] ++ flexStyle flexCenter
+  style <| flexStyle flexCenter

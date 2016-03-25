@@ -73,7 +73,7 @@ server   = new WebpackDevServer compiler, setting
 
 # Server setting.
 host     = "localhost"
-port     = 8080
+port     = 2333
 handle   = -> console.log "\nServer listening at https://#{host}:#{port}\n"
 
 
