@@ -1,4 +1,4 @@
-module Application.View.Posts.Posts (view) where
+module Application.View.Posts.Posts (view, Action(..), Model) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -10,8 +10,12 @@ import Application.View.Posts.Header as Header
 import Application.View.Posts.Hello as Hello
 import Application.View.Rect exposing (rectGroupView1)
 
-view : Html
-view =
+type Action = None
+
+type alias Model = Int
+
+view : Signal.Address Action -> Model -> Html
+view address model =
   main'
     [ mainLayout ]
     [ section
