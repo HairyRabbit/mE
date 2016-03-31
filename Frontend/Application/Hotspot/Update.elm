@@ -8,7 +8,9 @@ import Maybe          exposing (..)
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
-    NewHotspot str ->
-      ( { date = "", intro = "", title = "" }
-      , none
-      )
+    NewHotspot hotspot ->
+      case hotspot of
+        Just d ->
+          (d, Effects.none)
+        Nothing ->
+          ({ date = "", title = "", intro = "" }, Effects.none)

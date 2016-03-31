@@ -6,8 +6,8 @@ import Html           exposing (..)
 
 view : Signal.Address Action -> Model -> Html
 view address model =
-  section
-    []
+  section []
     [ h1 [] [ text model.title ]
+    , p []  [ text model.date ]
+    , p [] [ text model.intro ]
     ]
-     

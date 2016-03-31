@@ -1,3 +1,5 @@
 module Hotspot.Action where
 
-type Action = NewHotspot (Maybe String)
+import Hotspot.Model  exposing (..)
+
+type Action = NewHotspot (Maybe Model)
