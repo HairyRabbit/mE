@@ -1,18 +1,17 @@
 module Home.Init where
 
-import Home.Model
-import Home.Action
-import Hotspot.Model
-import Hotspot.Init
+import Home.Model exposing (Model)
+import Home.Action exposing (Action(..))
+import Hotspot.Init as Hotspot
 import Effects
 
-init : (Home.Model.Model, Effects.Effects Home.Action.Action)
+init : (Model, Effects.Effects Action)
 init =
   let
-    (m, fx) = Hotspot.Init.init
+    (m, fx) = Hotspot.init
   in
-    ( Home.Model.Model m
+    ( Model m
     , Effects.batch
-        [ Effects.map Home.Action.ActionHotspot fx
+        [ Effects.map ActionHotspot fx
         ]
     )

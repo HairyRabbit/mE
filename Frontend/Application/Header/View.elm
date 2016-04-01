@@ -5,13 +5,19 @@ import Html.Attributes exposing (..)
     
 view : String -> Html
 view str =
-  header [ headerStyle ]
-         [ section [ leftStyle ] [ logoView ]
-         , section [ rightStyle ]
-                   [ labelView str
-                   , introView
-                   ]
-         ]
+  header
+    [ headerStyle
+    , class "noSelected"
+    ]
+    [ section
+        [ leftStyle ]
+        [ logoView ]
+    , section
+        [ rightStyle ]
+        [ labelView str
+        , introView
+        ]
+    ]
 
 logoView : Html
 logoView =
