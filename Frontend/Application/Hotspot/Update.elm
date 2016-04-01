@@ -1,9 +1,8 @@
 module Hotspot.Update where
 
 import Hotspot.Action exposing (Action(..))
-import Hotspot.Model  exposing (..)
-import Effects        exposing (..)
-import Maybe          exposing (..)
+import Hotspot.Model  exposing (Model, initModel)
+import Effects        exposing (Effects)
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
@@ -13,4 +12,4 @@ update action model =
         Just d ->
           (d, Effects.none)
         Nothing ->
-          ({ date = "", title = "", intro = "" }, Effects.none)
+          (initModel, Effects.none)

@@ -1,22 +1,20 @@
 module Home.View where
 
-import Html            exposing (..)
+import Html exposing (..)
 import Html.Attributes exposing (..)
-import Home.Action
-import Home.Model
-import Hotspot.Model   exposing (..)
+import Home.Action exposing (Action(..))
+import Home.Model exposing (Model)
 import Header.View
-import Hotspot.View
 
-view : Signal.Address Home.Action.Action -> Home.Model.Model -> Html
+import Hotspot.View as Hotspot
+
+view : Signal.Address Action -> Model -> Html
 view address model =
-  --Hotspot.View.view address model
   main'
     [ mainStyle ]
     [ section
         [ leftStyle  ]
-        [ Hotspot.View.view (Signal.forwardTo address Home.Action.ActionHotspot) model.hotspot ]
-            --[]
+        [ Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot ]
     , section
         [ rightStyle ]
         [ Header.View.view "Welcome"

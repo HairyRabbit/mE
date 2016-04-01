@@ -1,6 +1,7 @@
 module Home.Action where
 
-import Hotspot.Action
+import Hotspot.Action as Hotspot
 
 type Action
-  = ActionHotspot Hotspot.Action.Action
+  = NoOp
+  | ActionHotspot Hotspot.Action
