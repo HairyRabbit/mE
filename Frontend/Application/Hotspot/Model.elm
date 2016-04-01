@@ -5,3 +5,10 @@ type alias Model =
   , date  : String
   , intro : String
   }
+
+initModel : Model
+initModel =
+  { title = ""
+  , date = ""
+  , intro = ""
+  }

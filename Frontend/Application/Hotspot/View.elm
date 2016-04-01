@@ -1,13 +1,23 @@
 module Hotspot.View where
 
-import Hotspot.Action exposing (..)
-import Hotspot.Model  exposing (..)
-import Html           exposing (..)
+import Html            exposing (..)
+import Html.Attributes exposing (..)
+import Hotspot.Action  exposing (..)
+import Hotspot.Model   exposing (..)
+
 
 view : Signal.Address Action -> Model -> Html
 view address model =
-  section []
+  section [ class "md"
+          , conStyle
+          ]
     [ h1 [] [ text model.title ]
-    , p []  [ text model.date ]
+    , p [ class "date" ] [ text model.date ]
     , p [] [ text model.intro ]
     ]
+
+conStyle : Attribute
+conStyle =
+  style [ ("width", "80%")
+        , ("height", "40%")
+        ]

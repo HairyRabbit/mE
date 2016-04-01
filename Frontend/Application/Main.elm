@@ -18,9 +18,9 @@ app =
         }
 -}
 
-import Hotspot.Init   exposing (..)
-import Hotspot.Update exposing (..)
-import Hotspot.View   exposing (..)
+import Home.Init   exposing (..)
+import Home.Update exposing (..)
+import Home.View   exposing (..)
 
 app =
   start { init = init
