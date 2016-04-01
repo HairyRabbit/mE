@@ -42,7 +42,7 @@ app =
         , view = view
         , inputs = [ routeInput ]
         }
-    
+
 
 main : Signal Html
 main = app.html
