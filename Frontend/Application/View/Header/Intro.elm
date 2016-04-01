@@ -1,12 +1,12 @@
-module Application.View.Home.Intro (introView) where
+module Application.View.Header.Intro (view) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Application.Style.Color exposing (grey2)
 
-introView : Html
-introView =
-  section [ introStyle ] [ text "Happy Hack with my life" ]
+view : Html
+view =
+  section [ introStyle ] [ text "Happy Hack With My Life" ]
 
 introStyle : Attribute
 introStyle =

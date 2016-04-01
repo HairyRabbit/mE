@@ -1,12 +1,12 @@
-module Application.View.Home.Greet (greetView) where
+module Application.View.Header.Greet (view) where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Application.Style.Color exposing (grey3)
 
-greetView : Html
-greetView =
-  section [ greetStyle ] [ text "Welcome" ]
+view : String -> Html
+view str =
+  section [ greetStyle ] [ text str ]
 
 greetStyle : Attribute
 greetStyle =

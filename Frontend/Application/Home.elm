@@ -1,8 +1,5 @@
 module Application.Home (init, update, view) where
 
-import Graphics.Element exposing (..)
-import Graphics.Collage exposing (collage, rect, filled, move)
-import Color exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Markdown exposing (..)
@@ -48,14 +45,6 @@ init = (0, Effects.none)
 update : Int -> Model -> (Model, Effects Int)
 update action model = (model, Effects.none)
 
-{-
-[ h1 [ ] [ text "爱上 Processing" ]
-, p [ class "date" ] [ text "Mar 20th, 2016" ]
-, p [ ] [ text "Processing？ 喜欢好久了但一直没时间入，今天终于有时间看了一个通宵。还是挺喜欢的，拿他攻打GUI这个BOSS我想应该木问题。" ]
-, p [ ] [ text "那么首先，什么是Processing？" ]
-]
--}
-
 -- view : Signal.Address Int -> Model -> Html
 -- view address model =
 view : (List Html -> Html) -> (List Html -> Html) -> Html
@@ -67,7 +56,6 @@ view link1 link2 =
                         ] <| topNoteView note
               , rectGroupView1 "70%" "80%" 0
               , rectGroupView1 "10%" "0%" 45
-              -- , section [ keywordStyle ] [ img [ src "Image/Lang/processing.svg" ] [] ]
               ]
           , section [ mainRightStyle ]
               [ headerView
@@ -80,7 +68,7 @@ view link1 link2 =
 mainStyle : Attribute
 mainStyle =
   style <| [ ("width", "64rem")
-           , ("height", "40rem")
+           , ("height", "100%")
            , ("position", "relative")
            ] ++ flexStyle flex
 

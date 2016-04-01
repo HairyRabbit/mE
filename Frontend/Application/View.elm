@@ -1,3 +1,4 @@
 module View where
 
-import Html exposing (..)
+view : Signal.Address Action -> Model -> Html
+view = 

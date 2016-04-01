@@ -1,3 +1,7 @@
+###
+# Server
+###
+
 webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
 path             = require "path"
@@ -5,10 +9,20 @@ HandlebarsPlugin = require "handlebars-webpack-plugin"
 
 
 # Webpack configs.
+#
+# Loaders:
+#
+# * elm
+# * coffee
+# * style css stylus
+#
+# Plugins
+#
+# * handlebars
 loaders  = [
   test:    /\.elm$/
   exclude: [/elm-stuff/, /node_modules/]
-  loader:  "elm-hot!elm-webpack"
+  loader:  "elm-hot!elm-webpack?cwd=./"
 ,
   test:    /\.coffee$/
   loader:  "coffee"
@@ -24,7 +38,7 @@ plugins  = [
     partials:   []
 ]
 config   =
-  entry:        "./Application/boot"
+  entry:        "./boot"
   output:
     path:       path.resolve __dirname, 'dist/'
     filename:   "bundle.js"
@@ -33,10 +47,23 @@ config   =
   plugins:      plugins
   resolve:
     extensions: ["", ".elm", ".coffee", ".styl"]
+
+# WebpackDevServer configs
+#
+# Supports:
+#
+# * hot reload
+# * history api fall back
 setting  =
   hot:      true
   inlien:   true
   progress: true
+  proxy:
+    "/api/*": "http://localhost:9090"
+  historyApiFallback:
+    index: '/'
+  stats:
+    colors: true
 
 
 # Construct dev server.
@@ -46,9 +73,8 @@ server   = new WebpackDevServer compiler, setting
 
 # Server setting.
 host     = "localhost"
-port     = 8080
-log      = console.log
-handle   = -> log "\nServer listening at https://#{host}:#{port}\n"
+port     = 2333
+handle   = -> console.log "\nServer listening at https://#{host}:#{port}\n"
 
 
 # Main call.

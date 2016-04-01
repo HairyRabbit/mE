@@ -6,7 +6,8 @@ import Effects exposing (Never)
 import StartApp exposing (App, start)
 import Task exposing (Task)
 
--- import Application.Home exposing (init, update, view)
+{-
+
 import Application.Router as Router
 
 app =
@@ -15,6 +16,19 @@ app =
         , view = Router.view
         , inputs = [ Signal.map Router.PathChange History.path ]
         }
+-}
+
+import Home.Init   exposing (..)
+import Home.Update exposing (..)
+import Home.View   exposing (..)
+
+app =
+  start { init = init
+        , update = update
+        , view = view
+        , inputs = []
+        }
+    
 
 main : Signal Html
 main = app.html
