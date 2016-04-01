@@ -11,19 +11,26 @@ import Hotspot.View
 view : Signal.Address Home.Action.Action -> Home.Model.Model -> Html
 view address model =
   --Hotspot.View.view address model
-  main' [ mainStyle ]
-        [ section [ leftStyle  ]
-                  [ Hotspot.View.view (Signal.forwardTo address Home.Action.ActionHotspot) model.hotspot ]
+  main'
+    [ mainStyle ]
+    [ section
+        [ leftStyle  ]
+        [ Hotspot.View.view (Signal.forwardTo address Home.Action.ActionHotspot) model.hotspot ]
             --[]
-        , section [ rightStyle ]
-                  [ Header.View.view "Welcome"
-                  , section [ helloStyle ]
-                            [ img [ imageStyle
-                                  , src "./Image/Just-me.jpg"
-                                  ] []
-                            ]
-                  ]
+    , section
+        [ rightStyle ]
+        [ Header.View.view "Welcome"
+        , section
+            [ helloStyle
+            , class "noSelected"
+            ]
+            [ img
+                [ imageStyle
+                , src "./Image/Just-me.jpg"
+                ] []
+            ]
         ]
+    ]
 
     
 mainStyle : Attribute
@@ -63,7 +70,4 @@ imageStyle : Attribute
 imageStyle =
   style [ ("width", "60%")
         , ("height", "auto")
-        , ("user-select", "none")
-        , ("-moz-user-select", "none")
-        , ("pointer-events", "none")
         ]
