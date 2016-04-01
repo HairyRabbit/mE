@@ -1,22 +1,21 @@
 module Home.View where
 
-import Html            exposing (..)
+import Html exposing (..)
 import Html.Attributes exposing (..)
-import Home.Action
-import Home.Model
-import Hotspot.Model   exposing (..)
+import Html.Events exposing (onClick)
+import Home.Action as Home exposing (Action(..))
+import Home.Model exposing (Model)
 import Header.View
-import Hotspot.View
+import Hotspot.View as Hotspot
 
-view : Signal.Address Home.Action.Action -> Home.Model.Model -> Html
+
+view : Signal.Address Action -> Model -> Html
 view address model =
-  --Hotspot.View.view address model
   main'
     [ mainStyle ]
     [ section
         [ leftStyle  ]
-        [ Hotspot.View.view (Signal.forwardTo address Home.Action.ActionHotspot) model.hotspot ]
-            --[]
+        [ Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot ]
     , section
         [ rightStyle ]
         [ Header.View.view "Welcome"
@@ -32,15 +31,24 @@ view address model =
         ]
     ]
 
-    
+
 mainStyle : Attribute
 mainStyle =
   style [ ("width", "64rem")
-        , ("height", "50rem")
+        , ("height", "40rem")
         , ("position", "relative")
         , ("display", "flex")
         ]
-    
+  {-
+  style [ ("width", "100%")
+        , ("height", "100%")
+        , ("position", "relative")
+        , ("display", "flex")
+        , ("padding", "1rem")
+        , ("box-sizing", "border-box")
+        ]
+   -}
+
 leftStyle : Attribute
 leftStyle =
   style [ ("position", "relative")
@@ -49,7 +57,7 @@ leftStyle =
         , ("justifyContent", "center")
         , ("alignItems", "center")
         ]
-    
+
 rightStyle : Attribute
 rightStyle =
   style [ ("position", "relative")
@@ -71,3 +79,8 @@ imageStyle =
   style [ ("width", "60%")
         , ("height", "auto")
         ]
+  {- 
+  style [ ("width", "auto")
+        , ("height", "100%")
+        ]
+   -}

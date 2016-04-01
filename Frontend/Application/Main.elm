@@ -18,17 +18,31 @@ app =
         }
 -}
 
+{-
 import Home.Init   exposing (..)
 import Home.Update exposing (..)
 import Home.View   exposing (..)
-
 app =
   start { init = init
         , update = update
         , view = view
         , inputs = []
         }
-    
+-}
+
+import Init exposing (init)
+import Update exposing (update)
+import View exposing (view)
+import Action exposing (Action(..))
+import Router.Update exposing (routeInput)
+
+app =
+  start { init = init path
+        , update = update
+        , view = view
+        , inputs = [ routeInput ]
+        }
+
 
 main : Signal Html
 main = app.html

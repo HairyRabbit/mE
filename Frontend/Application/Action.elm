@@ -1,7 +1,9 @@
 module Action where
 
-import Hotspot.Action as Hotspot
+import Router.Action as Router
+import Home.Action   as Home
 
 type Action
   = NoOp
-  | ActionHotspot Hotspot.Action
+  | ActionRouter Router.Action
+  | ActionHome   Home.Action

@@ -93,7 +93,7 @@ update action model =
         ( model
         , none
         )
-      
+
 
 init : String -> (Model, Effects Action)
 init path =

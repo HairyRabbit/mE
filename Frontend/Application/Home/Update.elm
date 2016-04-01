@@ -1,17 +1,23 @@
 module Home.Update where
 
-import Home.Action
-import Home.Model
-import Hotspot.Update
-import Effects
+import Effects exposing (Effects)
+import Home.Action exposing (Action(..))
+import Home.Model exposing (Model)
+import Hotspot.Update as Hotspot
 
-update : Home.Action.Action -> Home.Model.Model -> (Home.Model.Model, Effects.Effects Home.Action.Action)
+
+update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
-    Home.Action.ActionHotspot act ->
+    ActionHotspot act ->
       let
-        (m, fx) = Hotspot.Update.update act model.hotspot
+        (m, fx) = Hotspot.update act model.hotspot
       in
-      ( Home.Model.Model m
-      , Effects.map Home.Action.ActionHotspot fx
+      ( Model m
+      , Effects.map ActionHotspot fx
+      )
+
+    NoOp ->
+      ( model
+      , Effects.none
       )

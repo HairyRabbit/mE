@@ -1,28 +1,26 @@
 module Hotspot.Init where
 
-import Hotspot.Model  exposing (..)
-import Hotspot.Action exposing (Action(..))
-import Effects
 import Http
 import Task
+import Effects exposing (Effects)
 import Json.Decode exposing ((:=), object3, string)
-import Debug exposing (log)
+import Hotspot.Model  exposing (Model, initModel)
+import Hotspot.Action exposing (Action(..))
 
 
-init : (Model, Effects.Effects Action)
+init : (Model, Effects Action)
 init =
-  ( Hotspot.Model.initModel
+  ( initModel
   , getHotspot
   )
 
 requestURL : String
 requestURL = "http://localhost:4000/api/v1/hotspot"
 
-getHotspot : Effects.Effects Action
+getHotspot : Effects Action
 getHotspot =
   Http.get decodeData requestURL
     |> Task.toMaybe
-    |> Task.map (log "")
     |> Task.map NewHotspot
     |> Effects.task
 

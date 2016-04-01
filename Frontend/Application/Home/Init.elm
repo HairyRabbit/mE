@@ -1,11 +1,12 @@
 module Home.Init where
 
+import Effects exposing (Effects)
 import Home.Model exposing (Model)
 import Home.Action exposing (Action(..))
 import Hotspot.Init as Hotspot
-import Effects
 
-init : (Model, Effects.Effects Action)
+
+init : (Model, Effects Action)
 init =
   let
     (m, fx) = Hotspot.init
