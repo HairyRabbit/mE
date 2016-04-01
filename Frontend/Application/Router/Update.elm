@@ -8,6 +8,7 @@ import Router.Model exposing (Model, pathToPage, Page(..))
 import Router.Routes exposing (route)
 import Action as RootAction exposing (Action(..))
 
+
 update : Router.Action -> Model -> (Model, Effects Router.Action)
 update action model =
   case action of

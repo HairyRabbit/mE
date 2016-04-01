@@ -15,10 +15,10 @@ view address model =
   let
     views =
       case model.router.page of
-        NotFound ->
-          notFound
         Home ->
           Home.view (Signal.forwardTo address ActionHome) model.home
+        NotFound ->
+          notFound
   in
     div
       []

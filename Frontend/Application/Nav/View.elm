@@ -6,14 +6,13 @@ import Html.Events exposing (onClick)
 import String exposing (split, toUpper)
 import Router.Routes exposing (Sitemap(..))
 import Router.Action as Router exposing (Action(..))
+import Debug exposing (log)
 
 view : Signal.Address Router.Action -> Html
 view address =
   let
-    link route content =
-      a
-        [ onClick address <| UpdatePath route ]
-        content
+    link route =
+      a [ onClick address <| UpdatePath route ]
   in
     nav
       [ navigateStyle ]

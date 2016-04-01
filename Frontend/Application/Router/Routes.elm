@@ -1,5 +1,6 @@
 module Router.Routes where
 
+import String
 import Route exposing (..)
 
 

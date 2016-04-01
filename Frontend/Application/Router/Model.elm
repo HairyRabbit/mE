@@ -7,7 +7,7 @@ import Router.Routes exposing (Sitemap(..))
 type Page
   = NotFound
   | Home
-    
+
 type alias Model =
   { page : Page }
 
@@ -19,8 +19,16 @@ routeToPath route =
 
 pathToPage : String -> Page
 pathToPage path =
-  case Router.Routes.match path of
-    Nothing ->
-      NotFound
-    Just route ->
-      routeToPath route
+  let
+    dpath =
+      case path of
+        "" ->
+          "/"
+        _ ->
+          path
+  in
+    case Router.Routes.match dpath of
+      Nothing ->
+        NotFound
+      Just route ->
+        routeToPath route
