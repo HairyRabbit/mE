@@ -2,11 +2,12 @@ module Home.View where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Home.Action exposing (Action(..))
+import Html.Events exposing (onClick)
+import Home.Action as Home exposing (Action(..))
 import Home.Model exposing (Model)
 import Header.View
-
 import Hotspot.View as Hotspot
+
 
 view : Signal.Address Action -> Model -> Html
 view address model =

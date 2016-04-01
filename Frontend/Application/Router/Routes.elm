@@ -6,10 +6,10 @@ import Route exposing (..)
 type Sitemap
   = HomeRoute ()
 
-homeRoute : Route Sitemap    
+homeRoute : Route Sitemap
 homeRoute = HomeRoute := static ""
 
-sitemap : Router Sitemap           
+sitemap : Router Sitemap
 sitemap =
   Route.router [ homeRoute ]
 

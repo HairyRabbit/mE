@@ -35,4 +35,4 @@ update action model =
 routeInput : Signal RootAction.Action
 routeInput =
   Signal.map (ActionRouter << PathChange) History.hash
-             
+
