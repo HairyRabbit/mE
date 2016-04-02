@@ -6,4 +6,4 @@ import Action as RootAction exposing (Action(..))
 
 input : Signal RootAction.Action
 input =
-  Signal.map (ActionRouter << PathChange) History.hash
+  Signal.map (ActionRouter << PathChange) History.path
