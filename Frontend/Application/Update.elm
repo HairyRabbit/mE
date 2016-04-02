@@ -6,22 +6,10 @@ import Model   exposing (Model)
 import Router.Update as Router
 import Home.Update   as Home
 
+
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
-    {-
-    ActionRouter act ->
-      let
-        (modelRouter, effectsRouter) = Router.update act model.router
-
-        models = Model modelRouter
-        effects =
-          Effects.batch
-                   [ Effects.map ActionRouter effectsRouter
-                   ]
-      in
-        (models, effects)
-     -}
     ActionRouter act ->
       let
         (modelRouter, effectsRouter) = Router.update act model.router

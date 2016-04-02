@@ -6,24 +6,38 @@ import Html.Events exposing (onClick)
 import String exposing (split, toUpper)
 import Router.Routes exposing (Sitemap(..))
 import Router.Action as Router exposing (Action(..))
-import Debug exposing (log)
 
-view : Signal.Address Router.Action -> Html
-view address =
+
+view : Signal.Address Router.Action -> String -> Html
+view address label =
   let
     link route =
       a [ onClick address <| UpdatePath route ]
+
+    homeLinker =
+      listItemView <| link (HomeRoute ()) <| linkerView "Home io" "e"
+
+    postsLinker =
+      listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
+                 
+    linkers =
+      case label of
+        "home" ->
+          [ postsLinker ]
+        "posts" ->
+          [ homeLinker ]
+        _ ->
+          []
   in
-    nav
-      [ navigateStyle ]
-      [ ul
-          [ class "listReset" ]
-          [ listItemView <| link (HomeRoute ()) <| linkerView "Note on" "e"
-          -- , listItemView <| link <| linkerView "Find me" "d"
-          ]
-      ]
+    nav [ ] [ ul [ class "listReset" ] linkers ]
 
-
+  {-
+  [ listItemView <| link (HomeRoute ()) <| linkerView "Home io" "e"
+  , listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
+  , listItemView <| link (HomeRoute ()) <| linkerView "Find me" "d"
+  ]
+   -}      
+      
 linkerView : String -> String -> List Html
 linkerView str char =
   let
@@ -37,13 +51,6 @@ linkerView str char =
 listItemView : Html -> Html
 listItemView linker =
   li [ listItemStyle ] [ linker ]
-
-navigateStyle : Attribute
-navigateStyle =
-  style [ ("position", "absolute")
-        , ("bottom", "30%")
-        , ("right", "33%")
-        ]
 
 listItemStyle : Attribute
 listItemStyle =

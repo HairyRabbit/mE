@@ -38,8 +38,7 @@ introView =
 
 headerStyle : Attribute
 headerStyle =
-  style [ ("padding","0 0 20rem 0")
-        , ("display", "flex")
+  style [ ("display", "flex")
         ]
 
 leftStyle : Attribute

@@ -19,17 +19,11 @@ view address model =
       case model.router.page of
         Home ->
           Home.view (Signal.forwardTo address ActionHome) model.home <| Nav.view (Signal.forwardTo address ActionRouter) "home"
+
         Posts ->
           Posts.view <| Nav.view (Signal.forwardTo address ActionRouter) "posts"
-          -- Posts.view <| text "span"
+
         NotFound ->
           notFound
   in
     views
-    {-
-    div
-      []
-      [ views
-      , Nav.view (Signal.forwardTo address ActionRouter)
-      ]
-     -}

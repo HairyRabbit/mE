@@ -3,13 +3,12 @@ module Router.Update where
 import Effects exposing (Effects)
 import History
 import Task
-import Router.Action as Router exposing (Action(..))
+import Router.Action exposing (Action(..))
 import Router.Model exposing (Model, pathToPage, Page(..))
 import Router.Routes exposing (route)
-import Action as RootAction exposing (Action(..))
 
 
-update : Router.Action -> Model -> (Model, Effects Router.Action)
+update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
     PathChange path ->
@@ -18,22 +17,17 @@ update action model =
       )
     UpdatePath r ->
       let
-        act =
+        effects =
           route r
             |> History.setPath
             |> Task.toMaybe
-            |> Task.map (always Router.NoOp)
+            |> Task.map (always NoOp)
             |> Effects.task
       in
         ( model
-        , act
+        , effects
         )
-    Router.NoOp ->
+    NoOp ->
       ( model
       , Effects.none
       )
-
-routeInput : Signal RootAction.Action
-routeInput =
-  Signal.map (ActionRouter << PathChange) History.hash
-
