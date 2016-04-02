@@ -1,37 +1,57 @@
 module Home.View where
 
-import Html exposing (..)
+{-| Home 主页视图 -}
+
+import Html            exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
-import Home.Action as Home exposing (Action(..))
-import Home.Model exposing (Model)
-import Header.View
+import Html.Events     exposing (onClick)
+import Util.Image      exposing (image)
+
+import Home.Action exposing (Action(..))
+import Home.Model  exposing (Model)
+
+import Header.View  as Header
 import Hotspot.View as Hotspot
 
 
-view : Signal.Address Action -> Model -> Html
-view address model =
-  main'
-    [ mainStyle ]
-    [ section
-        [ leftStyle  ]
-        [ Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot ]
-    , section
-        [ rightStyle ]
-        [ Header.View.view "Welcome"
-        , section
-            [ helloStyle
-            , class "noSelected"
-            ]
-            [ img
-                [ imageStyle
-                , src "./Image/Just-me.jpg"
-                ] []
-            ]
-        ]
-    ]
+view : Signal.Address Action -> Model -> Html -> Html
+view address model nav =
+  let
+    hotspotView =
+      Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot
+
+    navView =
+      section [ navStyle ] [ nav ]
+
+    headerView =
+      section [ headerStyle ] [ Header.view "Welcome" ]
+
+    imageView =
+      section
+        [ helloStyle, class "noSelected" ]
+        [ section [ imgStyle ] [ image imagePath ]]
+
+    leftView =
+      [ hotspotView ]
+
+    rightView =
+      [ headerView
+      , imageView
+      , navView
+      ]
+      
+  in
+    main'
+      [ mainStyle ]
+      [ section [ leftStyle  ] leftView
+      , section [ rightStyle ] rightView
+      ]
 
 
+imagePath : String
+imagePath = "./Image/Just-me.jpg"
+
+    
 mainStyle : Attribute
 mainStyle =
   style [ ("width", "64rem")
@@ -74,8 +94,8 @@ helloStyle =
         , ("alignItems", "center")
         ]
 
-imageStyle : Attribute
-imageStyle =
+imgStyle : Attribute
+imgStyle =
   style [ ("width", "60%")
         , ("height", "auto")
         ]
@@ -84,3 +104,14 @@ imageStyle =
         , ("height", "100%")
         ]
    -}
+
+navStyle : Attribute
+navStyle =
+  style [ ("position", "absolute")
+        , ("bottom", "30%")
+        , ("right", "50%")
+        ]
+
+headerStyle : Attribute
+headerStyle =
+  style [ ("padding","0 0 20rem 0") ]    

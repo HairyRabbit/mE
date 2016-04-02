@@ -5,14 +5,18 @@ import Route exposing (..)
 
 
 type Sitemap
-  = HomeRoute ()
+  = HomeRoute  ()
+  | PostsRoute ()
 
 homeRoute : Route Sitemap
 homeRoute = HomeRoute := static ""
 
+postsRoute : Route Sitemap
+postsRoute = PostsRoute := static "posts"
+
 sitemap : Router Sitemap
 sitemap =
-  Route.router [ homeRoute ]
+  Route.router [ homeRoute, postsRoute ]
 
 match : String -> Maybe Sitemap
 match =
@@ -23,5 +27,7 @@ route route =
   case route of
     HomeRoute () ->
       Route.reverse homeRoute []
+    PostsRoute () ->
+      Route.reverse postsRoute []
 
 

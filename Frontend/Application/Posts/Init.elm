@@ -1,0 +1,1 @@
+module Posts.Init where
