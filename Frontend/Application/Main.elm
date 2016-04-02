@@ -1,52 +1,33 @@
 module Main where
 
-import History
-import Html exposing (..)
-import Effects exposing (Never)
-import StartApp exposing (App, start)
-import Task exposing (Task)
+{-| 一切都将从这里开始 -}
 
-{-
+import Html     exposing (Html)
+import Effects  exposing (Never)
+import Task     exposing (Task)
+import StartApp exposing (start)
 
-import Application.Router as Router
+import Model    exposing (Model)
+import Init     exposing (init)
+import Update   exposing (update)
+import View     exposing (view)
+import Input    exposing (input)
 
+
+{-| App config -}
+app : StartApp.App Model
 app =
-  start { init = Router.init path
-        , update = Router.update
-        , view = Router.view
-        , inputs = [ Signal.map Router.PathChange History.path ]
-        }
--}
-
-{-
-import Home.Init   exposing (..)
-import Home.Update exposing (..)
-import Home.View   exposing (..)
-app =
-  start { init = init
+  start { init   = init path
         , update = update
-        , view = view
-        , inputs = []
+        , view   = view
+        , inputs = input
         }
--}
-
-import Init exposing (init)
-import Update exposing (update)
-import View exposing (view)
-import Action exposing (Action(..))
-import Router.Update exposing (routeInput)
-
-app =
-  start { init = init path
-        , update = update
-        , view = view
-        , inputs = [ routeInput ]
-        }
-
 
 main : Signal Html
 main = app.html
 
+
+{-| Port throw -}
 port tasks : Signal (Task Never ())
 port tasks = app.tasks
 
