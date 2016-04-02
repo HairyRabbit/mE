@@ -1,0 +1,2 @@
+module Newsletter.Model where
+
