@@ -6,7 +6,7 @@ import Html            exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events     exposing (onClick)
 import Util.Image      exposing (image)
-import Util.Classes    exposing (..)
+import Util.Classes    exposing (class2)
 
 import Home.Action     exposing (Action(..))
 import Home.Model      exposing (Model)
@@ -29,7 +29,7 @@ view address model nav =
 
     imageView =
       section
-        [ class <| "none-select" |-| " flex-con" ]
+        [ class2 "none-select" "flex-con" ]
         [ section [ class "img-home" ] [ image imagePath ]
         ]
 

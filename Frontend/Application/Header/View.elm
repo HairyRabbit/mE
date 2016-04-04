@@ -1,23 +1,29 @@
 module Header.View (view) where
 
+{-| 这里是LOGO -}
+
 import Html            exposing (..)
 import Html.Attributes exposing (..)
-    
+import Util.Classes    exposing (class2)
+
 view : String -> Html
 view str =
-  header
-    [ headerStyle
-    , class "noSelected"
-    ]
-    [ section
-        [ leftStyle ]
-        [ logoView ]
-    , section
-        [ rightStyle ]
+  let
+    leftView =
+      section [ class "flex-con" ] [ logoView ]
+
+    rightView =
+      section
+        [ class2 "flex-col" "flex-justify-cen" ]
         [ labelView str
         , introView
         ]
-    ]
+  in
+    header
+      [ class2 "noSelected" "flex" ]
+      [ leftView
+      , rightView
+      ]
 
 logoView : Html
 logoView =
@@ -34,7 +40,7 @@ labelView str =
 introView : Html
 introView =
   section [ introStyle ] [ text "Happy Hack With My Life" ]
-          
+
 
 headerStyle : Attribute
 headerStyle =
