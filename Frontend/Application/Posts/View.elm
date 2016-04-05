@@ -1,7 +1,8 @@
 module Posts.View where
 
-import Html exposing (..)
+import Html            exposing (..)
 import Html.Attributes exposing (..)
+
 import Header.View as Header
 import Posts.Action exposing (Action(..))
 import Posts.Model exposing (Model)
