@@ -1,22 +1,66 @@
-html,
-body,
-body > div,
-body > div > div
-  width:  100%
+/* Mixins */
+w100()
+  width: 100%
+
+h100()
   height: 100%
 
+container()
+  w100()
+  h100()
+
+m0()
+  margin:  0
+
+p0()
+  padding: 0
+
+spaceReset()
+  m0()
+  p0()
+
+
+flex-justify-cen()
+  justify-content: center
+
+flex-item-cen()
+  align-items: center
+
+flex-col()
+  display: flex
+  flex-flow: column nowrap
+
+flex-cen()
+  display: flex
+  flex-justify-cen()
+  flex-item-cen()
+
+flex-item(size = null)
+  if size is not null
+    flex: 0 0 size
+  else
+    flex: 1 0 0
+  
+
+
+/* Reset */
+html
 body
-  font-family: "Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
+body > div
+  container()
+
+body > div
+  flex-cen()
+
+body
+  font-family: "Microsoft YaHei UI","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
   font-size:   16px
   line-height: 1
-  margin:      0
-  padding:     0
-
-body > div,
-body > div > div
-  display:         flex
-  justify-content: center
-  align-items:     center
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust:     100%
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing:  antialiased
+  spaceReset()
 
 img
   width:  100%
@@ -27,13 +71,56 @@ a
   cursor:          pointer
   text-decoration: none
 
-.listReset
-  list-style-type: none
-  margin:          0
-  padding:         0
+/* Util */
+.flex
+  display: flex
 
-.noSelected
+.flex-justify-cen
+  flex-justify-cen()
+
+.flex-col
+  flex-col()
+
+.flex-con
+  flex-cen()
+
+.mb2
+  margin-bottom: 2rem
+
+.g4
+  color: rgba(0, 0, 0, 0.72)
+
+.list-rs
+  list-style-type: none
+  spaceReset()
+
+.none-select
   -webkit-user-select: none
   -moz-user-select:    none
   user-select:         none
   pointer-events:      none
+
+
+/* Home */
+.con-home
+  width:   64rem
+  height:  40rem
+  display: flex
+
+.con-home-item
+  position: relative
+  flex-cen()
+  flex-item()
+
+.img-home
+  width: 60%
+
+.nav-home
+  position: absolute
+  bottom: 30%
+  right: 50%
+
+.logo-home
+  margin-bottom: 20rem
+
+/* 404 */

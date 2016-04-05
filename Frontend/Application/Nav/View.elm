@@ -19,7 +19,7 @@ view address label =
 
     postsLinker =
       listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
-                 
+
     linkers =
       case label of
         "home" ->
@@ -29,15 +29,15 @@ view address label =
         _ ->
           []
   in
-    nav [ ] [ ul [ class "listReset" ] linkers ]
+    nav [ ] [ ul [ class "list-rs" ] linkers ]
 
   {-
   [ listItemView <| link (HomeRoute ()) <| linkerView "Home io" "e"
   , listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
   , listItemView <| link (HomeRoute ()) <| linkerView "Find me" "d"
   ]
-   -}      
-      
+   -}
+
 linkerView : String -> String -> List Html
 linkerView str char =
   let

@@ -4,9 +4,12 @@ import Html exposing (..)
 import Action exposing (Action(..))
 import Model exposing (Model)
 import Router.Model exposing (Page(..))
-import Nav.View as Nav
-import Home.View as Home
-import Posts.View as Posts
+
+import Notfound.View as Notfound
+import Nav.View      as Nav
+import Home.View     as Home
+import Posts.View    as Posts
+
 
 
 notFound : Html
@@ -21,9 +24,9 @@ view address model =
           Home.view (Signal.forwardTo address ActionHome) model.home <| Nav.view (Signal.forwardTo address ActionRouter) "home"
 
         Posts ->
-          Posts.view <| Nav.view (Signal.forwardTo address ActionRouter) "posts"
+          Posts.view (Signal.forwardTo address ActionPosts) model.posts <| Nav.view (Signal.forwardTo address ActionRouter) "posts"
 
         NotFound ->
-          notFound
+          Notfound.view
   in
     views

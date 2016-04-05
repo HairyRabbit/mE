@@ -3,9 +3,12 @@ module Posts.View where
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Header.View as Header
+import Posts.Action exposing (Action(..))
+import Posts.Model exposing (Model)
+import Debug exposing (log)
 
-view : Html -> Html
-view nav =
+view : Signal.Address Action -> Model -> Html -> Html
+view address model nav =
   main'
     [ mainLayout ]
     [ section
@@ -15,55 +18,7 @@ view nav =
         [ middleLayout, class "md" ]
         [ ul
             [ class "listReset" ]
-            [ li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            , li
-                [ listStyle]
-                [ span [ class "mm" ] [ text "Jul " ]
-                , span [ class "dd" ] [ text "2nd " ]
-                , span [ class "title" ] [ text "Julia linux下的安装" ]
-                ]
-            ]
+            <| List.map (\x -> span [] [ text <| toString x ] ) (log "" model)
         ]
     , section
         [ rightLayout ]
@@ -77,7 +32,13 @@ view nav =
         ]
     ]
 
-
+    -- [ li
+    --     [ listStyle]
+    --     [ span [ class "mm" ] [ text "Jul " ]
+    --     , span [ class "dd" ] [ text "2nd " ]
+    --     , span [ class "title" ] [ text "Julia linux下的安装" ]
+    --     ]
+    -- ]
 mainLayout : Attribute
 mainLayout =
   style [ ("width", "70rem")
@@ -110,7 +71,7 @@ middleLayout =
         , ("boxSizing", "border-box")
         , ("padding", "6rem 2rem")
         ]
-  
+
 
 navStyle : Attribute
 navStyle =
