@@ -10,7 +10,7 @@ import Post.Model  exposing (Model, initModel)
 
 type Action
   = NoOp
-  | GetTopPost (Maybe Post)
+  | GetTopPosts (Maybe Model)
   | GetPosts (Maybe Model)
   | GetPost (Maybe Post)
 
@@ -86,8 +86,25 @@ getData id url decoder action =
 
 getTopPosts : Effects Action
 getTopPosts =
-  getData "" reqTopPostsUrl decodeTopPosts GetTopPost
+  getData "" reqTopPostsUrl decodeTopPosts GetTopPosts
 
 getPostList : Effects Action
 getPostList =
   getData "" reqPostListUrl decodePostList GetPosts
+
+getPost : String -> Effects Action
+getPost id =
+  getData id reqPostByIdUrl decodePost GetPost
+
+
+update : Action -> Model -> (Model, Effects Action)
+update action model =
+  case action of
+    GetTopPosts posts ->
+      case posts of
+        Just d ->
+          (d, Effects.none)
+        Nothing ->
+          (model, Effects.none)
+    _ ->
+      (model, Effects.none)
