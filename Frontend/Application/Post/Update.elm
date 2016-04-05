@@ -5,7 +5,22 @@ import Task
 import Effects     exposing (Effects)
 import Json.Decode as Json exposing ((:=))
 
-import Post.Model  exposing (Model, initModel)
+
+{-| Model -}
+
+type alias Post =
+  { id    : String
+  , title : String
+  , date  : String
+  , intro : String
+  , isHot : Boolean
+  , path  : String
+  }
+
+type alias Model = List Post
+
+initModel : List Model
+initModel = []
 
 
 type Action

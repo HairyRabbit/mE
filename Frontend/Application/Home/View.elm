@@ -12,14 +12,16 @@ import Home.Action     exposing (Action(..))
 import Home.Model      exposing (Model)
 
 import Header.View     as Header
-import Hotspot.View    as Hotspot
+--import Hotspot.View    as Hotspot
+import Post
 
 
 view : Signal.Address Action -> Model -> Html -> Html
 view address model nav =
   let
     hotspotView =
-      Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot
+      --Hotspot.view (Signal.forwardTo address ActionHotspot) model.hotspot
+      Post.topPostsView (Signal.forwardTo address ActionPost) model.posts
 
     navView =
       section [ class "nav-home" ] [ nav ]

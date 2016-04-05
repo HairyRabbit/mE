@@ -1,5 +1,6 @@
 module Home.Model where
 
+{-
 import Hotspot.Model as Hotspot
 
 
@@ -11,3 +12,14 @@ initModel : Model
 initModel =
   { hotspot = Hotspot.initModel
   }
+-}
+
+
+import Post
+
+type alias Model =
+  { posts : Post.Model }
+
+initModel : Model
+initModel =
+  { posts = [] }
