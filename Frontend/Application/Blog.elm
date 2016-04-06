@@ -28,11 +28,25 @@ type Action
   | ActionPost Post.Action
 
 
+-- Init
+
+init : (Model, Effects Action)
+init =
+  let
+    (m, fx) = Post.initPost "11"
+  in
+    ( Model m
+    , Effects.batch
+        [ Effects.map ActionPost fx
+        ]
+    )
+
+
 
 -- Update
 
 update : Action -> Model -> (Model, Effects Action)
-update action model = 
+update action model =
   case action of
     ActionPost act ->
       let
@@ -47,25 +61,10 @@ update action model =
 
 
 
--- Init
-
-init : (Model, Effects Action)
-init =
-  let
-    (m, fx) = Post.initPost
-  in
-    ( Model m
-    , Effects.batch
-        [ Effects.map ActionPost fx
-        ]
-    )
-            
-
-
 -- View
-view : Signal.Address Action -> Model -> Html
-view address model =
+view : String -> Signal.Address Action -> Model -> Html
+view id address model =
   main'
     []
-    [ Post.postView (Signal.forwardTo address ActionPost) model.posts
+    [ Post.postView id (Signal.forwardTo address ActionPost) model.posts
     ]

@@ -13,6 +13,10 @@ import Nav.View      as Nav
 import Home.View     as Home
 import Posts.View    as Posts
 
+import Blog
+
+import Debug exposing (log)
+
 
 view : Signal.Address Action -> Model -> Html
 view address model =
@@ -32,8 +36,12 @@ view address model =
         Posts ->
           Posts.view (Signal.forwardTo address ActionPosts) model.posts <| Nav.view (Signal.forwardTo address ActionRouter) "posts"
 
-        Post str ->
-          div [] [ text str ]
+        Post id ->
+          --Blog.view id (Signal.forwardTo address ActionBlog) model.blog
+          let
+            logs = (log "" id)
+          in
+            div [] [ text "test" ]
 
         NotFound ->
           Notfound.view

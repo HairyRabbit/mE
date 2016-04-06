@@ -3,12 +3,16 @@ module Router.Model where
 import Route exposing (..)
 import Router.Routes exposing (Sitemap(..))
 
+import Post
+
+import Debug exposing (log)
+
 
 type Page
   = NotFound
   | Home
   | Posts
-  | Post String
+  | Post Post.Model
 
 type alias Model =
   { page : Page }
@@ -21,7 +25,11 @@ routeToPath route =
     PostsRoute () ->
       Posts
     PostRoute id ->
-      Post id      
+      let
+        (m, fx) = Post.initPost (log "id" id)
+      in
+        Post m
+
 
 pathToPage : String -> Page
 pathToPage path =

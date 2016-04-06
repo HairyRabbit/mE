@@ -123,8 +123,8 @@ initTopPosts = ([], getTopPosts)
 initPosts : (Model, Effects Action)
 initPosts = ([], getPostList)
 
-initPost : (Model, Effects Action)
-initPost = ([], getPost "")
+initPost : String -> (Model, Effects Action)
+initPost id = ([], getPost id)
 
 
 
@@ -150,8 +150,8 @@ update action model =
     GetPosts posts ->
       (model, getPostList)
 
-    -- GetPost post ->
-    --   (model, getPost model.id)
+    GetPost post ->
+      matchModel post
 
     _ ->
       noneModel
@@ -175,8 +175,8 @@ topPostsView address model =
     Nothing ->
       section [] [ text "Loading..." ]
 
-postView : Signal.Address Action -> Model -> Html
-postView address model =
+postView : String -> Signal.Address Action -> Model -> Html
+postView id address model =
   case (List.head model) of
     Just post ->
       section
