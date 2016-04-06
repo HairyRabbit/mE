@@ -6,7 +6,7 @@ module Home.Action where
 --   = NoOp
 --   | ActionHotspot Hotspot.Action
 
-import Post as Post
+import Post
 
 type Action
   = NoOp

@@ -9,7 +9,7 @@ view : Html
 view =
   main'
     [ class3 "con-home" "flex-con" "flex-col" ]
-    [ section [ class "mb2 g4" ] [ text "貌似，路径木有找到..." ]
+    [ section [ class "mb2 g4" ] [ text "貌似，木有找到..." ]
     , section [ ] [ image imagePath ]
     ]
 

@@ -32,6 +32,9 @@ view address model =
         Posts ->
           Posts.view (Signal.forwardTo address ActionPosts) model.posts <| Nav.view (Signal.forwardTo address ActionRouter) "posts"
 
+        Post str ->
+          div [] [ text str ]
+
         NotFound ->
           Notfound.view
   in

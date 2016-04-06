@@ -27,6 +27,7 @@ import Html                exposing (..)
 import Html.Attributes     exposing (..)
 import Effects             exposing (Effects)
 import Json.Decode as Json exposing ((:=))
+import Util.Classes        exposing (class2)
 import Http
 import Task
 import String
@@ -42,7 +43,7 @@ type alias Post =
   , title : String
   , date  : String
   , intro : String
-  , isHot : Bool
+  , isTop : Bool
   , path  : String
   }
 
@@ -51,7 +52,7 @@ type alias Model = List Post
 
 
 -- Action
--- 这里这么全部装进 List 是为了以后需要，万一做个幻灯片什么
+-- 这里这么全部装进 List 是为了以后需要，万一做个幻灯片什么的
 -- 而且后面只要用head取第一个就好了
 
 type Action
@@ -89,7 +90,7 @@ decoder =
   ("title" := Json.string)
   ("date"  := Json.string)
   ("intro" := Json.string)
-  ("isHot" := Json.bool)
+  ("isTop" := Json.bool)
   ("path"  := Json.string)
 
 -- 从服务器获取数据，需要 url id 和 对应的 Action
@@ -163,7 +164,23 @@ topPostsView address model =
   case (List.head model) of
     Just post ->
       section
-        [ class "md"]
+        [ class2 "md" "top-posts" ]
+        [ h1 []
+            [ a [ href "#"]
+                [ text post.title ]
+            ]
+        , p [ class "date" ] [ text post.date ]
+        , p [] [ text post.intro ]
+        ]
+    Nothing ->
+      section [] [ text "Loading..." ]
+
+postView : Signal.Address Action -> Model -> Html
+postView address model =
+  case (List.head model) of
+    Just post ->
+      section
+        [ class2 "md" "top-posts" ]
         [ h1 []
             [ a [ href "#"]
                 [ text post.title ]

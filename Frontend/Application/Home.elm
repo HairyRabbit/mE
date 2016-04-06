@@ -1,4 +1,4 @@
-module Application.Home (init, update, view) where
+module Home where
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
