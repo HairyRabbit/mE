@@ -12,4 +12,5 @@ fmtPath     = path.slice 0, -1
 trimPath    = if not isHomePath and needFmtPath then fmtPath else path
 
 # Call main func as Fullscreen.
-elm = Elm.fullscreen Elm.Main, path: trimPath
+# elm = Elm.fullscreen Elm.Main, path: trimPath
+elm = Elm.fullscreen Elm.Main

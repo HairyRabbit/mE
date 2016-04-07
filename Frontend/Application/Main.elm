@@ -1,34 +1,105 @@
-module Main where
+module Main (..) where
 
-{-| 一切都将从这里开始 -}
+import Html    exposing (..)
+import Effects exposing (Effects, Never)
+import Task
+import StartApp
 
-import Html     exposing (Html)
-import Effects  exposing (Never)
-import Task     exposing (Task)
-import StartApp exposing (start)
+import Routing
+import Blog
 
-import Model    exposing (Model)
-import Init     exposing (init)
-import Update   exposing (update)
-import View     exposing (view)
-import Input    exposing (input)
+import Debug
 
 
-{-| App config -}
+-- ACTION
+
+type Action
+  = NoOp
+  | RoutingAction Routing.Action
+  | BlogAction Blog.Action
+
+
+-- MODEL
+
+type alias Model =
+  { routing : Routing.Model
+  , blog : Blog.Model
+
+  }
+
+initModel : Model
+initModel =
+  { routing = Routing.initModel
+  , blog = Blog.initModel
+  }
+
+
+-- UPDATE
+
+update : Action -> Model -> (Model, Effects Action)
+update action model =
+  case action of
+    RoutingAction act ->
+      let
+        (m, fx) = Routing.update act model.routing
+      in
+        ( { model | routing = m}
+        , Effects.map RoutingAction fx
+        )
+
+    _ ->
+      (model, Effects.none)
+
+
+-- VIEW
+
+view : Signal.Address Action -> Model -> Html
+view address model =
+  let
+    _ =
+      Debug.log "model" model
+
+    view =
+      case model.routing.route of
+        Routing.BlogRoute id ->
+          Blog.view (Signal.forwardTo address BlogAction) model.blog id
+        _ ->
+          div [] [ text "notFound" ]
+  in
+    div
+      []
+      [ view ]
+
+
+-- INPUT
+
+routerSignal : Signal Action
+routerSignal =
+  Signal.map RoutingAction Routing.signal
+
+-- BOOTSTRAP
+
+init : (Model, Effects Action)
+init =
+  (initModel, Effects.none)
+
 app : StartApp.App Model
 app =
-  start { init   = init path
-        , update = update
-        , view   = view
-        , inputs = input
-        }
+  StartApp.start
+    { init   = init
+    , inputs = [ routerSignal ]
+    , update = update
+    , view   = view
+    }
+  
+main : Signal.Signal Html
+main =
+  app.html
 
-main : Signal Html
-main = app.html
+port runner : Signal (Task.Task Never ())
+port runner =
+  app.tasks
 
-
-{-| Port throw -}
-port tasks : Signal (Task Never ())
-port tasks = app.tasks
-
-port path : String
+port routeRunTask : Task.Task () ()
+port routeRunTask =
+  Routing.run     

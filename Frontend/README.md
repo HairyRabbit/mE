@@ -15,4 +15,7 @@
 * new时添加模板
 * 自动整合router
 * 把所有的xx组合到Xx.elm
-* 
+* Router 命名惯例为 XxxRoute ()
+
+1. view 是 signal 的映射，完成这个工作的是 Signal.map 。
+2.

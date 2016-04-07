@@ -1,70 +1,43 @@
-module Blog where
+module Blog (..) where
 
-{-| Blog 显示 blog 文章
+import Html         exposing (..)
+import Task         exposing (Task)
+import Effects      exposing (Effects)
 
--}
-
-import Html                exposing (..)
-import Html.Attributes     exposing (..)
-import Effects             exposing (Effects)
-import Util.Classes        exposing (class2)
 import Post
 
-import Debug exposing (log)
 
-
-
--- Model
-
-type alias Model =
-  { posts : Post.Model }
-
-
-
--- Action
-
+-- ACTION
 type Action
   = NoOp
-  | ActionPost Post.Action
 
 
--- Init
+-- MODEL
 
-init : (Model, Effects Action)
-init =
-  let
-    (m, fx) = Post.initPost "11"
-  in
-    ( Model m
-    , Effects.batch
-        [ Effects.map ActionPost fx
-        ]
-    )
+type alias Model =
+  { post : Post.Post
+  }
+
+initModel : Model
+initModel =
+  { post = Post.initPost
+  }
 
 
-
--- Update
+-- UPDATE
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
-    ActionPost act ->
-      let
-        (m, fx) = Post.update act model.posts
-      in
-        ( Model m
-        , Effects.map ActionPost fx
-        )
-
     NoOp ->
       (model, Effects.none)
 
 
-
--- View
-view : String -> Signal.Address Action -> Model -> Html
-view id address model =
-  main'
+-- VIEW
+view : Signal.Address Action -> Model -> Post.PostId -> Html
+view address model id =
+  div
     []
-    [ Post.postView id (Signal.forwardTo address ActionPost) model.posts
+    [ span [] [ text id ]
+    , span [] [ text model.post.title ]
     ]
