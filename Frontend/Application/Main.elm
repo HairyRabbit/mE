@@ -24,7 +24,6 @@ type Action
 type alias Model =
   { routing : Routing.Model
   , blog : Blog.Model
-
   }
 
 initModel : Model
@@ -41,10 +40,12 @@ update action model =
   case action of
     RoutingAction act ->
       let
-        (m, fx) = Routing.update act model.routing
+        (m, fx, fx2) = Routing.update act model.routing
       in
-        ( { model | routing = m}
-        , Effects.map RoutingAction fx
+        ( { model | routing = m }
+        , [ Effects.map RoutingAction fx
+          , Effects.map BlogAction fx2
+          ] |> Effects.batch
         )
 
     _ ->
@@ -63,6 +64,7 @@ view address model =
       case model.routing.route of
         Routing.BlogRoute id ->
           Blog.view (Signal.forwardTo address BlogAction) model.blog id
+              
         _ ->
           div [] [ text "notFound" ]
   in
@@ -81,7 +83,13 @@ routerSignal =
 
 init : (Model, Effects Action)
 init =
-  (initModel, Effects.none)
+  let
+    (mBlog, fxBlog) = Blog.init "1"
+    effects = Effects.batch
+              [ Effects.map BlogAction fxBlog
+              ]
+  in
+    (initModel, Effects.none)
 
 app : StartApp.App Model
 app =
