@@ -58,6 +58,12 @@ update action model =
       let
         _ = Debug.log "route" route
         _ = Debug.log "location" location
+
+        id =
+          case route of
+            BlogRoute id -> id
+            _ -> ""
+               
         
         model' =
           { model |
@@ -65,7 +71,7 @@ update action model =
           ,   location = location
           }
       in
-        (model', Effects.none, Effects.none)
+        (model', Effects.none, Blog.fetch id)
 
     HopAction () ->
       (model, Effects.none, Effects.none)

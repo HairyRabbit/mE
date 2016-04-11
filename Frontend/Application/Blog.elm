@@ -59,7 +59,7 @@ view address model id =
 
 fetch : String -> Effects Action
 fetch id =
-  Http.get decoder "http://location:4000/api/v1/post"
+  Http.get decoder ("http://location:4000/api/v1/post/" ++ id)
     |> Task.toMaybe
     |> Task.map Response
     |> Effects.task
