@@ -47,7 +47,7 @@ update action model =
     NavigateTo path ->
       let
         _ = Debug.log "path" path
-          
+
         effects =
           Effects.map HopAction <| navigateTo path
       in
@@ -63,8 +63,8 @@ update action model =
           case route of
             BlogRoute id -> id
             _ -> ""
-               
-        
+
+
         model' =
           { model |
               route    = route
