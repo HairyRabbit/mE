@@ -18,4 +18,8 @@
 * Router 命名惯例为 XxxRoute ()
 
 1. view 是 signal 的映射，完成这个工作的是 Signal.map 。
-2.
+
+
+* `elm g Post`
+* `elm g Post m v !i !e`
+* `elm g `

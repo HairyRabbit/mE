@@ -5,12 +5,7 @@ import Effects exposing (Effects, Never)
 import Task
 import StartApp
 
-import Routing
-import Blog
-
-import Debug
-
-
+{-
 -- ACTION
 
 type Action
@@ -91,11 +86,20 @@ init =
   in
     (initModel, Effects.none)
 
+-}
+
+import App.Init     exposing (init)
+import App.Input    exposing (inputs)
+import App.Update   exposing (update)
+import App.View     exposing (view)
+import App.Model    exposing (Model)
+import Routing.Port as Routing
+
 app : StartApp.App Model
 app =
   StartApp.start
     { init   = init
-    , inputs = [ routerSignal ]
+    , inputs = inputs
     , update = update
     , view   = view
     }
@@ -110,4 +114,4 @@ port runner =
 
 port routeRunTask : Task.Task () ()
 port routeRunTask =
-  Routing.run     
+  Routing.run

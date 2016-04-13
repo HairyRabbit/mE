@@ -1,8 +1,10 @@
 module Routing.Routes where
 
-import Blog.Model exposing (PostID)
 import Hop
-import Hop.Types  exposing (Location, PathMatcher, Router)
+import Hop.Types    exposing (Location, PathMatcher, Router)
+import Hop.Matchers exposing (match1, match2, str)
+
+import Blog.Model   exposing (PostID)
 
 
 type Route
@@ -11,7 +13,7 @@ type Route
 
 blogMatcher : PathMatcher Route
 blogMatcher =
-  match2 BlogRoute "/blog" str
+  match2 BlogRoute "/blog/" str
 
 matchers : List (PathMatcher Route)
 matchers =

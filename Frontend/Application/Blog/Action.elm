@@ -10,4 +10,5 @@ module Blog.Action where
 
 type Action
   = NoOp
-  = OnFetched (Maybe String)
+  | FetchPost String
+  | OnFetched (Maybe String)

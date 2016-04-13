@@ -1,7 +1,8 @@
 module Routing.Model where
 
-import Hot.Types exposing (Location, Route)
-import Routing.Routes exposing (Route(BlogRoute))
+import Hop
+import Hop.Types exposing (Location, newLocation)
+import Routing.Routes exposing (Route(..))
 
 type alias Model =
   { location : Location
@@ -11,5 +12,5 @@ type alias Model =
 initModel : Model
 initModel =
   { location = newLocation
-  , route : BlogRoute ""
+  , route    = BlogRoute "1"
   }

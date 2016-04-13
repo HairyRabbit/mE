@@ -1,6 +1,8 @@
 module Routing.Action where
 
-import Hot.Types exposing (Location, Route)
+import Hop
+import Hop.Types exposing (Location)
+import Routing.Routes exposing (Route)
 
 
 type Action
