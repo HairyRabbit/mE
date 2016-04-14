@@ -8,7 +8,9 @@ module Blog.Action where
 
 -}
 
+import Blog.Model exposing (Model)
+
 type Action
   = NoOp
   | FetchPost String
-  | OnFetched (Maybe String)
+  | OnFetched (Maybe Model)

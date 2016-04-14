@@ -22,6 +22,4 @@ view address model =
         _ ->
           div [] [ text "notFound" ]
   in
-    div
-      []
-      [ view ]
+    view

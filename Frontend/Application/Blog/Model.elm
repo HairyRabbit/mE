@@ -1,15 +1,21 @@
 module Blog.Model where
 
+import Post.Model exposing (Post, initPost)
 
-type alias PostID = String
+{-| Blog Model
 
+定义了Blog的模型。
+
+-}
+
+-- 文章ID
 type alias Model =
-  { id      : PostID
+  { post    : Post
   , content : String
   }
 
 initModel : Model
 initModel =
-  { id      = ""
+  { post    = initPost
   , content = ""
   }

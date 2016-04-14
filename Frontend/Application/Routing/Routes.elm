@@ -4,12 +4,10 @@ import Hop
 import Hop.Types    exposing (Location, PathMatcher, Router)
 import Hop.Matchers exposing (match1, match2, str)
 
-import Blog.Model   exposing (PostID)
-
 
 type Route
   = NotFoundRoute
-  | BlogRoute PostID
+  | BlogRoute String
 
 blogMatcher : PathMatcher Route
 blogMatcher =

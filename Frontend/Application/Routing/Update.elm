@@ -8,14 +8,12 @@ import Routing.Model exposing (Model)
 import Routing.Routes exposing (Route(..))
 
 import Blog.Action as Blog
-import Blog.Update
 import Blog.Effects exposing (fetchPost)
-import App.Model as App
 
 import Debug
 
 
-update : Action -> App.Model -> (Model, Effects Action, Effects Blog.Action)
+update : Action -> Model -> (Model, Effects Action, Effects Blog.Action)
 update action model =
   case action of
     NavigateTo path ->
@@ -25,35 +23,26 @@ update action model =
         effects =
           Effects.map HopAction <| navigateTo path
       in
-        (model.routing, effects, Effects.none)
+        (model, effects, Effects.none)
 
     ApplyRoute (route, location) ->
       let
-        _ =
-          Debug.log "modelss" model
-        m = model.routing
-          
         effects =
           case route of
             BlogRoute id ->
-
-              let
-                (_, fx) = Blog.Update.update (Blog.FetchPost id) model.blog
-              in
-                fx
+                fetchPost id
             _ ->
               Effects.none
 
-        m' = { m |
-               route = route
-             , location = location
-             }
+        m = { model |
+                route    = route
+            ,   location = location
+            }
       in
-        ( m'
+        ( m
         , Effects.none
         , effects
         )
 
     HopAction () ->
-      (model.routing, Effects.none, Effects.none)
-
+      (model, Effects.none, Effects.none)
