@@ -1,87 +1,89 @@
-module Logo.View (view) where
+module Logo.View (view, Direction(..)) where
 
 {-| 这里是LOGO -}
 
 import Html            exposing (..)
 import Html.Attributes exposing (..)
-import Util.Class    exposing (class2)
+import Util.Class      exposing (class2)
 
-view : String -> Html
-view str =
+
+type alias Greet = String
+
+
+type Direction
+  = Left
+  | Right
+
+
+-- View
+
+(=>) = (,)
+
+view : Direction -> Greet -> Html
+view dir str =
   let
-    leftView =
-      section [ class "flex-con" ] [ logoView ]
 
-    rightView =
+    needReverse =
+      case dir of
+        Left ->
+          [ "flex-flow" => "row nowrap" ]
+        Right ->
+          [ "flex-flow" => "row-reverse nowrap" ]
+
+    logo' =
+      section
+        [ class "flex-con" ]
+        [ logoView ]
+
+
+    intro' =
       section
         [ class2 "flex-col" "flex-justify-cen" ]
-        [ labelView str
+        [ labelView dir str
         , introView
         ]
+
   in
+    
     header
-      [ class2 "noSelected" "flex" ]
-      [ leftView
-      , rightView
+      [ class2 "none-select" "flex"
+      , style needReverse
       ]
+      [ logo'
+      , intro'
+      ]
+      
 
 logoView : Html
 logoView =
-  section [ logoStyle ]
+  section [ class "logo" ]
           [ span [] [ text "H" ]
-          , span [ redColor ] [ text "J" ]
+          , span [ class "red" ] [ text "J" ]
           ]
 
-labelView : String -> Html
-labelView str =
-  section [ labelStyle ] [ text str ]
+
+labelView : Direction -> Greet -> Html
+labelView dir str =
+  let
+    
+    needRightAlign =
+      case dir of
+        Left ->
+          [ "text-align" => "left" ]
+        Right ->
+          [ "text-align" => "right" ]
+
+  in
+
+    section
+      [ class "logo-label"
+      , style needRightAlign
+      ]
+      [ text str ]
 
 
 introView : Html
 introView =
-  section [ introStyle ] [ text "Happy Hack With My Life" ]
-
-
-headerStyle : Attribute
-headerStyle =
-  style [ ("display", "flex")
-        ]
-
-leftStyle : Attribute
-leftStyle =
-  style [ ("display", "flex")
-        , ("justifyContent", "center")
-        , ("alignItems", "center")
-        ]
-
-rightStyle : Attribute
-rightStyle =
-  style [ ("display", "flex")
-        , ("flexFlow", "column nowrap")
-        , ("justifyContent", "center")
-        ]
-
-logoStyle : Attribute
-logoStyle =
-  style [ ("font-size", "4rem")
-        , ("font-weight", "100")
-        , ("margin", "0 1rem")
-        ]
-
-redColor : Attribute
-redColor =
-  style [ ("color", "rgba(255, 0, 0, 1)") ]
-
-
-labelStyle : Attribute
-labelStyle =
-  style [ ("font-size", "1.2rem")
-        , ("color", "rgba(0, 0, 0, 0.56)")
-        , ("margin", "0 0 0.5rem 0")
-        ]
-
-introStyle : Attribute
-introStyle =
-  style [ ("font-size", "0.8rem")
-        , ("color", "rgba(0, 0, 0, 0.32)")
-        ]
+  section
+    [ class "logo-intro" ]
+    [ text "Happy Hack With My Life" ]

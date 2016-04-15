@@ -7,6 +7,7 @@ import Blog.Action exposing (Action(..))
 import Blog.Model  exposing (Model)
 
 import Logo.View as Logo
+import Nav.View as Nav
 
 import Util.DateFmter exposing (dateFmter)
 import Util.Class     exposing (class2)
@@ -26,7 +27,7 @@ view address model =
         ]
 
     top =
-      section
+      header
         [ class "con-blog-header" ]
         [ section
             [ class "con-blog-cen" ]
@@ -36,16 +37,22 @@ view address model =
         ]
         
     left =
-       section
+       aside
          [ class "con-blog-left" ]
          [ section
-             [ class "con-blog-cen" ]
+             []
              [ section
                  [ class "" ]
-                 [ Logo.view "Blog"
-                 , div [] [ text "Home IO" ]
-                 , div [] [ text "Note On" ]
-                 , div [] [ text "About Me" ]
+                 [ Logo.view Logo.Right "Blog"
+                 --, nav [] [ text "Home IO" ]
+                 --, div [] [ text "Note On" ]
+                 --, div [] [ text "About Me" ]
+                 , nav
+                     [ class "con-blog-nav" ]
+                     [ Nav.view "#/" "Home IO" "e"
+                     , Nav.view "#/blog" "Note On" "e"
+                     , Nav.view "#/about" "About Me" "t"
+                     ]
                  ]
              ]
          ]
