@@ -1,34 +1,44 @@
-module Main where
+module Main (..) where
 
-{-| 一切都将从这里开始 -}
+import Html    exposing (..)
+import Effects exposing (Effects, Never)
+import Task
+import StartApp
 
-import Html     exposing (Html)
-import Effects  exposing (Never)
-import Task     exposing (Task)
-import StartApp exposing (start)
+--
+import App.Init     exposing (init)
+import App.Input    exposing (inputs)
+import App.Update   exposing (update)
+import App.View     exposing (view)
+import App.Model    exposing (Model)
+import Routing.Port as Routing
 
-import Model    exposing (Model)
-import Init     exposing (init)
-import Update   exposing (update)
-import View     exposing (view)
-import Input    exposing (input)
+{-
+import Blog.Init exposing (init)
+import Blog.Update exposing (update)
+import Blog.View exposing (view)
+import Blog.Model exposing (Model)
+-}
 
-
-{-| App config -}
 app : StartApp.App Model
 app =
-  start { init   = init path
-        , update = update
-        , view   = view
-        , inputs = input
-        }
+  StartApp.start
+    { init   = init
+    , inputs = inputs
+    , update = update
+    , view   = view
+    }
+  
+main : Signal.Signal Html
+main =
+  app.html
 
-main : Signal Html
-main = app.html
+port runner : Signal (Task.Task Never ())
+port runner =
+  app.tasks
 
 
-{-| Port throw -}
-port tasks : Signal (Task Never ())
-port tasks = app.tasks
+port routeRunTask : Task.Task () ()
+port routeRunTask =
+  Routing.run
 
-port path : String

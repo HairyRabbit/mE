@@ -1,12 +1,13 @@
 module Nav.View where
 
-{-| 导航 -}
-
-import Html            exposing (..)
+import Html exposing (..)
 import Html.Attributes exposing (..)
-import String          exposing (split, toUpper)
+import Html.Events exposing (onClick)
+import String exposing (split, toUpper)
+import Router.Routes exposing (Sitemap(..))
+import Router.Action as Router exposing (Action(..))
 
-{-
+
 view : Signal.Address Router.Action -> String -> Html
 view address label =
   let
@@ -37,27 +38,28 @@ view address label =
   ]
    -}
 
--}
-
-view : String -> String -> String -> Html
-view link str char =
+linkerView : String -> String -> List Html
+linkerView str char =
   let
     dom c =
       if c == char
-      then span [ class "red" ] [ text <| toUpper c ]
+      then span [ redColor ] [ text <| toUpper c ]
       else span [] [ text c ]
-
-    ctx =
-      List.map dom <| split "" str
-
-    view' =
-      section [ class "nav" ] <| ctx
-
-    aview =
-      a
-        [ href link ]
-        [ view' ]
-
   in
-    section [] [ aview ]
+    List.map dom <| split "" str
 
+listItemView : Html -> Html
+listItemView linker =
+  li [ listItemStyle ] [ linker ]
+
+listItemStyle : Attribute
+listItemStyle =
+  style [ ("margin", "0.5rem 0")
+        , ("font-size", "1.4rem")
+        , ("font-weight", "100")
+        , ("color", "rgba(0, 0, 0, 0.56)")
+        ]
+
+redColor : Attribute
+redColor =
+  style [ ("color", "red") ]
