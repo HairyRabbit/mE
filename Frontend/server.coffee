@@ -27,6 +27,9 @@ loaders  = [
   test:    /\.coffee$/
   loader:  "coffee"
 ,
+  test:    /\.css$/,
+  loader:  "style!css"
+,
   test:    /\.styl$/,
   exclude: [/node_modules/]
   loader:  "style!css!stylus"
@@ -37,16 +40,21 @@ plugins  = [
     output:     "./index.html"
     partials:   []
 ]
+roots    = [
+  path.resolve('./node_modules/highlight.js/lib')
+]
 config   =
-  entry:        "./boot"
+  entry:
+    app:        "./boot"
   output:
     path:       path.resolve __dirname, 'dist/'
-    filename:   "bundle.js"
+    filename:   "[name].js"
   module:
     loaders:    loaders
   plugins:      plugins
   resolve:
-    extensions: ["", ".elm", ".coffee", ".styl"]
+    extensions: ["", ".js", ".elm", ".coffee", ".styl"]
+    root:       roots
 
 # WebpackDevServer configs
 #

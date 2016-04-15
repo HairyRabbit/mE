@@ -26,6 +26,7 @@
     "elm-hot-loader": "^0.2.2",
     "elm-webpack-loader": "^2.0.1",
     "handlebars-webpack-plugin": "0.0.6",
+    "highlight.js": "^9.3.0",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.5.1",
     "webpack": "^1.12.14",

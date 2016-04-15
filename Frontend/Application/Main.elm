@@ -13,13 +13,6 @@ import App.View     exposing (view)
 import App.Model    exposing (Model)
 import Routing.Port as Routing
 
-{-
-import Blog.Init exposing (init)
-import Blog.Update exposing (update)
-import Blog.View exposing (view)
-import Blog.Model exposing (Model)
--}
-
 app : StartApp.App Model
 app =
   StartApp.start
@@ -28,7 +21,7 @@ app =
     , update = update
     , view   = view
     }
-  
+
 main : Signal.Signal Html
 main =
   app.html
