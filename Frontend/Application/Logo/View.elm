@@ -1,4 +1,4 @@
-module Logo.View (view, Direction(..)) where
+module Logo.View (view, logo, Direction(..)) where
 
 {-| 这里是LOGO -}
 
@@ -87,3 +87,11 @@ introView =
   section
     [ class "logo-intro" ]
     [ text "Happy Hack With My Life" ]
+
+
+logo : Html
+logo =
+  section
+    [ class "logo-pic" ]
+    [ img [ src "Image/logo.svg" ] []
+    ]

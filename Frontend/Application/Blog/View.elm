@@ -44,15 +44,15 @@ view address model =
              [ section
                  [ class "" ]
                  [ Logo.view Logo.Right "Blog"
-                 --, nav [] [ text "Home IO" ]
-                 --, div [] [ text "Note On" ]
-                 --, div [] [ text "About Me" ]
                  , nav
                      [ class "con-blog-nav" ]
                      [ Nav.view "#/" "Home IO" "e"
                      , Nav.view "#/blog" "Note On" "e"
                      , Nav.view "#/about" "About Me" "t"
                      ]
+                 , section
+                     [ class "con-blog-logo" ]
+                     [ Logo.logo ]
                  ]
              ]
          ]
