@@ -1,67 +1,100 @@
-@keyframes eyes {
-  0% {
-    width 25px
-    transform translate3d(12.5px * 3, 0, 0)
-  }
-  48% {
-    width 25px
-    transform translate3d(12.5px * 3, 0, 0)
-  }
-  49% {
-    width 100px
-    transform translate3d(0, 0, 0)
-  }
-  49.50% {
-    width 25px
-    transform translate3d(12.5px * 3, 0, 0)
-  }
-  50% {
-    width 100px
-    transform translate3d(0, 0, 0)
-  }
-  50.50% {
-    width 25px
-    transform translate3d(12.5px * 3, 0, 0)
-  }
-}
+/*
+ * Rabbit logo.
+ *
+ * css animation
+ */
 
-@keyframes ears {
-  0% {
-    transform skew(10deg)
-  }
-  25% {
-    transform skew(0deg)
-  }
-  50% {
-    transform skew(-10deg)
-  }
-  75% {
-    transform skew(0deg)
-  }
-  100% {
-    transform skew(10deg)
-  }
-}
 
-.t
-  width 25px
-  transform translate3d(12.5px * 3, 0, 0)
-  height 100px
-  background-color pink
-  display inline-block
-  border-radius 50%
-  animation eyes 20s ease-in-out 0s infinite
+// svg styles
+ 
+.rabbit-body
+  fill #333333
 
-.r
-  position absolute
-  left 300px
+.rabbit-eye
+  fill #c83737
+
+.rabbit-ear-lg
+  fill #333
+
+.rabbit-ear-sm
+  fill #c83737
+
+
+
+
+// css animation
+ 
+vendors = official
+
+/**
+ * Blink eyes
+ */
+ 
+blink-eyes(dir, idx)
+
+  r = dir ? 45deg : -45deg
+  x = dir ? 10px  : -10px
+
+  name = "eye" + idx
+
+  from = transform skew(0deg) translate3d(0, 0)
+  to   = transform skew(r)    translate3d(x, 0)
+
+  @keyframes {name}
+    0%  from
+    48% from
+    49% to
+    50% from
+    51% to
+    52% from
+
+
+/*!
+ * Shake eyes
+ */
+shake-ears(dir, idx)
+
+  name = "ear" + idx
+
+  r1 = dir ? 5deg : -5deg
+  r2 = 0deg
+  r3 = dir ? -5deg : 5deg
+  rs = r1 r2 r3 r2 r1
+
+  @keyframes {name}
+    for i in 0..4
+      {25% * i}
+        r = rs[i]
+        transform skew(r)
+
+
+blink-eyes(true,  1)
+blink-eyes(false, 2)
+shake-ears(true,  1)
+shake-ears(false, 2)
+
+
+/**
+ * Apply animate.
+ */
+
+.rabbit-eye
+  transform-origin center bottom 0
+  &-1
+    animation eye1 5s ease-in-out 0s infinite
+  &-2
+    animation eye2 5s ease-in-out 0s infinite
+
+.rabbit-ear
+  transform-origin center bottom 0
+  &-1
+    transform skew(5deg)
+  &-2
+    transform skew(-5deg)
   
-  width 25px
-  transform skew(0deg)
-  height 100px
-  background-color pink
-  display inline-block
-  border-radius 50%
-  &:hover
-    animation ears 0.1s ease-in-out 0s infinite
-    transform-origin: center bottom 0;
+
+.rabbit:hover .rabbit-ear
+  &-1
+    animation ear1 0.1s ease-in-out 0s infinite
+  &-2
+    animation ear2 0.1s ease-in-out 0s infinite

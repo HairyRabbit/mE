@@ -20,10 +20,19 @@ grey-dark   = rgba(0, 0, 0, 0.72)
     
   p
     color:       grey-normal
-    
+
   h1
+    display none
+
+  h2
     font-size:   1.5em
+    color:       rgba(255, 0, 0, 0.72)
+    margin 4rem 0 1rem 0
+      
+  h3
+    font-size:   1.2em
     color:       grey-dark
+    margin 2rem 0 1rem 0
 
   .date
     margin:      -1.5em 0 2em 0
@@ -45,3 +54,64 @@ grey-dark   = rgba(0, 0, 0, 0.72)
 
   .title
     color: grey-dark
+
+  a
+    font-size 1rem
+    color rgba(255, 0, 0, 0.48)
+
+  ul
+  ol
+    list-style-type none
+    padding 0
+    margin 0 0 1rem 0
+
+  ul li
+    padding 0 0 0 1rem
+    position relative
+    
+    &:before
+      content "."
+      display inline-block
+      position absolute
+      top -0.25rem
+      left 0
+      color rgba(0, 0, 0, 0.56)
+
+  pre
+    margin 2rem 0
+    padding 1rem
+    position relative
+    &:before
+      content: ""
+      display inline-block
+      position absolute
+      top 0
+      left -0.5rem
+      height 1px
+      width 3rem
+      background-color rgba(0, 0, 0, 0.16)
+    &:after
+      content: ""
+      display inline-block
+      position absolute
+      top -0.5rem
+      left 0
+      width 1px
+      height 3rem
+      background-color rgba(0, 0, 0, 0.16)
+
+  li
+  p
+    code
+      display inline-block
+      padding 0 0.5rem
+      margin 0 0.5rem
+      line-height 1.2
+      border-radius 2px
+      background-color rgba(255, 0, 0, 0.32)
+      color rgba(255, 255, 255, 1)
+
+  code
+    font-family "Coder"
+    font-size 0.8rem
+    color rgba(0, 0, 0, 0.72)

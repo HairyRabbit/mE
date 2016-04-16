@@ -30,6 +30,9 @@ loaders  = [
   test:    /\.css$/,
   loader:  "style!css"
 ,
+  test:    /\.otf$/,
+  loader:  "url"
+,
   test:    /\.styl$/,
   exclude: [/node_modules/]
   loader:  "style!css!stylus"

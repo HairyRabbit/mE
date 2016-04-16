@@ -71,6 +71,17 @@ a
   cursor:          pointer
   text-decoration: none
 
+@font-face
+  font-family "Coder"
+  src url("./FiraCode-Light.otf")
+  font-weight normal
+  font-style  normal
+  font-variant-ligatures contextual
+  font-feature-settings "calt" 1
+  text-rendering optimizeLegibility
+  font-size 1rem
+    
+
 /* Util */
 .flex
   display: flex
@@ -144,10 +155,10 @@ a
 .con-blog-header
   position fixed
   top 0
-  left 0
-  right 0
+  left 50%
   padding 3rem 0 3rem 20rem
   background-color rgba(255, 255, 255, 1)
+  transform translate3d(-50%, 0, 0)
 
 .con-blog-left
   position fixed
@@ -156,8 +167,13 @@ a
   right 0
   transform translate3d(-50%, 0, 0)
   padding 15rem 0 0 0
-  margin 0 0 0 -20rem
+  margin 0 0 0 -25rem
   width 20rem
+
+.con-blog-nav
+.con-blog-logo
+  margin 3rem 1.5rem 0 0
+  text-align right
 
 
 .title
@@ -170,3 +186,38 @@ a
   font-size 0.8rem
   margin 0 0 0 -0.5rem
   color rgba(0, 0, 0, 0.16)
+
+
+/* Logo */
+
+.logo
+  font-size 4rem
+  font-weight 100
+  margin 0 1rem
+
+.red
+  color rgba(255, 0, 0, 1)
+
+.logo-label
+  font-size 1.2rem
+  color rgba(0, 0, 0, 0.56)
+  margin: 0 0 0.8rem 0
+
+.logo-intro
+  font-size 0.8rem
+  color rgba(0, 0, 0, 0.32)
+
+.logo-pic
+  width 5rem
+  display inline-block
+
+
+/* Nav */
+
+.nav
+  margin 0.5rem 0
+  font-size 1rem
+  font-weight 100
+  color rgba(0, 0, 0, 0.56)
+  display inline-block
+  cursor pointer

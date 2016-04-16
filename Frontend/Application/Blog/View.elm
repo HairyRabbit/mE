@@ -8,6 +8,7 @@ import Blog.Model  exposing (Model)
 
 import Logo.View as Logo
 import Nav.View as Nav
+import Rabbit.View as Rabbit
 
 import Util.DateFmter exposing (dateFmter)
 import Util.Class     exposing (class2)
@@ -52,7 +53,7 @@ view address model =
                      ]
                  , section
                      [ class "con-blog-logo" ]
-                     [ Logo.logo ]
+                     [ Rabbit.view ]
                  ]
              ]
          ]
