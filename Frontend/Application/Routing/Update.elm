@@ -5,44 +5,49 @@ import Hop
 import Hop.Navigate exposing (navigateTo)
 import Routing.Action exposing (Action(..))
 import Routing.Model exposing (Model)
-import Routing.Routes exposing (Route(..))
+import Routing.Routes exposing (Route(..), routerConfig)
 
 import Blog.Action as Blog
 import Blog.Effects exposing (fetchPost)
 
+import Home.Action as Home
+import Home.Effects exposing (fetchTop)
+
 import Debug
 
 
-update : Action -> Model -> (Model, Effects Action, Effects Blog.Action)
+update : Action -> Model -> (Model, Effects Action, Effects Blog.Action, Effects Home.Action)
 update action model =
   case action of
     NavigateTo path ->
       let
-        _ =
-          Debug.log "path" path
-        effects =
-          Effects.map HopAction <| navigateTo path
+
+        fx =
+          Effects.map HopAction <| navigateTo routerConfig path
+
       in
-        (model, effects, Effects.none)
+
+        (model, fx, Effects.none, Effects.none)
 
     ApplyRoute (route, location) ->
       let
-        effects =
+        
+        out =
           case route of
             BlogRoute id ->
-                fetchPost id
+              (m, Effects.none, fetchPost id, Effects.none)
+            HomeRoute ->
+              (m, Effects.none, Effects.none, fetchTop)
             _ ->
-              Effects.none
+              (m, Effects.none, Effects.none, Effects.none)
 
         m = { model |
                 route    = route
             ,   location = location
             }
+
       in
-        ( m
-        , Effects.none
-        , effects
-        )
+        out
 
     HopAction () ->
-      (model, Effects.none, Effects.none)
+      (model, Effects.none, Effects.none, Effects.none)

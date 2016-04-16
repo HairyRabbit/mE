@@ -1,13 +1,13 @@
 module Blog.View where
 
-import Html        exposing (..)
+import Html            exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
-import Blog.Action exposing (Action(..))
-import Blog.Model  exposing (Model)
+import Blog.Action     exposing (Action(..))
+import Blog.Model      exposing (Model)
 
-import Logo.View as Logo
-import Nav.View as Nav
+import Logo.View   as Logo
+import Nav.View    as Nav
 import Rabbit.View as Rabbit
 
 import Util.DateFmter exposing (dateFmter)
@@ -47,9 +47,9 @@ view address model =
                  [ Logo.view Logo.Right "Blog"
                  , nav
                      [ class "con-blog-nav" ]
-                     [ Nav.view "#/" "Home IO" "e"
-                     , Nav.view "#/blog" "Note On" "e"
-                     , Nav.view "#/about" "About Me" "t"
+                     [ Nav.view "/" "Home IO" "e"
+                     , Nav.view "/blog" "Note On" "e"
+                     , Nav.view "/about" "About Me" "t"
                      ]
                  , section
                      [ class "con-blog-logo" ]

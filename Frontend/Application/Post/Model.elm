@@ -9,6 +9,7 @@ type alias Post =
   { id      : String
   , title   : String
   , date    : String
+  , intro   : String
   }
 
 initPost : Post
@@ -16,4 +17,5 @@ initPost =
   { id      = ""
   , title   = ""
   , date    = ""
+  , intro   = ""
   }
