@@ -14,19 +14,19 @@ update action model =
   case action of
     RoutingAction act ->
       let
-        (m, fx, fxBlog, fxHome) = Routing.update act model.routing
-        
+        (m, fx, pfx) = Routing.update act model.routing
+
         effects =
           Effects.batch
             [ Effects.map RoutingAction fx
-            , Effects.map BlogAction fxBlog
-            , Effects.map HomeAction fxHome
+            , Effects.map BlogAction pfx.blog
+            , Effects.map HomeAction pfx.home
             ]
       in
         ( { model | routing = m }
         , effects
         )
-        
+
     BlogAction act ->
       let
         (m, fx) = Blog.update act model.blog
@@ -42,6 +42,6 @@ update action model =
         ( { model | home = m }
         , Effects.map HomeAction fx
         )
-        
+
     _ ->
       (model, Effects.none)

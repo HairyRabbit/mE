@@ -49,7 +49,7 @@ leftView model =
     [ section
         [ class2 "md" "top-posts" ]
         [ h1 [ style [("display", "block")] ]
-            [ a [ ]
+            [ a [ href <| "/blog/" ++ model.post.id ]
                 [ text model.post.title ]
             ]
         , p [ class "date" ] [ text <| dateFmter model.post.date ]

@@ -16,7 +16,20 @@ import Home.Effects exposing (fetchTop)
 import Debug
 
 
-update : Action -> Model -> (Model, Effects Action, Effects Blog.Action, Effects Home.Action)
+type alias ParentsActions =
+  { blog : Effects Blog.Action
+  , home : Effects Home.Action
+  }
+
+
+noneParentsActions : ParentsActions
+noneParentsActions =
+  { blog = Effects.none
+  , home = Effects.none
+  }
+
+
+update : Action -> Model -> (Model, Effects Action, ParentsActions)
 update action model =
   case action of
     NavigateTo path ->
@@ -27,19 +40,19 @@ update action model =
 
       in
 
-        (model, fx, Effects.none, Effects.none)
+        (model, fx, noneParentsActions)
 
     ApplyRoute (route, location) ->
       let
-        
-        out =
+
+        fx =
           case route of
             BlogRoute id ->
-              (m, Effects.none, fetchPost id, Effects.none)
+              { noneParentsActions | blog = fetchPost id }
             HomeRoute ->
-              (m, Effects.none, Effects.none, fetchTop)
+              { noneParentsActions | home = fetchTop }
             _ ->
-              (m, Effects.none, Effects.none, Effects.none)
+              noneParentsActions
 
         m = { model |
                 route    = route
@@ -47,7 +60,7 @@ update action model =
             }
 
       in
-        out
+        (m, Effects.none, fx)
 
     HopAction () ->
-      (model, Effects.none, Effects.none, Effects.none)
+      (model, Effects.none, noneParentsActions)

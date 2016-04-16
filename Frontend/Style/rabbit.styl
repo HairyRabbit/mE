@@ -5,8 +5,25 @@
  */
 
 
+/**
+ * Init state
+ */
+
+.rabbit-ear
+  &-1
+    transform skew(5deg)
+  &-2
+    transform skew(-5deg)
+
+
+
 
 // css animation
+
+
+/**
+ * Generate @keyframes
+ */ 
  
 vendors = official
 
@@ -22,16 +39,16 @@ blink-eyes(dir, idx)
 
   name = "eye" + idx
 
-  from = transform skew(0deg) translate3d(0, 0)
-  to   = transform skew(r)    translate3d(x, 0)
+  r1 = skew(0deg) translate3d(0, 0, 0)
+  r2 = skew(r)    translate3d(x, 0, 0)
+  rs = r1 r2 r1 r2 r1
 
   @keyframes {name}
-    0%  from
-    48% from
-    49% to
-    50% from
-    51% to
-    52% from
+    for i in 0..4
+      { 1% * (i + 48) }
+        r = rs[i]
+        transform r
+
 
 
 /**
@@ -53,33 +70,40 @@ shake-ears(dir, idx)
         transform skew(r)
 
 
+
 blink-eyes(true,  1)
 blink-eyes(false, 2)
 shake-ears(true,  1)
 shake-ears(false, 2)
 
 
+
+/**
+ * Element setting.
+ */
+ 
+.rabbit-eye
+.rabbit-ear
+  transform-origin center bottom 0
+
+
+
 /**
  * Apply animate.
  */
 
+animate(name, during)
+  animation name during ease-in-out 0s infinite
+ 
 .rabbit-eye
-  transform-origin center bottom 0
   &-1
-    animation eye1 5s ease-in-out 0s infinite
+    animate(eye1, 5s)
   &-2
-    animation eye2 5s ease-in-out 0s infinite
+    animate(eye2, 5s)
 
-.rabbit-ear
-  transform-origin center bottom 0
-  &-1
-    transform skew(5deg)
-  &-2
-    transform skew(-5deg)
-  
 
 .rabbit:hover .rabbit-ear
   &-1
-    animation ear1 0.1s ease-in-out 0s infinite
+    animate(ear1, 0.1s)
   &-2
-    animation ear2 0.1s ease-in-out 0s infinite
+    animate(ear2, 0.1s)
