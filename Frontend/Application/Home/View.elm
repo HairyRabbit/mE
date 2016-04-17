@@ -16,7 +16,7 @@ import Nav.View  as Nav
 view : Signal.Address Action -> Model -> Html
 view address model =
   main'
-    [ class "con-home" ]
+    [ class "home" ]
     [ leftView model
     , rightView
     ]
@@ -30,11 +30,13 @@ imagePath =
 rightView : Html
 rightView =
   aside
-    [ class "con-home-item" ]
-    [ section [ class "logo-home" ] [ Logo.view Logo.Left "Hello" ]
+    [ class "home-left" ]
+    [ section
+        [ class "home-header" ]
+        [ Logo.view Logo.Left "Hi" ]
     , imageView
     , nav
-        [ class "nav-home" ]
+        [ class "home-nav" ]
         [ Nav.view "/" "Home IO" "e"
         , Nav.view "/blog" "Note On" "e"
         , Nav.view "/about" "About Me" "t"
@@ -45,23 +47,23 @@ rightView =
 leftView : Model -> Html
 leftView model =
   section
-    [ class "con-home-item" ]
+    [ class "home-right" ]
     [ section
-        [ class2 "md" "top-posts" ]
-        [ h1 [ style [("display", "block")] ]
+        [ class "home-post" ]
+        [ header [ class "title" ]
             [ a [ href <| "/blog/" ++ model.post.id ]
                 [ text model.post.title ]
             ]
         , p [ class "date" ] [ text <| dateFmter model.post.date ]
-        , p [ ] [ text model.post.intro ]
+        , p [ class "intro" ] [ text model.post.intro ]
         ]
     ]
 
 imageView : Html
 imageView =
   section
-    [ class2 "none-select" "flex-con" ]
-    [ section [ class "img-home" ] [ image imagePath ]
+    [ class2 "none-select" "home-justme" ]
+    [ section [ class "justme" ] [ image imagePath ]
     ]
 
 

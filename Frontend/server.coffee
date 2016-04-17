@@ -6,6 +6,7 @@ webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
 path             = require "path"
 HandlebarsPlugin = require "handlebars-webpack-plugin"
+short            = require "postcss-short"
 
 
 # Webpack configs.
@@ -35,7 +36,7 @@ loaders  = [
 ,
   test:    /\.styl$/,
   exclude: [/node_modules/]
-  loader:  "style!css!stylus"
+  loader:  "style!css!postcss!stylus"
 ]
 plugins  = [
   new HandlebarsPlugin
@@ -54,6 +55,7 @@ config   =
     filename:   "[name].js"
   module:
     loaders:    loaders
+  postcss:      [short()]
   plugins:      plugins
   resolve:
     extensions: ["", ".js", ".elm", ".coffee", ".styl"]

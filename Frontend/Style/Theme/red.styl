@@ -1,3 +1,4 @@
+@require '../placeholder'
 /**
  * Themes.
  *
@@ -6,7 +7,7 @@
 
 // define primary color
 
-primary-color = #f00
+primary-color = red
 
 
 /**
@@ -19,4 +20,55 @@ primary-color = #f00
 
 .rabbit-body
 .rabbit-ear-lg
-  fill alpha(black, 0.72)
+  fill alpha(black, 0.08)
+
+
+
+.title
+  font-weight normal
+  margin 0 0 2rem 0
+  @extend $fzl, $black72
+
+.date
+  margin -1.5em 0 2em 0
+  @extend $fzs, $black32
+
+.intro
+  line-height 1.5
+  @extend $black56
+
+.blog-top
+  background-color white
+
+.blogs-date
+  @extend $black32
+  
+  .blog-item:hover &
+    color alpha(primary-color, 0.56)
+
+.blogs-title
+  @extend $black72
+
+.blogs-prev
+  background-color alpha(black, 0.16)
+
+.blogs-next
+  background-color alpha(black, 0.56)
+
+
+// logo
+
+.logo
+  font-size 4rem
+  font-weight 100
+
+.logo-fst
+  color alpha(primary-color, 1)
+
+.logo-label
+  font-size 1.2rem
+  font-weight normal
+  @extend $black56
+
+.logo-intro
+  @extend $fzs, $black32

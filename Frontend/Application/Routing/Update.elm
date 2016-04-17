@@ -10,6 +10,9 @@ import Routing.Routes exposing (Route(..), routerConfig)
 import Blog.Action as Blog
 import Blog.Effects exposing (fetchPost)
 
+import Blogs.Action as Blogs
+import Blogs.Effects exposing (fetchPosts)
+
 import Home.Action as Home
 import Home.Effects exposing (fetchTop)
 
@@ -17,15 +20,17 @@ import Debug
 
 
 type alias ParentsActions =
-  { blog : Effects Blog.Action
-  , home : Effects Home.Action
+  { blog  : Effects Blog.Action
+  , blogs : Effects Blogs.Action
+  , home  : Effects Home.Action
   }
 
 
 noneParentsActions : ParentsActions
 noneParentsActions =
-  { blog = Effects.none
-  , home = Effects.none
+  { blog  = Effects.none
+  , blogs = Effects.none
+  , home  = Effects.none
   }
 
 
@@ -48,9 +53,11 @@ update action model =
         fx =
           case route of
             BlogRoute id ->
-              { noneParentsActions | blog = fetchPost id }
+              { noneParentsActions | blog  = fetchPost id }
+            BlogsRoute ->
+              { noneParentsActions | blogs = fetchPosts }
             HomeRoute ->
-              { noneParentsActions | home = fetchTop }
+              { noneParentsActions | home  = fetchTop }
             _ ->
               noneParentsActions
 

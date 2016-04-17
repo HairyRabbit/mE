@@ -8,12 +8,17 @@ import Hop.Matchers exposing (match1, match2, str)
 type Route
   = NotFoundRoute
   | BlogRoute String
+  | BlogsRoute
   | HomeRoute
 
 
 blogMatcher : PathMatcher Route
 blogMatcher =
   match2 BlogRoute "/blog/" str
+
+blogsMatcher : PathMatcher Route
+blogsMatcher =
+  match1 BlogsRoute "/blog"
 
 homeMatcher : PathMatcher Route
 homeMatcher =
@@ -23,6 +28,7 @@ homeMatcher =
 matchers : List (PathMatcher Route)
 matchers =
   [ blogMatcher
+  , blogsMatcher
   , homeMatcher
   ]
 
@@ -39,5 +45,3 @@ routerConfig =
 router : Router Route
 router =
   Hop.new routerConfig
-
-

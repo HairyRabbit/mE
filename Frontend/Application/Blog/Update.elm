@@ -3,7 +3,6 @@ module Blog.Update where
 import Effects      exposing (Effects)
 import Blog.Model   exposing (Model)
 import Blog.Action  exposing (Action(..))
-import Blog.Effects exposing (fetchPost)
 
 
 update : Action -> Model -> (Model, Effects Action)

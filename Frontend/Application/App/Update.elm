@@ -5,6 +5,7 @@ import App.Action exposing (Action(..))
 import App.Model exposing (Model)
 import Routing.Update as Routing
 import Blog.Update as Blog
+import Blogs.Update as Blogs
 import Home.Update as Home
 
 import Debug
@@ -19,8 +20,9 @@ update action model =
         effects =
           Effects.batch
             [ Effects.map RoutingAction fx
-            , Effects.map BlogAction pfx.blog
-            , Effects.map HomeAction pfx.home
+            , Effects.map BlogAction    pfx.blog
+            , Effects.map BlogsAction   pfx.blogs
+            , Effects.map HomeAction    pfx.home
             ]
       in
         ( { model | routing = m }
@@ -33,6 +35,14 @@ update action model =
       in
         ( { model | blog = m }
         , Effects.map BlogAction fx
+        )
+
+    BlogsAction act ->
+      let
+        (m, fx) = Blogs.update act model.blogs
+      in
+        ( { model | blogs = m }
+        , Effects.map BlogsAction fx
         )
 
     HomeAction act ->

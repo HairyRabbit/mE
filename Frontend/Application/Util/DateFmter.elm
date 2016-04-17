@@ -19,6 +19,20 @@ dateFmter date =
     Err e ->
       toString e
 
+dateFmter2 : String -> String
+dateFmter2 date =
+  case (Date.fromString date) of
+    Ok d ->
+      let
+        mm =
+          d |> Date.month |> toString
+        dd =
+          d |> Date.day |> dayth
+      in
+        mm ++ ", " ++ dd
+    Err e ->
+      toString e               
+
 dayth : Int -> String
 dayth dd =
   case (rem dd 10) of
