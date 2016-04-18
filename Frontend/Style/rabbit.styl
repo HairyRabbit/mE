@@ -45,7 +45,7 @@ blink-eyes(dir, idx)
 
   @keyframes {name}
     for i in 0..4
-      { 1% * (i + 48) }
+      {1% * (i * 2 + 46)}
         r = rs[i]
         transform r
 
@@ -97,9 +97,9 @@ animate(name, during)
  
 .rabbit-eye
   &-1
-    animate(eye1, 10s)
+    animate(eye1, 5s)
   &-2
-    animate(eye2, 10s)
+    animate(eye2, 5s)
 
 
 .rabbit:hover .rabbit-ear

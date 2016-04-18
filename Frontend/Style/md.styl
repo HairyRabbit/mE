@@ -1,11 +1,20 @@
-grey-lightx = rgba(0, 0, 0, 0.16)
-grey-light  = rgba(0, 0, 0, 0.32)
-grey-normal = rgba(0, 0, 0, 0.56)
-grey-dark   = rgba(0, 0, 0, 0.72)
+/**
+ * Markdown.
+ */
+
+
 
 .md
+
+  
+  // base.
+    
   font-size:   15px
   line-height: 1.5
+
+
+
+  // typo.
   
   h1
   h2
@@ -17,101 +26,71 @@ grey-dark   = rgba(0, 0, 0, 0.72)
     margin:      0 0 1em 0
     font-weight: 400
     font-size:   1em
-    
-  p
-    color:       grey-normal
 
   h1
     display none
 
   h2
-    font-size:   1.5em
-    color:       rgba(255, 0, 0, 0.72)
-    margin 4rem 0 1rem 0
+    margin    4rem 0 1rem 0
+    font-size 1.5em
       
   h3
-    font-size:   1.2em
-    color:       grey-dark
-    margin 2rem 0 1rem 0
-
-  .date
-    margin:      -1.5em 0 2em 0
-    font-size:   0.8em
-    color:       grey-light
-
-  .mm
-    display: inline-block
-    font-family: "Source Code Pro",consolas,inconsolata,monospace
-    font-size: 1.5rem
-    width: 3rem
-    color: grey-lightx
-
-  .dd
-    display: inline-block
-    font-size: 0.8rem
-    width: 5rem
-    color: grey-normal
-
-  .title
-    color: grey-dark
+    margin    2rem 0 1rem 0
+    font-size 1.2em
 
   a
     font-size 1rem
-    color rgba(255, 0, 0, 0.48)
 
+
+
+  // list.
+  
   ul
   ol
     list-style-type none
     padding 0
-    margin 0 0 1rem 0
+    margin  0 0 1rem 0
 
   ul li
-    padding 0 0 0 1rem
+    padding  0 0 0 1rem
     position relative
     
     &:before
       content "."
       display inline-block
-      position absolute
-      top -0.25rem
-      left 0
-      color rgba(0, 0, 0, 0.56)
+      position absolute -0.25rem \* \* 0
+
+
+
+  // code.
 
   pre
-    margin 2rem 0
-    padding 1rem
+    margin   2rem 0
+    padding  1rem
     position relative
+    
     &:before
       content: ""
-      display inline-block
-      position absolute
-      top 0
-      left -0.5rem
-      height 1px
-      width 3rem
+      display  inline-block
+      position absolute 0 \* \* -0.5rem      
       background-color rgba(0, 0, 0, 0.16)
+      size 3rem 1px
     &:after
       content: ""
-      display inline-block
-      position absolute
-      top -0.5rem
-      left 0
-      width 1px
-      height 3rem
+      display  inline-block
+      position absolute -0.5rem \* \* 0
       background-color rgba(0, 0, 0, 0.16)
+      size 1px 3rem
 
   li
   p
     code
       display inline-block
       padding 0 0.5rem
-      margin 0 0.5rem
-      line-height 1.2
+      margin  0 0.5rem
+      line-height   1.2
       border-radius 2px
-      background-color rgba(255, 0, 0, 0.32)
-      color rgba(255, 255, 255, 1)
 
   code
     font-family "Coder"
-    font-size 0.8rem
-    color rgba(0, 0, 0, 0.72)
+    font-size   0.8rem

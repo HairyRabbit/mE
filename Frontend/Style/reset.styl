@@ -1,124 +1,72 @@
-/* Mixins */
-w100()
-  width: 100%
-
-h100()
-  height: 100%
-
-container()
-  w100()
-  h100()
-
-m0()
-  margin:  0
-
-p0()
-  padding: 0
-
-spaceReset()
-  m0()
-  p0()
+/**
+ * Reset.
+ */
 
 
-flex-justify-cen()
-  justify-content: center
 
-flex-item-cen()
-  align-items: center
-
-flex-col()
-  display: flex
-  flex-flow: column nowrap
-
-flex-cen()
-  display: flex
-  flex-justify-cen()
-  flex-item-cen()
-
-flex-item(size = null)
-  if size is not null
-    flex: 0 0 size
-  else
-    flex: 1 0 0
-  
-
-
-/* Reset */
+// containers.
+ 
 html
 body
 body > div
-  container()
+  size 100%
 
 body > div
-  flex-cen()
+  display flex
+  justify-content center
+  align-items center
+
+
+
+// elements.  
 
 body
-  font-family: "Microsoft YaHei UI","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
-  font-size:   16px
-  line-height: 1
-  -webkit-text-size-adjust: 100%
-  -ms-text-size-adjust:     100%
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing:  antialiased
-  spaceReset()
+  font-family "Microsoft YaHei UI","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
+  font-size   16px
+  line-height 1
+  -webkit-text-size-adjust 100%
+  -ms-text-size-adjust     100%
+  -moz-osx-font-smoothing grayscale
+  -webkit-font-smoothing  antialiased
+  margin  0
+  padding 0
 
 img
-  width:  100%
-  height: auto
+  size 100% auto
 
 a
-  color:           inherit
-  cursor:          pointer
-  text-decoration: none
+  color  inherit
+  cursor pointer
+  text-decoration none
 
+
+
+// @font-face.
+  
 @font-face
   font-family "Coder"
-  src url("./Font/FiraCode-Light.otf")
   font-weight normal
   font-style  normal
+  font-size   1rem
+  
+  src url("./Font/FiraCode-Light.otf")
+  
   font-variant-ligatures contextual
-  font-feature-settings "calt" 1
+  font-feature-settings  "calt" 1
   text-rendering optimizeLegibility
-  font-size 1rem
+  
     
 
-/* Util */
-.flex
-  display: flex
-
-.flex-justify-cen
-  flex-justify-cen()
-
-.flex-col
-  flex-col()
-
-.flex-con
-  flex-cen()
-
-.mb2
-  margin-bottom: 2rem
-
-.g4
-  color: rgba(0, 0, 0, 0.72)
+  
+// utils.
 
 .list-rs
   list-style-type: none
-  spaceReset()
+  margin  0
+  padding 0
 
 .none-select
   -webkit-user-select: none
   -moz-user-select:    none
   user-select:         none
   pointer-events:      none
-
-
-
-/* Nav */
-
-.nav
-  margin 0.5rem 0
-  font-size 1rem
-  font-weight 100
-  color rgba(0, 0, 0, 0.56)
-  display inline-block
-  cursor pointer

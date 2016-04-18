@@ -10,20 +10,14 @@ hljs = require "highlight.js/lib/index.js"
 
 
 # Load theme.
-theme = "red"
-require "./Style/Theme/#{theme}"
+themes = ["red", "blue"]
+genrd  = Math.floor Math.random() * themes.length
+require "./Style/Theme/#{themes[genrd]}"
 
-###
-path        = location.pathname
-isHomePath  = path is "/"
-needFmtPath = path.slice(-1) is "/"
-fmtPath     = path.slice 0, -1
-trimPath    = if not isHomePath and needFmtPath then fmtPath else path
-###
 
-# Call main func as Fullscreen.
 # elm = Elm.fullscreen Elm.Main, path: trimPath
 elm = Elm.fullscreen Elm.Main
+
 
 # Export highlight.
 window.hljs = hljs

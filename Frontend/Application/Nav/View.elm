@@ -13,7 +13,7 @@ view link str char =
   let
     dom c =
       if c == char
-      then span [ class "red" ] [ text <| toUpper c ]
+      then span [ class "nav-char" ] [ text <| toUpper c ]
       else span [] [ text c ]
 
     ctx =

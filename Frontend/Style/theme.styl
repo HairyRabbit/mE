@@ -1,0 +1,119 @@
+@require 'placeholder'
+
+/**
+ * Theme.
+ */
+
+
+
+// rabbit.
+ 
+.rabbit-eye
+.rabbit-ear-sm
+  fill alpha(primary-color, 0.72)
+
+.rabbit-body
+.rabbit-ear-lg
+  fill alpha(black, 0.08)
+
+
+
+// public.
+
+.title
+  font-weight normal
+  margin 0 0 2rem 0
+  @extend $fzl, $black72
+
+.date
+  margin -1.5em 0 2em 0
+  @extend $fzs, $black32
+
+.intro
+  line-height 1.5
+  @extend $black56
+
+
+
+// blog.
+
+.blog-top
+  background-color white
+
+
+
+// blogs.  
+
+.blogs-date
+  @extend $black32
+  
+  .blog-item:hover &
+    color alpha(primary-color, 0.56)
+
+.blogs-title
+  @extend $black72
+
+.blogs-prev
+  background-color alpha(black, 0.16)
+
+.blogs-next
+  background-color alpha(black, 0.56)
+
+
+
+// logo.
+
+.logo
+  font-size 4rem
+  font-weight 100
+
+.logo-fst
+  color alpha(primary-color, 1)
+
+.logo-label
+  font-size 1.2rem
+  font-weight normal
+  @extend $black56
+
+.logo-intro
+  @extend $fzs, $black32
+
+
+
+// nav.
+
+.nav
+  font-weight 100
+  @extend $dib, $black56, $cur
+
+.nav-char
+  color alpha(primary-color, 1)
+
+
+
+// markdown.
+
+.md
+  h2
+    color alpha(primary-color, 0.72)
+    
+  h3
+    @extend $black72
+
+  li
+  p
+    @extend $black56
+
+  a
+    color alpha(primary-color, 0.48)
+
+  ul li:before
+    @extend $black56
+    
+  li
+  p
+    code
+      background-color alpha(primary-color, 0.32)
+      color white
+  code
+    @extend $black72 
