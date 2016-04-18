@@ -24,15 +24,8 @@ view address model =
     top =
       header
         [ class "blogs-top" ]
-        [ section
-            [ class "blogs-header" ]
-            [ Logo.view Logo.Left "Blog" ]
-        , nav
-            [ class "blogs-nav" ]
-            [ Nav.view "/" "Home IO" "e"
-            , Nav.view "/blog" "Note On" "e"
-            , Nav.view "/about" "About Me" "t"
-            ]
+        [ section [ class "blogs-header" ] [ Logo.view Logo.Left "Blog" ]
+        , nav [ class "blogs-nav" ] Nav.view
         ]
 
     main =

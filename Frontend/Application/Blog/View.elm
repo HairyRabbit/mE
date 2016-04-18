@@ -45,12 +45,7 @@ view address model =
              [ section
                  [ class "" ]
                  [ Logo.view Logo.Right "Blog"
-                 , nav
-                     [ class "blog-nav" ]
-                     [ Nav.view "/" "Home IO" "e"
-                     , Nav.view "/blog" "Note On" "e"
-                     , Nav.view "/about" "About Me" "t"
-                     ]
+                 , nav [ class "blog-nav" ] Nav.view
                  , section
                      [ class "blog-logo" ]
                      [ Rabbit.view ]

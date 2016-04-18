@@ -56,31 +56,45 @@
     position relative
     
     &:before
-      content "."
-      display inline-block
+      content  "."
+      display  inline-block
       position absolute -0.25rem \* \* 0
 
 
 
   // code.
 
+  reverse(c)
+    c[1] c[0]
+
+
+  split-line(r)
+    pos = 0 -0.5rem
+    siz = 3rem 1px
+
+    pos1 = r ? pos : reverse(pos)
+    siz1 = r ? siz : reverse(siz)
+
+    position absolute pos1[0] \* \* pos1[1]
+    size siz1[0] siz1[1]
+    
+
   pre
     margin   2rem 0
     padding  1rem
     position relative
-    
+
     &:before
-      content: ""
-      display  inline-block
-      position absolute 0 \* \* -0.5rem      
-      background-color rgba(0, 0, 0, 0.16)
-      size 3rem 1px
     &:after
       content: ""
       display  inline-block
-      position absolute -0.5rem \* \* 0
       background-color rgba(0, 0, 0, 0.16)
-      size 1px 3rem
+    
+    &:before
+      split-line(true)
+
+    &:after
+      split-line(false)
 
   li
   p

@@ -8,6 +8,7 @@ import Blogs.Action        exposing (Action(..))
 import Blogs.Model         exposing (Model)
 import Post.Model          exposing (Post)
 
+import Debug
 
 
 apiURL : String
@@ -17,18 +18,54 @@ encodeURL : String
 encodeURL =
   Http.url apiURL [("order", "date.desc")]
 
+
 fetchPosts : Effects Action
 fetchPosts =
-  Http.get decoder encodeURL
+  let
+    config =
+      { verb = "GET"
+      , headers =
+          [ ("Content-Type", "application/json")
+          , ("Range-Unit", "items")
+          , ("Content-Range", "0-5")
+          ]
+      , url = encodeURL
+      , body = Http.empty
+      }
+  in
+    Http.send Http.defaultSettings config
+      |> Http.fromJson decoder
       |> Task.toMaybe
       |> Task.map OnFetched
       |> Effects.task
 
-nextPosts : Effects Action
-nextPosts =
-  Http.get decoder encodeURL
+nextPosts : Int -> Effects Action
+nextPosts curr =
+  let
+    _ =
+      Debug.log "curr" curr
+
+    range1 =
+      toString <| curr + 5
+
+    range2 =
+      toString <| curr + 10
+    
+    config =
+      { verb = "GET"
+      , headers =
+          [ ("Content-Type", "application/json")
+          , ("Range-Unit", "items")
+          , ("Content-Range", range1 ++ "-" ++ range2)
+          ]
+      , url = encodeURL
+      , body = Http.empty
+      }
+  in
+    Http.send Http.defaultSettings config
+      |> Http.fromJson decoder
       |> Task.toMaybe
-      |> Task.map OnFetched
+      |> Task.map OnNextFetched
       |> Effects.task
 
 prevPosts : Effects Action

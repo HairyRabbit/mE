@@ -35,12 +35,7 @@ rightView =
         [ class "home-header" ]
         [ Logo.view Logo.Left "Hi" ]
     , imageView
-    , nav
-        [ class "home-nav" ]
-        [ Nav.view "/" "Home IO" "e"
-        , Nav.view "/blog" "Note On" "e"
-        , Nav.view "/about" "About Me" "t"
-        ]
+    , nav [ class "home-nav" ] Nav.view
     ]
 
 

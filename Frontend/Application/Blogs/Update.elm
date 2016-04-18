@@ -17,8 +17,16 @@ update action model =
           )
         Nothing ->
           (model, Effects.none)
+    OnNextFetched str ->
+      case str of
+        Just mod ->
+          ( { model | posts = mod, current = model.current + 5 }
+          , Effects.none
+          )
+        Nothing ->
+          (model, Effects.none)
     NextPosts ->
-      (model, nextPosts)
+      (model, nextPosts model.current)
     PrevPosts ->
       (model, prevPosts)
     NoOp ->

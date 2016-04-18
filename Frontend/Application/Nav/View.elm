@@ -1,6 +1,11 @@
 module Nav.View where
 
-{-| 导航 -}
+{-| 导航 
+
+@todo
+增加动画效果
+
+-}
 
 import Html            exposing (..)
 import Html.Attributes exposing (..)
@@ -8,25 +13,31 @@ import String          exposing (split, toUpper)
 
 
 
-view : String -> String -> String -> Html
-view link str char =
+-- View
+
+view : List Html
+view =
+  [ navView "/"      "Home IO"  "e"
+  , navView "/blog"  "Note On"  "e"
+  , navView "/about" "About Me" "t"
+  ]
+
+
+navView : String -> String -> String -> Html
+navView link str char =
   let
     dom c =
       if c == char
       then span [ class "nav-char" ] [ text <| toUpper c ]
       else span [] [ text c ]
 
-    ctx =
-      List.map dom <| split "" str
-
     view' =
-      section [ class "nav" ] <| ctx
-
-    aview =
-      a
-        [ href link ]
-        [ view' ]
+      str
+        |> split ""
+        |> List.map dom
+        |> section [ class "nav" ]
 
   in
-    section [] [ aview ]
-
+    section []
+      [ a [ href link] [ view' ]
+      ]
