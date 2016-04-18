@@ -31,7 +31,7 @@ view address model =
     main =
       section
         [ class "blogs-main" ]
-        [ ul [ class "list-rs" ] <| List.map postView model.posts
+        [ ul [ class "list-rs" ] <| List.map postView model.currPosts
         , div
             [ class "blogs-more" ]
             [ span [ class "blogs-prev"
@@ -42,9 +42,7 @@ view address model =
                    ] []
             ]
         ]
-      
-        
-        
+
   in
     main'
       [ class "blogs" ]
