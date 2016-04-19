@@ -1,63 +1,46 @@
-module Nav.View where
+module Nav.View (view, bloglinker) where
 
-{-| 导航 -}
+{-| View
+
+导航
+
+@todo
+增加动画效果
+
+-}
 
 import Html            exposing (..)
 import Html.Attributes exposing (..)
 import String          exposing (split, toUpper)
 
-{-
-view : Signal.Address Router.Action -> String -> Html
-view address label =
-  let
-    link route =
-      a [ onClick address <| UpdatePath route ]
 
-    homeLinker =
-      listItemView <| link (HomeRoute ()) <| linkerView "Home io" "e"
 
-    postsLinker =
-      listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
-
-    linkers =
-      case label of
-        "home" ->
-          [ postsLinker ]
-        "posts" ->
-          [ homeLinker ]
-        _ ->
-          []
-  in
-    nav [ ] [ ul [ class "list-rs" ] linkers ]
-
-  {-
-  [ listItemView <| link (HomeRoute ()) <| linkerView "Home io" "e"
-  , listItemView <| link (PostsRoute ()) <| linkerView "Note on" "e"
-  , listItemView <| link (HomeRoute ()) <| linkerView "Find me" "d"
+view : List Html
+view =
+  [ navView "/"      "Home IO"  "e"
+  , navView "/blog"  "Note On"  "e"
+  , navView "/about" "About Me" "t"
   ]
-   -}
 
--}
 
-view : String -> String -> String -> Html
-view link str char =
+navView : String -> String -> String -> Html
+navView link str char =
   let
     dom c =
       if c == char
-      then span [ class "red" ] [ text <| toUpper c ]
+      then span [ class "nav-char" ] [ text <| toUpper c ]
       else span [] [ text c ]
 
-    ctx =
-      List.map dom <| split "" str
-
-    view' =
-      section [ class "nav" ] <| ctx
-
-    aview =
-      a
-        [ href link ]
-        [ view' ]
-
+    content =
+      str
+        |> split ""
+        |> List.map dom
+        |> section [ class "nav" ]
   in
-    section [] [ aview ]
+    section []
+      [ a [ href link] [ content ]
+      ]
 
+bloglinker : String -> List Html -> Html
+bloglinker id content =
+  a [ href <| "/blog/" ++ id ] content

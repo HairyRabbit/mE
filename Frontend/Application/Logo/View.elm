@@ -1,4 +1,4 @@
-module Logo.View (view, logo, Direction(..)) where
+module Logo.View (view, Direction(..)) where
 
 {-| 这里是LOGO -}
 
@@ -32,13 +32,13 @@ view dir str =
 
     logo' =
       section
-        [ class "flex-con" ]
+        [ class "logo-left" ]
         [ logoView ]
 
 
     intro' =
       section
-        [ class2 "flex-col" "flex-justify-cen" ]
+        [ class "logo-right" ]
         [ labelView dir str
         , introView
         ]
@@ -46,7 +46,7 @@ view dir str =
   in
     
     header
-      [ class2 "none-select" "flex"
+      [ class2 "none-select" "logo"
       , style needReverse
       ]
       [ logo'
@@ -56,9 +56,9 @@ view dir str =
 
 logoView : Html
 logoView =
-  section [ class "logo" ]
+  section [ class "logo-text" ]
           [ span [] [ text "H" ]
-          , span [ class "red" ] [ text "J" ]
+          , span [ class "logo-fst" ] [ text "J" ]
           ]
 
 
@@ -87,11 +87,3 @@ introView =
   section
     [ class "logo-intro" ]
     [ text "Happy Hack With My Life" ]
-
-
-logo : Html
-logo =
-  section
-    [ class "logo-pic" ]
-    [ img [ src "Image/logo.svg" ] []
-    ]

@@ -1,27 +1,29 @@
-module Blog.Effects where
+module Home.Effects where
 
 import Http
 import Task                exposing (Task)
 import Effects             exposing (Effects)
 import Json.Decode as Json exposing ((:=))
-import Blog.Action         exposing (Action(..))
-import Blog.Model          exposing (Model)
+import Home.Action         exposing (Action(..))
+import Home.Model          exposing (Model)
 import Post.Model          exposing (Post)
 
-import Debug exposing (log)
+
 
 -- Effects
 
 apiURL : String
 apiURL = "http://localhost:4000/api/v1/posts/"
 
-encodeURL : String -> String
-encodeURL id =
-  Http.url apiURL [("id", "eq." ++ id)]
 
-fetchPost : String -> Effects Action
-fetchPost id =
-  Http.get decoder (encodeURL id)
+encodeURL : String
+encodeURL =
+  Http.url apiURL [("isTop", "eq.true")]
+
+
+fetchTop : Effects Action
+fetchTop =
+  Http.get decoder encodeURL
       |> Task.toMaybe
       |> Task.map OnFetched
       |> Effects.task
@@ -37,10 +39,7 @@ decodePost =
     ("date"    := Json.string)
     ("intro"   := Json.string)
 
-decodeContent : Json.Decoder String
-decodeContent =
-  Json.at ["content"] Json.string
 
 decoder : Json.Decoder Model
 decoder =
-  Json.object2 Model decodePost decodeContent
+  Json.object1 Model decodePost

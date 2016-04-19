@@ -1,9 +1,11 @@
-module Blog.Update where
+module Home.Update where
 
 import Effects      exposing (Effects)
-import Blog.Model   exposing (Model)
-import Blog.Action  exposing (Action(..))
+import Home.Model   exposing (Model)
+import Home.Action  exposing (Action(..))
 
+
+-- Update
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =

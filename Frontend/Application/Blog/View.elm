@@ -1,13 +1,14 @@
 module Blog.View where
 
-import Html        exposing (..)
+import Html            exposing (..)
 import Html.Attributes exposing (..)
 import Markdown
-import Blog.Action exposing (Action(..))
-import Blog.Model  exposing (Model)
+import Blog.Action     exposing (Action(..))
+import Blog.Model      exposing (Model)
 
-import Logo.View as Logo
-import Nav.View as Nav
+import Logo.View   as Logo
+import Nav.View    as Nav
+import Rabbit.View as Rabbit
 
 import Util.DateFmter exposing (dateFmter)
 import Util.Class     exposing (class2)
@@ -20,17 +21,17 @@ view address model =
     
     main =
       section
-        [ class2 "con-blog-cen" "con-blog-main" ]
+        [ class "blog-main" ]
         [ section
-            [ class2 "md" "con-md" ]
+            [ class "md" ]
             [ Markdown.toHtml model.content ]
         ]
 
     top =
       header
-        [ class "con-blog-header" ]
+        [ class "blog-top" ]
         [ section
-            [ class "con-blog-cen" ]
+            [ class "blog-header" ]
             [ header [ class "title" ] [ text model.post.title ]
             , section [ class "date" ] [ text <| dateFmter model.post.date ]
             ]
@@ -38,21 +39,16 @@ view address model =
         
     left =
        aside
-         [ class "con-blog-left" ]
+         [ class "blog-left" ]
          [ section
              []
              [ section
                  [ class "" ]
                  [ Logo.view Logo.Right "Blog"
-                 , nav
-                     [ class "con-blog-nav" ]
-                     [ Nav.view "#/" "Home IO" "e"
-                     , Nav.view "#/blog" "Note On" "e"
-                     , Nav.view "#/about" "About Me" "t"
-                     ]
+                 , nav [ class "blog-nav" ] Nav.view
                  , section
-                     [ class "con-blog-logo" ]
-                     [ Logo.logo ]
+                     [ class "blog-logo" ]
+                     [ Rabbit.view ]
                  ]
              ]
          ]
@@ -60,7 +56,7 @@ view address model =
     
   in
     main'
-      [ class "con-blog" ]
+      [ class "blog" ]
       [ main
       , top
       , left

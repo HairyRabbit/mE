@@ -5,6 +5,8 @@ import App.Action     exposing (Action(..))
 import App.Model      exposing (Model)
 import Routing.Routes as Routing
 import Blog.View      as Blog
+import Blogs.View     as Blogs
+import Home.View      as Home
 
 import Debug
 
@@ -18,6 +20,12 @@ view address model =
       case model.routing.route of
         Routing.BlogRoute id ->
           Blog.view (Signal.forwardTo address BlogAction) model.blog
+
+        Routing.BlogsRoute ->
+          Blogs.view (Signal.forwardTo address BlogsAction) model.blogs
+              
+        Routing.HomeRoute ->
+          Home.view (Signal.forwardTo address HomeAction) model.home
               
         _ ->
           div [] [ text "notFound" ]

@@ -1,0 +1,109 @@
+/*
+ * Rabbit logo.
+ *
+ * css animation
+ */
+
+
+/**
+ * Init state.
+ */
+
+.rabbit-ear
+  &-1
+    transform skew(5deg)
+  &-2
+    transform skew(-5deg)
+
+
+
+
+// css animation.
+
+
+/**
+ * Generate @keyframes.
+ */ 
+ 
+vendors = official
+
+
+/**
+ * Blink eyes.
+ */
+ 
+blink-eyes(dir, idx)
+
+  r = dir ? 45deg : -45deg
+  x = dir ? 10px  : -10px
+
+  name = "eye" + idx
+
+  r1 = skew(0deg) translate3d(0, 0, 0)
+  r2 = skew(r)    translate3d(x, 0, 0)
+  rs = r1 r2 r1 r2 r1
+
+  @keyframes {name}
+    for i in 0..4
+      {1% * (i * 2 + 46)}
+        r = rs[i]
+        transform r
+
+
+
+/**
+ * Shake eyes.
+ */
+shake-ears(dir, idx)
+
+  name = "ear" + idx
+
+  r1 = dir ? 5deg : -5deg
+  r2 = 0deg
+  r3 = dir ? -5deg : 5deg
+  rs = r1 r2 r3 r2 r1
+
+  @keyframes {name}
+    for i in 0..4
+      {25% * i}
+        r = rs[i]
+        transform skew(r)
+
+
+
+blink-eyes(true,  1)
+blink-eyes(false, 2)
+shake-ears(true,  1)
+shake-ears(false, 2)
+
+
+
+/**
+ * Element setting.
+ */
+ 
+.rabbit-eye
+.rabbit-ear
+  transform-origin center bottom 0
+
+
+
+/**
+ * Apply animate.
+ */
+
+animate(name, during)
+  animation name during ease-in-out 0s infinite
+ 
+.rabbit-eye
+  &-1
+    animate(eye1, 5s)
+  &-2
+    animate(eye2, 5s)
+
+
+.rabbit:hover .rabbit-ear
+  &-1
+    animate(ear1, 0.1s)
+  &-2
+    animate(ear2, 0.1s)

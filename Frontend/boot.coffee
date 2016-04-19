@@ -2,15 +2,23 @@
 Bootstrapper.
 ###
 
-Style = require "./glob"
-Elm   = require "./Application/Main"
+require "./glob"
+require "highlight.js/styles/tomorrow.css"
 
-path        = location.pathname
-isHomePath  = path is "/"
-needFmtPath = path.slice(-1) is "/"
-fmtPath     = path.slice 0, -1
-trimPath    = if not isHomePath and needFmtPath then fmtPath else path
+Elm  = require "./Application/Main"
+hljs = require "highlight.js/lib/index.js"
 
-# Call main func as Fullscreen.
+
+# Load theme.
+themes = ["red", "blue"]
+genrd  = Math.floor Math.random() * themes.length
+require "./Style/Theme/#{themes[genrd]}"
+
+
 # elm = Elm.fullscreen Elm.Main, path: trimPath
 elm = Elm.fullscreen Elm.Main
+
+
+# Export highlight.
+window.hljs = hljs
+hljs.initHighlightingOnLoad 0
