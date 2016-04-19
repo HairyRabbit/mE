@@ -10,7 +10,7 @@ hljs = require "highlight.js/lib/index.js"
 
 
 # Load theme.
-themes = ["red", "blue"]
+themes = ["red", "blue", "green"]
 genrd  = Math.floor Math.random() * themes.length
 require "./Style/Theme/#{themes[genrd]}"
 
