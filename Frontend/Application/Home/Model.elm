@@ -1,4 +1,10 @@
-module Home.Model where
+module Home.Model (Model, initModel) where
+
+{-| Model
+
+首页热点文章
+
+-}
 
 import Post.Model exposing (Post, initPost)
 

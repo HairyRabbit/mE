@@ -95,13 +95,23 @@
 
 .blogs-more
   position absolute \* \* 2rem 50%
-  @extend $cur
 
 .blogs-next
 .blogs-prev
   size 1rem
   margin 0.25rem
-  @extend $dib, $bdc
+  @extend $dib, $bdc, $cur
+
+
+
+// notfound.
+
+.notfound-main
+  @extend $flex, $flexmc, $flexac, $flexcol
+
+.notfound-txt
+  margin 2rem 0
+  
 
   
 

@@ -1,8 +1,11 @@
-module Blog.Model where
+module Blog.Model (Model, initModel) where
 
-{-| Blog Model
+{-| Model
 
-定义了Blog的模型。
+博客文章
+
+* post    文章信息
+* content markdown 内容
 
 -}
 

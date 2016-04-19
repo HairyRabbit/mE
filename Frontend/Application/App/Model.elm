@@ -1,9 +1,16 @@
-module App.Model where
+module App.Model (Model, initModel) where
+
+{-| Model
+
+组合所有 Model
+
+-}
 
 import Routing.Model as Routing
 import Blog.Model    as Blog
 import Blogs.Model   as Blogs
 import Home.Model    as Home
+
 
 
 type alias Model =

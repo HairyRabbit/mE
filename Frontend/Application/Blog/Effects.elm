@@ -1,45 +1,41 @@
-module Blog.Effects where
+module Blog.Effects (fetchPost) where
+
+{-| Effects
+
+博客文章，请求 markdown 数据
+
+@todos
+增加评论，及评论列表
+
+-}
 
 import Http
-import Task                exposing (Task)
-import Effects             exposing (Effects)
-import Json.Decode as Json exposing ((:=))
-import Blog.Action         exposing (Action(..))
-import Blog.Model          exposing (Model)
-import Post.Model          exposing (Post)
+import Effects      exposing (Effects)
+import Blog.Action  exposing (Action(..))
+import Blog.Model   exposing (Model)
+import Post.Model   exposing (Post)
+import Post.Effects exposing (apiURL, fetch, decodePost)
+import Json.Decode  as Json
 
-import Debug exposing (log)
 
--- Effects
 
-apiURL : String
-apiURL = "http://localhost:4000/api/v1/posts/"
+(=>) = (,)
+
 
 encodeURL : String -> String
 encodeURL id =
-  Http.url apiURL [("id", "eq." ++ id)]
+  Http.url apiURL ["id" => ("eq." ++ id)]
+
 
 fetchPost : String -> Effects Action
 fetchPost id =
-  Http.get decoder (encodeURL id)
-      |> Task.toMaybe
-      |> Task.map OnFetched
-      |> Effects.task
+  fetch (encodeURL id) decoder OnFetched
 
-
--- Decoder
-
-decodePost : Json.Decoder Post
-decodePost =
-  Json.object4 Post
-    ("id"      := Json.string)
-    ("title"   := Json.string)
-    ("date"    := Json.string)
-    ("intro"   := Json.string)
 
 decodeContent : Json.Decoder String
 decodeContent =
   Json.at ["content"] Json.string
+
 
 decoder : Json.Decoder Model
 decoder =

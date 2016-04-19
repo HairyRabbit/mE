@@ -4,7 +4,7 @@ module Blogs.View (view) where
 
 文章博客列表，采用分页的形式显示列表
 
-@todo
+@todos
 动画切换效果
 
 -}
@@ -19,7 +19,6 @@ import Util.DateFmter  exposing (dateFmter2)
 import Util.Class      exposing (class2)
 import Logo.View       as Logo
 import Nav.View        as Nav
-import Rabbit.View     as Rabbit
 
 
 

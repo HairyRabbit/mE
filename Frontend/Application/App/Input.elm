@@ -1,7 +1,15 @@
-module App.Input where
+module App.Input (inputs) where
 
-import App.Action exposing (Action(..))
+{-| Input
+
+组合所有 Input
+
+-}
+
+import App.Action    exposing (Action(..))
 import Routing.Input as Routing
+
+
 
 inputs : List (Signal Action)
 inputs =

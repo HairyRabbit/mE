@@ -1,22 +1,23 @@
-module Routing.Update where
+module Routing.Update (update) where
 
-import Effects exposing (Effects)
-import Hop
-import Hop.Navigate exposing (navigateTo)
+{-| Update
+
+路由动作，定义了路由到时的一些逻辑，比如页面加载时请求数据
+
+-}
+
+import Effects        exposing (Effects)
+import Hop.Navigate   exposing (navigateTo)
 import Routing.Action exposing (Action(..))
-import Routing.Model exposing (Model)
+import Routing.Model  exposing (Model)
 import Routing.Routes exposing (Route(..), routerConfig)
+import Blog.Effects   exposing (fetchPost)
+import Blogs.Effects  exposing (fetchPosts)
+import Home.Effects   exposing (fetchTop)
+import Blog.Action    as Blog
+import Blogs.Action   as Blogs
+import Home.Action    as Home
 
-import Blog.Action as Blog
-import Blog.Effects exposing (fetchPost)
-
-import Blogs.Action as Blogs
-import Blogs.Effects exposing (fetchPosts)
-
-import Home.Action as Home
-import Home.Effects exposing (fetchTop)
-
-import Debug
 
 
 type alias ParentsActions =
@@ -39,17 +40,13 @@ update action model =
   case action of
     NavigateTo path ->
       let
-
         fx =
           Effects.map HopAction <| navigateTo routerConfig path
-
       in
-
         (model, fx, noneParentsActions)
 
     ApplyRoute (route, location) ->
       let
-
         fx =
           case route of
             BlogRoute id ->
@@ -61,11 +58,8 @@ update action model =
             _ ->
               noneParentsActions
 
-        m = { model |
-                route    = route
-            ,   location = location
+        m = { model | route = route, location = location
             }
-
       in
         (m, Effects.none, fx)
 

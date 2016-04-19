@@ -1,43 +1,35 @@
-module Home.Effects where
+module Home.Effects (fetchTop) where
+
+{-| Effects
+
+首页，请求热点文章
+
+@todos
+请求列表来做幻灯片
+
+-}
 
 import Http
-import Task                exposing (Task)
-import Effects             exposing (Effects)
-import Json.Decode as Json exposing ((:=))
-import Home.Action         exposing (Action(..))
-import Home.Model          exposing (Model)
-import Post.Model          exposing (Post)
+import Effects      exposing (Effects)
+import Home.Action  exposing (Action(..))
+import Home.Model   exposing (Model)
+import Post.Model   exposing (Post)
+import Post.Effects exposing (apiURL, fetch, decodePost)
+import Json.Decode  as Json
 
 
 
--- Effects
-
-apiURL : String
-apiURL = "http://localhost:4000/api/v1/posts/"
+(=>) = (,)
 
 
 encodeURL : String
 encodeURL =
-  Http.url apiURL [("isTop", "eq.true")]
+  Http.url apiURL ["isTop" => "eq.true"]
 
 
 fetchTop : Effects Action
 fetchTop =
-  Http.get decoder encodeURL
-      |> Task.toMaybe
-      |> Task.map OnFetched
-      |> Effects.task
-
-
--- Decoder
-
-decodePost : Json.Decoder Post
-decodePost =
-  Json.object4 Post
-    ("id"      := Json.string)
-    ("title"   := Json.string)
-    ("date"    := Json.string)
-    ("intro"   := Json.string)
+  fetch encodeURL decoder OnFetched
 
 
 decoder : Json.Decoder Model

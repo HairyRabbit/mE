@@ -1,4 +1,4 @@
-module Blogs.Effects where
+module Blogs.Effects (fetchPosts) where
 
 {-| Effects
 
