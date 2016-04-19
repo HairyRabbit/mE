@@ -1,63 +1,81 @@
-module Blogs.View where
+module Blogs.View (view) where
+
+{-| View
+
+文章博客列表，采用分页的形式显示列表
+
+@todo
+动画切换效果
+
+-}
 
 import Html            exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events     exposing (onClick)
 import Blogs.Action    exposing (Action(..))
 import Blogs.Model     exposing (Model)
+import Post.Model      exposing (Post)
+import Util.DateFmter  exposing (dateFmter2)
+import Util.Class      exposing (class2)
+import Logo.View       as Logo
+import Nav.View        as Nav
+import Rabbit.View     as Rabbit
 
-import Post.Model exposing (Post)
 
-import Logo.View   as Logo
-import Nav.View    as Nav
-import Rabbit.View as Rabbit
-
-import Util.DateFmter exposing (dateFmter2)
-import Util.Class     exposing (class2)
-
-import Debug exposing (log)
 
 view : Signal.Address Action -> Model -> Html
 view address model =
   let
-
     top =
-      header
-        [ class "blogs-top" ]
+      header [ class "blogs-top" ]
         [ section [ class "blogs-header" ] [ Logo.view Logo.Left "Blog" ]
         , nav [ class "blogs-nav" ] Nav.view
         ]
 
-    main =
-      section
-        [ class "blogs-main" ]
-        [ ul [ class "list-rs" ] <| List.map postView model.currPosts
-        , div
-            [ class "blogs-more" ]
-            [ span [ class "blogs-prev"
-                   , onClick address PrevPosts
-                   ] []
-            , span [ class "blogs-next"
-                   , onClick address NextPosts
-                   ] []
+    controller classname action =
+      span [ class classname
+           , onClick address action
+           ] []
+
+    body =
+      section [ class "blogs-main" ]
+        [ ul [ class "list-rs" ] <| postsView model
+        , div [ class "blogs-more" ]
+            [ controller "blogs-prev" PrevPosts
+            , controller "blogs-next" NextPosts
             ]
         ]
-
   in
     main'
       [ class "blogs" ]
       [ top
-      , main
+      , body
       ]
+
+
+postsView : Model -> List Html
+postsView model =
+  let
+    from =
+      model.current
+    to =
+      from + model.size
+  in
+    model.posts
+      |> takeRange from to
+      |> List.map postView
 
 
 postView : Post -> Html
 postView post =
-  li
-    [ class "blogs-item" ]
-    [ a
-      [ href <| "/blog/" ++ post.id ]
-      [ span [ class "blogs-date" ] [ text <| dateFmter2 post.date ]
-      , span [ class "blogs-title" ] [ text post.title ]
-      ]
+  li [ class "blogs-item" ]
+    [ Nav.bloglinker post.id
+        [ span [ class "blogs-date" ]  [ text <| dateFmter2 post.date ]
+        , span [ class "blogs-title" ] [ text post.title ]
+        ]
     ]
+
+
+takeRange : Int -> Int -> List a -> List a
+takeRange a b =
+  List.drop a >> List.take b

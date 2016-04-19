@@ -1,6 +1,8 @@
-module Nav.View where
+module Nav.View (view, bloglinker) where
 
-{-| 导航 
+{-| View
+
+导航
 
 @todo
 增加动画效果
@@ -12,8 +14,6 @@ import Html.Attributes exposing (..)
 import String          exposing (split, toUpper)
 
 
-
--- View
 
 view : List Html
 view =
@@ -31,13 +31,16 @@ navView link str char =
       then span [ class "nav-char" ] [ text <| toUpper c ]
       else span [] [ text c ]
 
-    view' =
+    content =
       str
         |> split ""
         |> List.map dom
         |> section [ class "nav" ]
-
   in
     section []
-      [ a [ href link] [ view' ]
+      [ a [ href link] [ content ]
       ]
+
+bloglinker : String -> List Html -> Html
+bloglinker id content =
+  a [ href <| "/blog/" ++ id ] content

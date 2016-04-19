@@ -1,10 +1,15 @@
-module Blogs.Init where
+module Blogs.Init (init) where
 
-import Effects exposing (Effects)
+{-| Init
+
+文章博客列表，什么都不做
+
+-}
+
+import Effects      exposing (Effects)
 import Blogs.Action exposing (Action(..))
 import Blogs.Model  exposing (Model, initModel)
-import Blogs.Effects exposing (fetchPosts)
 
 init : (Model, Effects Action)
 init =
-  (initModel, fetchPosts)
+  (initModel, Effects.none)

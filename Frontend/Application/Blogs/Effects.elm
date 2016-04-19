@@ -1,53 +1,34 @@
 module Blogs.Effects where
 
+{-| Effects
+
+博客列表，Ajax 请求数据
+
+-}
+
 import Http
-import Task                exposing (Task)
-import Effects             exposing (Effects)
-import Json.Decode as Json exposing ((:=))
-import Blogs.Action        exposing (Action(..))
-import Blogs.Model         exposing (Model)
-import Post.Model          exposing (Post)
-
-import Debug
+import Effects      exposing (Effects)
+import Blogs.Action exposing (Action(..))
+import Blogs.Model  exposing (Model)
+import Post.Model   exposing (Post)
+import Post.Effects exposing (apiURL, fetch, decodePost)
+import Json.Decode  as Json
 
 
-apiURL : String
-apiURL = "http://localhost:4000/api/v1/posts/"
+
+(=>) = (,)
+
 
 encodeURL : String
 encodeURL =
-  Http.url apiURL [("order", "date.desc")]
+  Http.url apiURL ["order" => "date.desc"]
 
 
 fetchPosts : Effects Action
 fetchPosts =
-  let
-    config =
-      { verb = "GET"
-      , headers =
-          [ ("Content-Type", "application/json")
-          ]
-      , url = encodeURL
-      , body = Http.empty
-      }
-  in
-    Http.send Http.defaultSettings config
-      |> Http.fromJson decoder
-      |> Task.toMaybe
-      |> Task.map OnFetched
-      |> Effects.task
+  fetch encodeURL decoder OnFetched
 
-
--- Decoder
-
-decodePost : Json.Decoder (List Post)
-decodePost =
-  Json.list <| Json.object4 Post
-    ("id"      := Json.string)
-    ("title"   := Json.string)
-    ("date"    := Json.string)
-    ("intro"   := Json.string)
 
 decoder : Json.Decoder (List Post)
 decoder =
-  decodePost
+  Json.list decodePost
