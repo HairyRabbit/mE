@@ -1,14 +1,20 @@
-module App.Update where
+module App.Update (update) where
 
-import Effects exposing (Effects)
-import App.Action exposing (Action(..))
-import App.Model exposing (Model)
+{-| Update
+
+路由所有 Update
+
+-}
+
+import Effects        exposing (Effects)
+import App.Action     exposing (Action(..))
+import App.Model      exposing (Model)
 import Routing.Update as Routing
-import Blog.Update as Blog
-import Blogs.Update as Blogs
-import Home.Update as Home
+import Blog.Update    as Blog
+import Blogs.Update   as Blogs
+import Home.Update    as Home
 
-import Debug
+
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
@@ -17,7 +23,7 @@ update action model =
       let
         (m, fx, pfx) = Routing.update act model.routing
 
-        effects =
+        fx' =
           Effects.batch
             [ Effects.map RoutingAction fx
             , Effects.map BlogAction    pfx.blog
@@ -26,7 +32,7 @@ update action model =
             ]
       in
         ( { model | routing = m }
-        , effects
+        , fx'
         )
 
     BlogAction act ->

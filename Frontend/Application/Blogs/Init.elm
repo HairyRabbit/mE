@@ -10,6 +10,8 @@ import Effects      exposing (Effects)
 import Blogs.Action exposing (Action(..))
 import Blogs.Model  exposing (Model, initModel)
 
+
+
 init : (Model, Effects Action)
 init =
   (initModel, Effects.none)

@@ -1,8 +1,17 @@
-module Blog.Update where
+module Blog.Update (update) where
+
+{-| Update
+
+文章详情
+
+* OnFetched 向服务器请求数据，并入 model
+
+-}
 
 import Effects      exposing (Effects)
 import Blog.Model   exposing (Model)
 import Blog.Action  exposing (Action(..))
+
 
 
 update : Action -> Model -> (Model, Effects Action)
