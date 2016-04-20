@@ -8,7 +8,7 @@ function main() {
     DBPORT=5432
     DBNAME=me
     
-    postgrest `postgres://${USERNAME}:${PASSWORD}@${DBHOST}:${DBPORT}/${DBNAME} -p 4000 -a postgres -o 2000 -s public`
+    postgrest `postgres://${USERNAME}:${PASSWORD}@${DBHOST}:${DBPORT}/${DBNAME} -p 4000 -a yufi -o 2000 -s public`
     
 }
 
