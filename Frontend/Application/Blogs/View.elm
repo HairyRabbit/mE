@@ -69,7 +69,7 @@ postView : Post -> Html
 postView post =
   li [ class "blogs-item" ]
     [ Nav.bloglinker post.id
-        [ span [ class "blogs-date" ]  [ text <| dateFmter2 post.date ]
+        [ span [ class "blogs-date" ]  [ text <| dateFmter2 post.datetime ]
         , span [ class "blogs-title" ] [ text post.title ]
         ]
     ]

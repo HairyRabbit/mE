@@ -40,8 +40,10 @@ fetch url decoder action =
 
 decodePost : Json.Decoder Post
 decodePost =
-  Json.object4 Post
-    ("id"      := Json.string)
-    ("title"   := Json.string)
-    ("date"    := Json.string)
-    ("intro"   := Json.string)
+  Json.object6 Post
+    ("id"       := Json.string)
+    ("title"    := Json.string)
+    ("datetime" := Json.string)
+    ("istop"    := Json.bool)
+    ("intro"    := Json.string)
+    ("filepath" := Json.string)

@@ -18,16 +18,20 @@ module Post.Model (Post, initPost) where
 
 
 type alias Post =
-  { id    : String
-  , title : String
-  , date  : String
-  , intro : String
+  { id       : String
+  , title    : String
+  , datetime : String
+  , istop    : Bool
+  , intro    : String
+  , filepath : String
   }
 
 initPost : Post
 initPost =
-  { id    = ""
-  , title = ""
-  , date  = ""
-  , intro = ""
+  { id       = ""
+  , title    = ""
+  , datetime = ""
+  , istop    = False
+  , intro    = ""
+  , filepath = ""
   }

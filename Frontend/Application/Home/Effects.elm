@@ -24,7 +24,7 @@ import Json.Decode  as Json
 
 encodeURL : String
 encodeURL =
-  Http.url apiURL ["isTop" => "eq.true"]
+  Http.url apiURL ["istop" => "eq.true"]
 
 
 fetchTop : Effects Action
