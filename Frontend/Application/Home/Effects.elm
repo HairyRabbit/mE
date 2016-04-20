@@ -32,6 +32,6 @@ fetchTop =
   fetch encodeURL decoder OnFetched
 
 
-decoder : Json.Decoder Model
+decoder : Json.Decoder (List Model)
 decoder =
-  Json.object1 Model decodePost
+  Json.list <| Json.object1 Model decodePost

@@ -20,9 +20,13 @@ update action model =
     OnFetched str ->
       case str of
         Just mod ->
-          ( { model | post = mod }
-          , fetchContent mod.filepath
-          )
+          case mod of
+            xs::mod ->
+              ( { model | post = xs }
+              , fetchContent xs.filepath
+              )
+            _ ->
+              (model, Effects.none)
         Nothing ->
           (model, Effects.none)
             

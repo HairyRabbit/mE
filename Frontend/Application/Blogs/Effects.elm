@@ -21,7 +21,7 @@ import Json.Decode  as Json
 
 encodeURL : String
 encodeURL =
-  Http.url apiURL ["order" => "date.desc"]
+  Http.url apiURL ["order" => "datetime.desc"]
 
 
 fetchPosts : Effects Action

@@ -17,9 +17,9 @@ import String          exposing (split, toUpper)
 
 view : List Html
 view =
-  [ navView "/"      "Home IO"  "e"
-  , navView "/blog"  "Note On"  "e"
-  , navView "/about" "About Me" "t"
+  [ navView "/#/"      "Home IO"  "e"
+  , navView "/#/blog"  "Note On"  "e"
+  , navView "/#/about" "About Me" "t"
   ]
 
 
@@ -43,4 +43,4 @@ navView link str char =
 
 bloglinker : String -> List Html -> Html
 bloglinker id content =
-  a [ href <| "/blog/" ++ id ] content
+  a [ href <| "/#/blog/" ++ id ] content

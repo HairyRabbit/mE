@@ -15,5 +15,5 @@ import Post.Model exposing (Post)
 
 type Action
   = NoOp
-  | OnFetched (Maybe Post)
+  | OnFetched (Maybe (List Post))
   | OnContentFetched (Maybe String)

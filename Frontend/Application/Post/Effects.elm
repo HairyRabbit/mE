@@ -18,7 +18,7 @@ import Json.Decode as Json exposing ((:=))
 
 
 apiURL : String
-apiURL = "http://localhost:4000/api/v1/posts/"
+apiURL = "/api/v1/post"
 
 
 fetch : String -> Json.Decoder a -> (Maybe a -> b) -> Effects b

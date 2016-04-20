@@ -30,12 +30,12 @@ encodeURL id =
 
 contentURL : String -> String
 contentURL name =
-  "https://raw.githubusercontent.com/yuffiy/notes/master/" ++ name ++ ".md"
+  "/notes/" ++ name
 
 
 fetchPost : String -> Effects Action
 fetchPost id =
-  fetch (encodeURL id) decodePost OnFetched
+  fetch (encodeURL id) decoder OnFetched
 
 
 fetchContent : String -> Effects Action        
@@ -51,6 +51,6 @@ decodeContent =
   Json.at ["content"] Json.string
 
 
-decoder : Json.Decoder Model
+decoder : Json.Decoder (List Post)
 decoder =
-  Json.object2 Model decodePost decodeContent
+  Json.list decodePost
