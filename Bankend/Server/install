@@ -8,7 +8,7 @@ function main() {
 
     wget https://github.com/begriffs/postgrest/releases/download/v0.3.1.1/postgrest-0.3.1.1-ubuntu-x32.tar.xz
 
-    tar zxvf postgrest*.tar.tz
+    tar xvf postgrest*.tar.tz
 
     ln postgrest /usr/local/bin
 
