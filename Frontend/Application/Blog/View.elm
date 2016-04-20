@@ -34,7 +34,7 @@ view address model =
       header [ class "blog-top" ]
         [ section [ class "blog-header" ]
             [ header [ class "title" ] [ text model.post.title ]
-            , section [ class "date" ] [ text <| dateFmter model.post.date ]
+            , section [ class "date" ] [ text <| dateFmter model.post.datetime ]
             ]
         ]
 

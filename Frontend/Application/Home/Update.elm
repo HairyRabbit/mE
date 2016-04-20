@@ -20,7 +20,11 @@ update action model =
     OnFetched str ->
       case str of
         Just mod ->
-          (mod, Effects.none)
+          case mod of
+            xs::mod ->
+              (xs, Effects.none)
+            _ ->
+              (model, Effects.none)
         Nothing ->
           (model, Effects.none)
     NoOp ->

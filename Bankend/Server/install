@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function main() {
+
+    cd /home/rabbit/
+
+    apt-get install postgresql
+
+    wget https://github.com/begriffs/postgrest/releases/download/v0.3.1.1/postgrest-0.3.1.1-ubuntu-x32.tar.xz
+
+    tar xvf postgrest*.tar.tz
+
+    ln postgrest /usr/local/bin
+
+    cd mE/Bankend
+
+    sudo -u postgres psql -f Migration/init_pg.sql
+
+    psql -d me -f Migration/create_tb.sql
+
+    ./Server/connection
+
+}
+
+main

@@ -51,7 +51,7 @@ leftView model =
         [ header [ class "title" ]
             [ Nav.bloglinker model.post.id [ text model.post.title ]
             ]
-        , p [ class "date" ]  [ text <| dateFmter model.post.date ]
+        , p [ class "date" ]  [ text <| dateFmter model.post.datetime ]
         , p [ class "intro" ] [ text model.post.intro ]
         ]
     ]

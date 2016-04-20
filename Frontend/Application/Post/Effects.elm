@@ -18,7 +18,7 @@ import Json.Decode as Json exposing ((:=))
 
 
 apiURL : String
-apiURL = "http://localhost:4000/api/v1/posts/"
+apiURL = "/api/v1/post"
 
 
 fetch : String -> Json.Decoder a -> (Maybe a -> b) -> Effects b
@@ -40,8 +40,10 @@ fetch url decoder action =
 
 decodePost : Json.Decoder Post
 decodePost =
-  Json.object4 Post
-    ("id"      := Json.string)
-    ("title"   := Json.string)
-    ("date"    := Json.string)
-    ("intro"   := Json.string)
+  Json.object6 Post
+    ("id"       := Json.string)
+    ("title"    := Json.string)
+    ("datetime" := Json.string)
+    ("istop"    := Json.bool)
+    ("intro"    := Json.string)
+    ("filepath" := Json.string)

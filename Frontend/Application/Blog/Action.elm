@@ -9,9 +9,11 @@ module Blog.Action (Action(..)) where
 -}
 
 import Blog.Model exposing (Model)
+import Post.Model exposing (Post)
 
 
 
 type Action
   = NoOp
-  | OnFetched (Maybe Model)
+  | OnFetched (Maybe (List Post))
+  | OnContentFetched (Maybe String)

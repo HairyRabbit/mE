@@ -72,11 +72,13 @@ setting  =
   inlien:   true
   progress: true
   proxy:
-    "/api/*": "http://localhost:9090"
+    "/api/*": "http://localhost:4000/"
   historyApiFallback:
     index: '/'
   stats:
     colors: true
+  headers:
+    "X-Custom-Header": "yes"
 
 
 # Construct dev server.

@@ -26,7 +26,6 @@
     "elm-hot-loader": "^0.2.2",
     "elm-webpack-loader": "^2.0.1",
     "handlebars-webpack-plugin": "0.0.6",
-    "highlight.js": "^9.3.0",
     "postcss-loader": "^0.8.2",
     "postcss-short": "^1.4.0",
     "style-loader": "^0.13.0",
@@ -35,5 +34,7 @@
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "highlight.js": "^9.3.0"
+  }
 }
