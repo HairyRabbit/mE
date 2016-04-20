@@ -4,7 +4,7 @@ BEGIN;
 
 CREATE TABLE post
 (
-  id		uuid		PRIMARY KEY DEFAULT uuid_generate_v1(),
+  id		uuid		PRIMARY KEY DEFAULT uuid_generate_v4(),
   title		varchar(20)   	NOT NULL DEFAULT '',
   datetime	date   		NOT NULL DEFAULT current_date,
   istop		boolean    	NOT NULL DEFAULT false,
