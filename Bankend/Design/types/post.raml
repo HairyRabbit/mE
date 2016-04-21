@@ -1,0 +1,27 @@
+#%RAML 1.0
+title: Post API
+version: v1
+baseUri: https://yufi.me/api/{version}/post
+mediaType: application/json
+types:
+  Post:
+    type: object
+    properties:
+      title: Title
+      datetime: DateTime
+      istop: boolean
+      intro: string
+      filepath: FilePath
+      
+  Title:
+    type: string
+    maxLength: 20
+    
+  DateTime:
+    type: date
+    pattern: "\\d{4}-\\d{2}-\\d{2}"
+    examples: "2016-05-10"
+    
+  FilePath:
+    type: string
+    maxLength: 100
