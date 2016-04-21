@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function main() {
+
+    pgcli -h localhost me yufi -W
+    
+}
+
+main

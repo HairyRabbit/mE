@@ -1,40 +1,44 @@
 {
-  "name": "me",
-  "version": "0.0.1",
-  "description": "Blog project front end.",
-  "main": "index.js",
-  "scripts": {
-    "start": "coffee server.coffee"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yuffiy/mE.git"
-  },
-  "keywords": [
-    "blog"
-  ],
-  "author": "Yufi <yfhj1990@hotmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yuffiy/mE/issues"
-  },
-  "homepage": "https://github.com/yuffiy/mE/FE#readme",
-  "devDependencies": {
-    "coffee-loader": "^0.7.2",
-    "coffee-script": "^1.10.0",
-    "css-loader": "^0.23.1",
-    "elm-hot-loader": "^0.2.2",
-    "elm-webpack-loader": "^2.0.1",
-    "handlebars-webpack-plugin": "0.0.6",
-    "postcss-loader": "^0.8.2",
-    "postcss-short": "^1.4.0",
-    "style-loader": "^0.13.0",
-    "stylus-loader": "^1.5.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
-    "highlight.js": "^9.3.0"
-  }
+    "name": "me",
+    "version": "0.0.1",
+    "description": "Blog project front end.",
+    "main": "index.js",
+    "scripts": {
+	"start": "coffee server.coffee",
+	"build": "coffee builder.coffee"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/yuffiy/mE.git"
+    },
+    "keywords": [
+	"blog"
+    ],
+    "author": "Yufi <yfhj1990@hotmail.com>",
+    "license": "MIT",
+    "bugs": {
+	"url": "https://github.com/yuffiy/mE/issues"
+    },
+    "homepage": "https://github.com/yuffiy/mE/FE#readme",
+    "devDependencies": {
+	"coffee-loader": "^0.7.2",
+	"coffee-script": "^1.10.0",
+	"css-loader": "^0.23.1",
+	"elm-hot-loader": "^0.2.2",
+	"elm-webpack-loader": "^2.0.1",
+	"handlebars-webpack-plugin": "0.0.6",
+	"html-webpack-plugin": "^2.16.0",
+	"jade": "^1.11.0",
+	"jade-loader": "^0.8.0",
+	"postcss-loader": "^0.8.2",
+	"postcss-short": "^1.4.0",
+	"style-loader": "^0.13.0",
+	"stylus-loader": "^1.5.1",
+	"url-loader": "^0.5.7",
+	"webpack": "^2.1.0-beta.5",
+	"webpack-dev-server": "^2.0.0-beta"
+    },
+    "dependencies": {
+	"highlight.js": "^9.3.0"
+    }
 }
