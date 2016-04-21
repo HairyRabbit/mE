@@ -14,6 +14,6 @@ VALUES(
 )
 
 
-END;
+COMMIT;
 $$
 LANGUAGE plpgsql;
