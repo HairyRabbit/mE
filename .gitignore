@@ -9,6 +9,8 @@ Frontend/elm-stuff/
 Frontend/repl-temp-*
 # js
 Frontend/*.js
+# output
+Frontend/Dist/
 # node_modules
 Frontend/node_modules
 # index.html

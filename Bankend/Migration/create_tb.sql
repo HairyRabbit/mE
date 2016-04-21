@@ -14,3 +14,5 @@ CREATE TABLE post
 
 
 COMMIT;
+$$
+LANGUAGE plpgsql;

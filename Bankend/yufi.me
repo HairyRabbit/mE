@@ -1,0 +1,26 @@
+# -*- mode: nginx -*-
+
+#server {
+#    listen [::]:80;
+#    listen 80;
+
+    #server_name www.yufi.me;
+#    server_name localhost;
+
+    #return 301 $scheme://yufi.me$request_uri;
+#}
+
+server {
+
+    listen [::]:80;
+    listen 80;
+
+    #server_name yufi.me;
+    server_name localhost;
+
+    root F:/mE/Frontend/Dist;
+
+    charset utf-8;
+
+    include Server/basic.conf;
+}

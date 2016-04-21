@@ -2,64 +2,8 @@
 # Server
 ###
 
-webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
-path             = require "path"
-HandlebarsPlugin = require "handlebars-webpack-plugin"
-short            = require "postcss-short"
-
-
-# Webpack configs.
-#
-# Loaders:
-#
-# * elm
-# * coffee
-# * style css stylus
-#
-# Plugins
-#
-# * handlebars
-loaders  = [
-  test:    /\.elm$/
-  exclude: [/elm-stuff/, /node_modules/]
-  loader:  "elm-hot!elm-webpack?cwd=./"
-,
-  test:    /\.coffee$/
-  loader:  "coffee"
-,
-  test:    /\.css$/,
-  loader:  "style!css"
-,
-  test:    /\.otf$/,
-  loader:  "url"
-,
-  test:    /\.styl$/,
-  exclude: [/node_modules/]
-  loader:  "style!css!postcss!stylus"
-]
-plugins  = [
-  new HandlebarsPlugin
-    entry:      "./index.hbs"
-    output:     "./index.html"
-    partials:   []
-]
-roots    = [
-  path.resolve('./node_modules/highlight.js/lib')
-]
-config   =
-  entry:
-    app:        "./boot"
-  output:
-    path:       path.resolve __dirname, 'dist/'
-    filename:   "[name].js"
-  module:
-    loaders:    loaders
-  postcss:      [short()]
-  plugins:      plugins
-  resolve:
-    extensions: ["", ".js", ".elm", ".coffee", ".styl"]
-    root:       roots
+compiler         = require "./Builder/compiler"
 
 # WebpackDevServer configs
 #
@@ -81,8 +25,6 @@ setting  =
     "X-Custom-Header": "yes"
 
 
-# Construct dev server.
-compiler = webpack config
 server   = new WebpackDevServer compiler, setting
 
 
