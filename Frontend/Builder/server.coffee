@@ -4,7 +4,7 @@
 
 webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
-compiler         = require "./Builder/compiler"
+compiler         = require "./compiler"
 
 # WebpackDevServer configs
 #
@@ -13,17 +13,6 @@ compiler         = require "./Builder/compiler"
 # * hot reload
 # * history api fall back
 #
-config =
-  entry:
-    app: "./boot"
-    vendor: ["highlight.js/lib/index.js"]
-  output:
-    path: './Dist'
-    filename: "[name].js"
-  module: loaders: loaders
-  postcss: postcss
-  plugins: plugins
-  resolve: resolve
 setting  =
   hot: true
   inlien: true

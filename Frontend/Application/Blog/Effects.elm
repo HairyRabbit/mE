@@ -30,7 +30,7 @@ encodeURL id =
 
 contentURL : String -> String
 contentURL name =
-  "/notes/" ++ name
+  "http://www.yufi.me/notes/" ++ name
 
 
 fetchPost : String -> Effects Action
