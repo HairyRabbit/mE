@@ -9,12 +9,12 @@ plugins          = require "./plugins"
 resolve          = require "./resolve"
 postcss          = require "./postcss"
 
-config   =
+config =
   entry:
-    app:      "./boot"
-    vendor:   ["highlight.js/lib/index.js"]
+    app: "./boot"
+    vendor: ["highlight.js/lib/index.js"]
   output:
-    path:     './Dist'
+    path: './Dist'
     filename: "[name].js"
   module: loaders: loaders
   postcss: postcss

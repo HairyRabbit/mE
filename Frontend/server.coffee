@@ -2,6 +2,7 @@
 # Server
 ###
 
+webpack          = require "webpack"
 WebpackDevServer = require "webpack-dev-server"
 compiler         = require "./Builder/compiler"
 
@@ -11,9 +12,21 @@ compiler         = require "./Builder/compiler"
 #
 # * hot reload
 # * history api fall back
+#
+config =
+  entry:
+    app: "./boot"
+    vendor: ["highlight.js/lib/index.js"]
+  output:
+    path: './Dist'
+    filename: "[name].js"
+  module: loaders: loaders
+  postcss: postcss
+  plugins: plugins
+  resolve: resolve
 setting  =
-  hot:      true
-  inlien:   true
+  hot: true
+  inlien: true
   progress: true
   proxy:
     "/api/*": "http://localhost:4000/"
@@ -24,8 +37,7 @@ setting  =
   headers:
     "X-Custom-Header": "yes"
 
-
-server   = new WebpackDevServer compiler, setting
+server = new WebpackDevServer compiler, setting
 
 
 # Server setting.
