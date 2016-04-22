@@ -1,0 +1,17 @@
+* Changelog
+
+** 0.1.0-beta.2
+
++ frontend
+  + 增加空数据模板
+  + 增加
+
+** 0.1.0-beta.1
+
++ frontend
+  + 基础设施webpack2建设完成
+  + 样式表架构完成
++ bankend
+  + nginx 部署完成
+  + postgreSQL 部署完成
+  + postgREST 搭建完成
