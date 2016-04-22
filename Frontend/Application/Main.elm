@@ -1,17 +1,24 @@
 module Main (..) where
 
+{-| Bootstrap
+
+
+
+-}
+
 import Html    exposing (..)
 import Effects exposing (Effects, Never)
 import Task
 import StartApp
 
---
+
 import App.Init     exposing (init)
 import App.Input    exposing (inputs)
 import App.Update   exposing (update)
 import App.View     exposing (view)
 import App.Model    exposing (Model)
 import Routing.Port as Routing
+import Routing.Model
 
 app : StartApp.App Model
 app =
@@ -35,3 +42,7 @@ port routeRunTask : Task.Task () ()
 port routeRunTask =
   Routing.run
 
+
+port routing : Signal String
+port routing =
+  Signal.map (.routing >> toString) app.model

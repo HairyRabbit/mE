@@ -4,6 +4,12 @@ module Routing.Update (update) where
 
 路由动作，定义了路由到时的一些逻辑，比如页面加载时请求数据
 
+@todo
+将 home 和 blogs 的请求并入到 App.Init 中
+
+@todo
+blog/:id 的元信息不再发送请求，从 model.blogs.posts 中取
+
 -}
 
 import Effects        exposing (Effects)
@@ -17,7 +23,9 @@ import Home.Effects   exposing (fetchTop)
 import Blog.Action    as Blog
 import Blogs.Action   as Blogs
 import Home.Action    as Home
+import App.Model      as App
 
+import Debug exposing (log)
 
 
 type alias ParentsActions =
@@ -27,15 +35,15 @@ type alias ParentsActions =
   }
 
 
-noneParentsActions : ParentsActions
-noneParentsActions =
+initParentsActions : ParentsActions
+initParentsActions =
   { blog  = Effects.none
   , blogs = Effects.none
   , home  = Effects.none
   }
 
 
-update : Action -> Model -> (Model, Effects Action, ParentsActions)
+update : Action -> App.Model -> (Model, Effects Action, ParentsActions)
 update action model =
   case action of
     NavigateTo path ->
@@ -43,25 +51,41 @@ update action model =
         fx =
           Effects.map HopAction <| navigateTo routerConfig path
       in
-        (model, fx, noneParentsActions)
+        (model.routing, fx, initParentsActions)
 
     ApplyRoute (route, location) ->
       let
         fx =
           case route of
             BlogRoute id ->
-              { noneParentsActions | blog  = fetchPost id }
+              case model.blog.post.id of
+                "" ->
+                  { initParentsActions | blog  = fetchPost id }
+                _ ->
+                  initParentsActions
+                    
             BlogsRoute ->
-              { noneParentsActions | blogs = fetchPosts }
+              case model.blogs.posts of
+                [] ->
+                  { initParentsActions | blogs = fetchPosts }
+                _ ->
+                  initParentsActions
+                    
             HomeRoute ->
-              { noneParentsActions | home  = fetchTop }
+              case model.home.post.id of
+                "" ->
+                  { initParentsActions | home  = fetchTop }
+                _ ->
+                  initParentsActions
+              
             _ ->
-              noneParentsActions
+              initParentsActions
 
-        m = { model | route = route, location = location
-            }
+
+        m' = model.routing
+        m = { m' | route = route, location = location }
       in
         (m, Effects.none, fx)
 
     HopAction () ->
-      (model, Effects.none, noneParentsActions)
+      (model.routing, Effects.none, initParentsActions)

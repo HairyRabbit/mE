@@ -37,7 +37,7 @@ navView link str char =
         |> List.map dom
         |> section [ class "nav" ]
   in
-    section []
+    section [ class "nav-item" ]
       [ a [ href link] [ content ]
       ]
 

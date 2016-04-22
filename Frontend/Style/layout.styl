@@ -119,12 +119,15 @@
 
 .justme
   width 60%
+  opacity 0
 
 
 
 // logo.
 
 .logo
+  transform translate3d(0, -1rem, 0)
+  opacity 0
   @extend $flex
 
 .logo-left
@@ -145,3 +148,7 @@
 
 .nav
   margin 0.5rem 0
+
+.nav-item
+  transform translate3d(-1rem, 0, 0)
+  opacity 0

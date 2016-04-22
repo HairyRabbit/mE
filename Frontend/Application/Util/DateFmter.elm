@@ -17,7 +17,7 @@ dateFmter date =
       in
         mm ++ ", " ++ dd ++ " " ++ yy
     Err e ->
-      toString e
+      ""
 
 dateFmter2 : String -> String
 dateFmter2 date =

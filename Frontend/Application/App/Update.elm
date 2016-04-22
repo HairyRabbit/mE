@@ -21,7 +21,7 @@ update action model =
   case action of
     RoutingAction act ->
       let
-        (m, fx, pfx) = Routing.update act model.routing
+        (m, fx, pfx) = Routing.update act model
 
         fx' =
           Effects.batch

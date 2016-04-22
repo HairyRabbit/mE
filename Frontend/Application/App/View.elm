@@ -6,14 +6,15 @@ module App.View (view) where
 
 -}
 
-import Html           exposing (..)
-import App.Action     exposing (Action(..))
-import App.Model      exposing (Model)
-import Routing.Routes as Routing
-import Blog.View      as Blog
-import Blogs.View     as Blogs
-import Home.View      as Home
-import NotFound.View  as NotFound
+import Html            exposing (..)
+import Html.Attributes exposing (..)
+import App.Action      exposing (Action(..))
+import App.Model       exposing (Model)
+import Routing.Routes  as Routing
+import Blog.View       as Blog
+import Blogs.View      as Blogs
+import Home.View       as Home
+import NotFound.View   as NotFound
 
 
 
@@ -34,4 +35,4 @@ view address model =
         _ ->
           NotFound.view
   in
-    div [] [ view ]
+    div [ class "container" ] [ view ]
