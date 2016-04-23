@@ -32,4 +32,4 @@ initAnimate = ->
   node.classList.add "anim"
   node.classList.add "anim-home"
 
-elm.ports.routing.subscribe -> setTimeout initAnimate
+elm.ports.routing.subscribe -> setTimeout initAnimate, 500

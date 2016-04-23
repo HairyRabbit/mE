@@ -103,6 +103,99 @@
   @extend $dib, $bdc, $cur
 
 
+// about.
+
+.about
+  size 64rem 100%
+  overflow-y auto
+  @extend $posr
+
+.about-tr
+  position absolute 0 0 \* \*
+
+.about-header     
+.about-nav
+  @extend $tar
+
+.about-nav
+  padding 0 1rem 0 0
+  margin 1rem 0 0 0
+
+.about-me
+  padding 10rem 5rem 25rem 5rem
+  @extend $flex, $posr
+
+.about-prop
+  margin 1rem 0 0 1rem
+  @extend $fzl
+
+.about-div
+  color alpha(black, 0.32)
+  margin 0 1rem
+
+.about-age
+  color alpha(black, 0.56)
+  top -0.15rem
+  @extend $fzs, $posr
+
+.about-sex
+  color alpha(red, 0.56)
+  &:before
+    content: ""
+    size 1rem
+    border 2px solid
+    top -0.4rem
+    left 1.1825rem
+    @extend $bdc, $dib, $posr  
+  &:after
+    content: "+"
+    size 1rem
+    left -0.01rem
+    top 0.5rem
+    @extend $dib, $posr
+
+.about-tree
+  position absolute \* 0 0 \*
+
+.about-friends
+  margin 5rem 0 0 0
+
+.about-title
+  @extend $fzl
+
+
+// friend
+  
+.friend
+  padding 2rem
+  @extend $flex
+
+.friend-left
+  flex 0 0 8rem
+  @extend $flex, $flexmc
+
+.friend-right
+  padding 1rem
+  @extend $flexi
+
+.friend-avatar
+  size 6rem
+  border 3px solid alpha(black, 0.16)
+  overflow hidden
+  @extend $bdc
+
+.friend-name
+  margin 0 0 1rem 0
+  @extend $fzl
+
+.friend-link
+  margin: -0.5rem 0 1rem 0
+  color alpha(black, 0.56)
+  @extend $fzs
+
+.friend-intro
+  color alpha(black, 0.72)
+
 
 // notfound.
 
@@ -152,3 +245,10 @@
 .nav-item
   transform translate3d(-1rem, 0, 0)
   opacity 0
+
+
+// photo.
+
+.photo
+  size 10rem
+  border 0.4rem solid alpha(black, 0.08)

@@ -14,6 +14,7 @@ import Routing.Routes  as Routing
 import Blog.View       as Blog
 import Blogs.View      as Blogs
 import Home.View       as Home
+import About.View      as About
 import NotFound.View   as NotFound
 
 
@@ -31,6 +32,9 @@ view address model =
 
         Routing.HomeRoute ->
           Home.view (Signal.forwardTo address HomeAction) model.home
+
+        Routing.AboutRoute ->
+          About.view
 
         _ ->
           NotFound.view

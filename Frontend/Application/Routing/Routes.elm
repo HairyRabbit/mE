@@ -7,6 +7,7 @@ module Routing.Routes (Route(..), routerConfig, router) where
 * HomeRoute     首页
 * BlogsRoute    文章列表
 * BlogRoute     文章
+* AboutRoute    关于我
 * NotFoundRoute 404页面
 
 @todos
@@ -25,6 +26,7 @@ type Route
   | BlogRoute String
   | BlogsRoute
   | HomeRoute
+  | AboutRoute
 
 
 blogMatcher : PathMatcher Route
@@ -41,12 +43,17 @@ homeMatcher : PathMatcher Route
 homeMatcher =
   match1 HomeRoute ""
 
+aboutMatcher : PathMatcher Route
+aboutMatcher =
+  match1 AboutRoute "/about"
+
 
 matchers : List (PathMatcher Route)
 matchers =
   [ blogMatcher
   , blogsMatcher
   , homeMatcher
+  , aboutMatcher
   ]
 
 

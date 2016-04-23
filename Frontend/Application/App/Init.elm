@@ -2,7 +2,7 @@ module App.Init (init) where
 
 {-| Init
 
-暂时没什么暖用
+初始化请求博客文章列表
 
 -}
 
