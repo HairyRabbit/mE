@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="32"
+   height="32"
+   id="svg3695">
+  <defs
+     id="defs3697" />
+  <metadata
+     id="metadata3700">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <g
+       transform="matrix(0.23647015,0,0,0.23647015,-141.25358,-2.5725084)"
+       id="g522">
+      <circle
+         cx="666.06299"
+         cy="74.956001"
+         r="30.030001"
+         id="circle524"
+         style="fill:#f6a82b" />
+      <g
+         id="g526">
+        <circle
+           cx="700.25598"
+           cy="77.963997"
+           r="30.030001"
+           id="circle528"
+           style="fill:#f6a82b;stroke:#ffffff" />
+        <circle
+           cx="693.25403"
+           cy="78.945999"
+           r="23.030001"
+           id="circle530"
+           style="fill:#d3862a" />
+      </g>
+      <g
+         id="g532">
+        <circle
+           cx="672.84198"
+           cy="41.741001"
+           r="30.030001"
+           id="circle534"
+           style="fill:#e2af64;stroke:#ffffff" />
+        <circle
+           cx="669.22998"
+           cy="49.129002"
+           r="23.030001"
+           id="circle536"
+           style="fill:#d3862a" />
+      </g>
+      <g
+         id="g538">
+        <circle
+           cx="630.35797"
+           cy="102.555"
+           r="30.030001"
+           id="circle540"
+           style="fill:#f6a82b;stroke:#ffffff" />
+        <circle
+           cx="635.255"
+           cy="96.081001"
+           r="23.030001"
+           id="circle542"
+           style="fill:#d3862a" />
+      </g>
+      <g
+         id="g544">
+        <circle
+           cx="633.44397"
+           cy="56.165001"
+           r="30.030001"
+           id="circle546"
+           style="fill:#e89112;stroke:#ffffff" />
+        <circle
+           cx="643.974"
+           cy="63.573002"
+           r="23.030001"
+           id="circle548"
+           style="fill:#d3862a" />
+      </g>
+      <g
+         id="g550">
+        <circle
+           cx="671.67999"
+           cy="115.011"
+           r="30.031"
+           id="circle552"
+           style="fill:#e89112;stroke:#ffffff" />
+        <circle
+           cx="669.98297"
+           cy="108.486"
+           r="23.030001"
+           id="circle554"
+           style="fill:#d3862a" />
+      </g>
+      <circle
+         cx="661.92603"
+         cy="79.016998"
+         r="24.309999"
+         id="circle556"
+         style="fill:#f8e823" />
+      <circle
+         cx="662.92603"
+         cy="79.016998"
+         r="19.766001"
+         id="circle558"
+         style="fill:#fff5b2" />
+    </g>
+  </g>
+</svg>
