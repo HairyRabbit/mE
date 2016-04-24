@@ -106,12 +106,19 @@
 // about.
 
 .about
-  size 64rem 100%
+  size 100%
   overflow-y auto
+  
+
+.about-main
+  width 64rem
+  margin 0 auto
+  padding 3rem 0
   @extend $posr
 
 .about-tr
-  position absolute 0 0 \* \*
+  position absolute 3rem 0 \* \*
+  z-index 1
 
 .about-header     
 .about-nav
@@ -122,12 +129,20 @@
   margin 1rem 0 0 0
 
 .about-me
-  padding 10rem 5rem 25rem 5rem
+  padding 10rem 2rem 30rem 2rem
   @extend $flex, $posr
 
-.about-prop
-  margin 1rem 0 0 1rem
-  @extend $fzl
+.about-info
+.about-job
+.about-langs
+  margin 1rem 0 1rem 1rem
+  color alpha(black, 0.72)
+
+.about-info
+  @extend $fzl  
+
+.about-langs
+  padding 1rem 0 0 1rem
 
 .about-div
   color alpha(black, 0.32)
@@ -157,44 +172,104 @@
 .about-tree
   position absolute \* 0 0 \*
 
-.about-friends
+.about-props
+  position absolute \* \* 5rem 3rem
+
+.about-section
   margin 5rem 0 0 0
 
 .about-title
+  color alpha(black, 0.72)
+  margin 0 0 1rem 0
   @extend $fzl
 
 
-// friend
+// media
   
-.friend
-  padding 2rem
+.media
+  padding 2rem 17rem 0 2rem
   @extend $flex
 
-.friend-left
+.media-left
   flex 0 0 8rem
   @extend $flex, $flexmc
 
-.friend-right
+.media-right
   padding 1rem
   @extend $flexi
 
-.friend-avatar
+.media-avatar
   size 6rem
   border 3px solid alpha(black, 0.16)
   overflow hidden
   @extend $bdc
 
-.friend-name
-  margin 0 0 1rem 0
-  @extend $fzl
+.media-link
+  margin: -1.4rem 0 1rem 0
 
-.friend-link
-  margin: -0.5rem 0 1rem 0
+
+// langs.
+  
+.langs
+  @extend $flex, $flexac
+
+.lang
+  margin 0 0.25rem
+  @exnted $dib
+  
+  img
+    max-width 3rem
+    max-height 3rem
+
+
+// props.
+
+.props-val
+  margin 1rem
+  color alpha(black, 0.72)
+
+.props
+  font-size 0.8rem
+  margin 1rem
+  color alpha(black, 0.56)
+
+  &-1
+    padding 0 0 0 1rem
+  &-2
+    padding 0 0 0 2rem
+  &-3
+    padding 0 0 0 3rem
+
+
+// block.
+
+.block
+  width 25%
+  padding 2rem
+  text-align center
+  box-sizing border-box
+  @extend $dib
+
+
+.block-pic
+  overflow hidden
+
+  img
+    size 8rem
+    border 3px solid alpha(black, 0.16)
+    @extend $bdc
+
+.block-title
+.block-content
+  margin 1rem 0
+
+.block-title
   color alpha(black, 0.56)
   @extend $fzs
 
-.friend-intro
+.block-content
   color alpha(black, 0.72)
+      
 
 
 // notfound.
