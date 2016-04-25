@@ -173,7 +173,7 @@
   position absolute \* 0 0 \*
 
 .about-props
-  position absolute \* \* 5rem 3rem
+  position absolute \* \* 3rem 3rem
 
 .about-section
   margin 5rem 0 0 0
@@ -216,15 +216,32 @@
 .lang
   margin 0 0.25rem
   @exnted $dib
+  @extend $posr
   
   img
-    max-width 3rem
-    max-height 3rem
+    max-width 2rem
+    max-height 2rem
+
+.lang-tip
+  transition opacity 0.2s ease-in-out 0s
+  position absolute \* \* -1rem 100%
+  line-height 1.4
+  white-space nowrap
+  background alpha(black, 0.72)
+  color white
+  border-radius 0.25rem
+  padding 0.25rem 0.5rem
+  z-index 1
+  @extend $fzs
+  opacity 0
+  .lang:hover &
+    opacity 1
 
 
 // props.
 
 .props-val
+  font-size 1rem
   margin 1rem
   color alpha(black, 0.72)
 
@@ -237,8 +254,6 @@
     padding 0 0 0 1rem
   &-2
     padding 0 0 0 2rem
-  &-3
-    padding 0 0 0 3rem
 
 
 // block.

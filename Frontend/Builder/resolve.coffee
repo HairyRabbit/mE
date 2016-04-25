@@ -4,6 +4,7 @@ module.exports =
   extensions: [
     "",
     ".js",
+    ".json",
     ".coffee",
     ".elm",
     ".styl"

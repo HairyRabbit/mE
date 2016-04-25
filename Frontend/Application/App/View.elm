@@ -34,7 +34,7 @@ view address model =
           Home.view (Signal.forwardTo address HomeAction) model.home
 
         Routing.AboutRoute ->
-          About.view
+          About.view (Signal.forwardTo address AboutAction) model.about
 
         _ ->
           NotFound.view

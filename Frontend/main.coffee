@@ -23,13 +23,17 @@ hljs.initHighlightingOnLoad 0
 
 
 # Bootstrap App.
-elm = Elm.fullscreen Elm.Main
+profile = require "./profile"
+ports =
+  contacts: profile.contacts
+  props: profile.props
+  
+elm = Elm.fullscreen Elm.Main, ports
 
 
 # Page routing animation.
 initAnimate = ->
   node = document.querySelector "main"
   node.classList.add "anim"
-  node.classList.add "anim-home"
 
 elm.ports.routing.subscribe -> setTimeout initAnimate, 500

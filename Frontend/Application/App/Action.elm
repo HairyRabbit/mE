@@ -10,6 +10,7 @@ import Routing.Action as Routing
 import Blog.Action    as Blog
 import Blogs.Action   as Blogs
 import Home.Action    as Home
+import About.Action    as About
 
 
 
@@ -19,3 +20,4 @@ type Action
   | BlogAction    Blog.Action
   | BlogsAction   Blogs.Action
   | HomeAction    Home.Action
+  | AboutAction   About.Action

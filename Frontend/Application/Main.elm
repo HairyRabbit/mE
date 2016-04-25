@@ -17,13 +17,19 @@ import App.Input    exposing (inputs)
 import App.Update   exposing (update)
 import App.View     exposing (view)
 import App.Model    exposing (Model)
+import App.Port     exposing (Ports)
 import Routing.Port as Routing
 import Routing.Model
+import Profile.Model exposing (Contact, Prop)
+
+ports : Ports
+ports =
+  Ports contacts props
 
 app : StartApp.App Model
 app =
   StartApp.start
-    { init   = init
+    { init   = init ports
     , inputs = inputs
     , update = update
     , view   = view
@@ -46,3 +52,7 @@ port routeRunTask =
 port routing : Signal String
 port routing =
   Signal.map (.routing >> toString) app.model
+
+
+port contacts : List Contact
+port props : List Prop

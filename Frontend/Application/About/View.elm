@@ -6,18 +6,24 @@ import Html            exposing (..)
 import Html.Attributes exposing (..)
 import Util.Class      exposing (class2)
 import Util.Image      exposing (image)
+import About.Model exposing (Model)
+import About.Action exposing (Action(..))
 import Logo.View       as Logo
 import Nav.View        as Nav
 
+import Icon.View as Icon
+import Icon.Model exposing (nodejs, javascript, es6)
+import Profile.Model exposing (Contact, Prop)
 
+import Debug
 
-view : Html
-view =
+view : Signal.Address Action -> Model -> Html
+view address model =
   main' [ class "about" ]
     [ section [ class "about-main" ]
         [ topRightView
-        , meView
-        , findmeView
+        , meView model.props
+        , findmeView model.contacts
         , friendsView
         ]
     ]
@@ -30,17 +36,23 @@ topRightView =
     ]
 
 
-meView : Html
-meView =
+meView : List Prop -> Html
+meView props =
   section [ class "about-me" ]
     [ photoView
     , div []
         [ propView
         , jobView
-        , section [ class "about-langs" ] [ langsView ]
+        , section [ class "about-langs" ]
+            [ Icon.view
+                [ nodejs
+                , javascript
+                , es6
+                ]
+            ]
         ]
     , treeView
-    , propsView
+    , propsView props
     ]
       
 photoPath : String
@@ -82,21 +94,23 @@ treeView =
     ]
 
 
-propsView : Html
-propsView =
-  section [ class "about-props" ]
-    [ div [ class2 "props" "props-1" ] [ text "props:" ]
-    , div [ class2 "props" "props-2" ] [ text "food:" ]
-    , div [ class2 "props-val" "props-3" ] [ text "最爱吃肉" ]
-    , div [ class2 "props-val" "props-3" ] [ text "会煮咖啡" ]
-    , div [ class2 "props-val" "props-3" ] [ text "烹饪满级" ]
-    , div [ class2 "props" "props-2" ] [ text "music:" ]
-    , div [ class2 "props-val" "props-3" ] [ text "轻音乐" ]
-    , div [ class2 "props-val" "props-3" ] [ text "偶尔电音" ]
-    , div [ class2 "props" "props-2" ] [ text "character:" ]
-    , div [ class2 "props-val" "props-3" ] [ text "爱着急" ]
-    , div [ class2 "props-val" "props-3" ] [ text "常常闹别扭" ]
-    ]
+propsView : List Prop -> Html
+propsView props =
+  let
+    prop' prop =
+      div [ class2 "props" "props-2" ]
+        [ span [] [ text <| prop.name ++ ":" ]
+        , section [] <| List.map prop'' prop.value
+        ]
+
+    prop'' value =
+      div [ class "props-val"]
+        [ text value ]
+
+    title =
+      [div [ class2 "props" "props-1" ] [ text "props:" ]]
+  in
+    section [ class "about-props" ] <| title ++ List.map prop' props
 
 
 headerView : String -> Html
@@ -114,7 +128,6 @@ friendsView =
         , li [] [ userView ]
         ]
     ]
-    
 
 
 userView : Html
@@ -145,7 +158,6 @@ langsView =
   section [ class "langs" ]
     [ div [ class "lang" ] [ image "./Image/Lang/nodejs.png" ]
     , div [ class "lang" ] [ image "./Image/Lang/react.svg" ]
-    , div [ class "lang" ] [ image "./Image/Lang/java.svg" ]
     ]
 
 langView : String -> Html
@@ -154,24 +166,23 @@ langView str =
   
 
 
-findmeView : Html
-findmeView =
-  section [ class "about-section" ]
-    [ headerView "Find me ..."
-    , ul [ class "list-rs" ]
-        [ li [ class "block" ] [ blockView photoPath "QQ number" "344292172" ]
-        , li [ class "block" ] [ blockView photoPath "GitHub" "Rabbit" ]
-        , li [ class "block" ] [ blockView photoPath "Mail" "yfhj1990@hotmail" ]
-        , li [ class "block" ] [ blockView photoPath "QQ group" "Elm" ]
-        ]
-    ]
+findmeView : List Contact -> Html
+findmeView contacts =
+  let
+    blockItem contact =
+      li [ class "block" ] [ blockView contact.path contact.href contact.name contact.content ]
+  in
+    section [ class "about-section" ]
+      [ headerView "Find me ..."
+      , ul [ class "list-rs" ] <| List.map blockItem contacts
+      ]
 
 
-blockView : String -> String -> String -> Html
-blockView path str1 str2 =
+blockView : String -> String -> String -> String -> Html
+blockView path url str1 str2 =
   a
     [ class "block-con"
-    , href "#"
+    , href url
     ]
     [ section [ class "block-pic" ]
         [ image path ]
