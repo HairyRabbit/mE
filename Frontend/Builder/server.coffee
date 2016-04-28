@@ -26,7 +26,7 @@ setting  =
   headers:
     "X-Custom-Header": "yes"
 
-server = new WebpackDevServer compiler, setting
+server = new WebpackDevServer compiler "development", setting
 
 
 # Server setting.

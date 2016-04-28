@@ -12,7 +12,7 @@ plugins = require "./plugins"
 resolve = require "./resolve"
 postcss = require "./postcss"
 
-config =
+config = (env) ->
   entry:
     app: "./main"
     vendor: ["highlight.js/lib/index.js"]
@@ -21,8 +21,9 @@ config =
     filename: "[name].js"
   module: loaders: loaders
   postcss: postcss
-  plugins: plugins
+  plugins: plugins env
   resolve: resolve
+  cache: true
 
 
-module.exports = webpack config
+module.exports = (env) -> webpack config env

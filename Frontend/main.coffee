@@ -1,5 +1,7 @@
 ###
-Bootstrapper.
+
+Application bootstrapper.
+
 ###
 
 require "./main.styl"
@@ -27,7 +29,7 @@ profile = require "./profile"
 ports =
   contacts: profile.contacts
   props: profile.props
-  
+
 elm = Elm.fullscreen Elm.Main, ports
 
 
@@ -36,4 +38,4 @@ initAnimate = ->
   node = document.querySelector "main"
   node.classList.add "anim"
 
-elm.ports.routing.subscribe -> setTimeout initAnimate, 500
+elm.ports.routing.subscribe -> setTimeout initAnimate, 300

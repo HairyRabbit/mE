@@ -1,4 +1,13 @@
+###
+
+Build sourse.
+
+###
+
 compiler = require "./compiler"
 
-compiler.run (err, stats) -> console.log "Ok! Complete."
-        
+done = -> console.log "ok! complete."
+
+
+compiler "production"
+  .run (err, stats) -> if err then throw err else done()

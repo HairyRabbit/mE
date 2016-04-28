@@ -1,0 +1,7 @@
+* Application
+
+  1. install nodejs
+  2. install elm
+  3. run `npm install`
+  4. run `elm package install`
+  5. run `npm run start`
