@@ -12,19 +12,19 @@ import Task
 import StartApp
 
 
-import App.Init     exposing (init)
-import App.Input    exposing (inputs)
-import App.Update   exposing (update)
-import App.View     exposing (view)
-import App.Model    exposing (Model)
-import App.Port     exposing (Ports)
-import Routing.Port as Routing
-import Routing.Model
-import Profile.Model exposing (Contact, Prop)
+import App.Init      exposing (init)
+import App.Input     exposing (inputs)
+import App.Update    exposing (update)
+import App.View      exposing (view)
+import App.Model     exposing (Model)
+import App.Port      exposing (Ports)
+import Profile.Model exposing (Contact, Prop, Me)
+import Icon.Model    exposing (Lang)
+import Routing.Port  as Routing
 
 ports : Ports
 ports =
-  Ports contacts props
+  Ports contacts props langs me
 
 app : StartApp.App Model
 app =
@@ -56,3 +56,5 @@ port routing =
 
 port contacts : List Contact
 port props : List Prop
+port langs : List Lang
+port me : Me

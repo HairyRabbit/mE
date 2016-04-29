@@ -1,1 +1,13 @@
-# 
+# Icons
+
+[[lang]]
+  name = "NodeJs"
+  href = "https://nodejs.org"
+
+[[lang]]
+  name = "JavaScript"
+  href = "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript"
+
+[[lang]]
+  name = "ES6"
+  href = "http://babeljs.io/docs/learn-es2015"

@@ -26,12 +26,15 @@ hljs.initHighlightingOnLoad 0
 
 # Bootstrap App.
 profile = require "./profile"
-ports =
+icon    = require "./icon"
+ports   =
   contacts: profile.contacts
-  props: profile.props
+  props:    profile.props
+  me:       profile.me
+  langs:    icon.lang
 
 elm = Elm.fullscreen Elm.Main, ports
-
+console.log profile
 
 # Page routing animation.
 initAnimate = ->

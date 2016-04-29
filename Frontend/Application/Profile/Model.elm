@@ -12,6 +12,19 @@ type alias Contact =
 
                    
 type alias Prop =
-  { name : String
+  { name  : String
   , value : List String
+  }
+
+
+type alias Me =
+  { avatar : String
+  , langs  : List String
+  }
+
+
+initMe : Me
+initMe =
+  { avatar = ""
+  , langs  = []
   }

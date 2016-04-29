@@ -1,6 +1,23 @@
 # Profile.
 
 
+# About me
+[me]
+  avatar = "./Image/photo.jpg"
+  langs  = [
+    "NodeJs",
+    "JavaScript",
+    "ES6",
+    "Elm"
+  ]
+  intros = [
+    "Frontend Developer",
+    "Emacs player",
+    "I like Julia",
+    "不如 D"
+  ]
+
+
 # QQ
 [[contacts]]
   name    = "QQ number"

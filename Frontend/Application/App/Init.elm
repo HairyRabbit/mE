@@ -12,12 +12,11 @@ import App.Model  exposing (Model, initModel)
 import App.Port  exposing (Ports)
 
 import About.Init as About
-import Profile.Model exposing (Contact)
 
 init : Ports -> (Model, Effects Action)
 init ports =
   let
     m =
-      { initModel | about = About.init ports.contacts ports.props }
+      { initModel | about = About.init ports.contacts ports.props ports.langs ports.me }
   in
     (m, Effects.none)

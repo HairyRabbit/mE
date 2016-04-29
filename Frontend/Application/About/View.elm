@@ -14,6 +14,7 @@ import Nav.View        as Nav
 import Icon.View as Icon
 import Icon.Model exposing (nodejs, javascript, es6)
 import Profile.Model exposing (Contact, Prop)
+import Icon.Model exposing (Lang)
 
 import Debug
 
@@ -22,7 +23,7 @@ view address model =
   main' [ class "about" ]
     [ section [ class "about-main" ]
         [ topRightView
-        , meView model.props
+        , meView model
         , findmeView model.contacts
         -- , friendsView
         ]
@@ -36,34 +37,24 @@ topRightView =
     ]
 
 
-meView : List Prop -> Html
-meView props =
+meView : Model -> Html
+meView model =
   section [ class "about-me" ]
-    [ photoView
+    [ photoView model.me.avatar
     , div []
         [ propView
         , jobView
-        , section [ class "about-langs" ]
-            [ Icon.view
-                [ nodejs
-                , javascript
-                , es6
-                ]
-            ]
+        , section [ class "about-langs" ] [ Icon.langsView model.langs model.me.langs ]
         ]
     , treeView
-    , propsView props
+    , propsView model.props
     ]
-      
-photoPath : String
-photoPath =
-  "./Image/photo.jpg"
-    
 
-photoView : Html
-photoView =
+
+photoView : String -> Html
+photoView path =
   section [ class2 "none-select" "blog-photo" ]
-    [ section [ class "photo" ] [ image photoPath ]
+    [ section [ class "photo" ] [ image path ]
     ]
 
 
@@ -118,7 +109,7 @@ headerView str =
   header [ class "about-title" ]
     [ text str ]
 
-    
+{--    
 friendsView : Html
 friendsView =
   section [ class "about-section" ]
@@ -152,18 +143,7 @@ userView =
         ]
     ]
 
-
-langsView : Html
-langsView =
-  section [ class "langs" ]
-    [ div [ class "lang" ] [ image "./Image/Lang/nodejs.png" ]
-    , div [ class "lang" ] [ image "./Image/Lang/react.svg" ]
-    ]
-
-langView : String -> Html
-langView str =
-  div [ class "lang" ] [ image str ]
-  
+--}
 
 
 findmeView : List Contact -> Html
@@ -191,3 +171,4 @@ blockView path url str1 str2 =
     , section [ class "block-content" ]
         [ text str2 ]
     ]
+

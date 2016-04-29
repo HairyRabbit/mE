@@ -15,6 +15,12 @@ type alias Icon =
   }
 
 
+type alias Lang =
+  { name : String
+  , href : String
+  }
+
+
 nodejs : Icon
 nodejs =
   { name = "nodejs"
