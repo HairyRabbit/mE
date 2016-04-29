@@ -15,7 +15,6 @@ import Home.Model    as Home
 import About.Model   as About
 
 
-
 type alias Model =
   { routing : Routing.Model
   , blog    : Blog.Model

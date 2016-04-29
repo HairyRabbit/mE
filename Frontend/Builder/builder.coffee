@@ -5,7 +5,6 @@ Build sourse.
 ###
 
 compiler = require "./compiler"
-
 done = -> console.log "ok! complete."
 
 

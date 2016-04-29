@@ -24,7 +24,7 @@ view address model =
         [ topRightView
         , meView model.props
         , findmeView model.contacts
-        , friendsView
+        -- , friendsView
         ]
     ]
 

@@ -1,3 +1,9 @@
+###
+
+Webpack loaders.
+
+###
+
 module.exports = [
   test: /\.elm$/
   exclude: [/elm-stuff/, /node_modules/]
@@ -21,4 +27,7 @@ module.exports = [
 ,
   test: /\.json$/
   loader: "json"
+,
+  test: /\.toml$/
+  loader: "toml"
 ]
