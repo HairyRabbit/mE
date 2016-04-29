@@ -71,7 +71,7 @@ propView =
   section [ class "about-info" ]
     [ span [ class "about-div" ] [ text "{" ]
     , span [] [ text "Age " ]
-    , span [ class "about-age" ] [ text "17" ]
+    , span [ class "about-age" ] [ text "17 forever" ]
     , span [] [ text "," ]
     , span [ class "about-sex" ] [ text "" ]
     , span [ class "about-div" ] [ text "}" ]
@@ -109,7 +109,7 @@ headerView str =
   header [ class "about-title" ]
     [ text str ]
 
-{--    
+{--
 friendsView : Html
 friendsView =
   section [ class "about-section" ]
