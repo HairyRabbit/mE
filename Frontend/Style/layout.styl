@@ -1,4 +1,5 @@
 @require 'placeholder'
+@require 'layout/*'
 
 /**
  * Layout.
@@ -6,28 +7,6 @@
 
 
  
-// home.
-
-.home
-  size 64rem 40rem
-  @extend $flex
-
-.home-left
-.home-right
-  @extend $flex, $flexi, $flexmc, $flexac, $posr
-
-.home-justme
-  @extend $flex, $flexmc, $flexac
-
-.home-nav
-  position absolute \* 50% 30% \*
-  @extend $tar
-
-.home-post
-  size 25rem 16rem
-
-.home-header
-  margin 0 0 20rem 0
 
 
 
@@ -63,44 +42,7 @@
 
 
 
-// blogs.
 
-.blogs
-  size 50rem 30rem
-  @extend $flex, $flexcol
-
-.blogs-top
-  flex 0 0 8rem
-  @extend $posr
-
-.blogs-header
-  height 100%
-  @extend $flex, $flexmc, $flexac
-
-.blogs-nav
-  position absolute -5rem 0
-  @extend $tar
-
-.blogs-main
-  padding 0 0 0 8rem
-  @extend $flex, $flexmc, $flexac, $flexcol, $flexi, $posr
-
-.blogs-item
-  width 20rem
-  margin 0.5rem 0
-
-.blogs-date
-  width 5rem
-  @extend $dib, $fzs
-
-.blogs-more
-  position absolute \* \* 2rem 50%
-
-.blogs-next
-.blogs-prev
-  size 1rem
-  margin 0.25rem
-  @extend $dib, $bdc, $cur
 
 
 // about.
@@ -154,20 +96,11 @@
   @extend $fzs, $posr
 
 .about-sex
-  color alpha(red, 0.56)
-  &:before
-    content: ""
-    size 1rem
-    border 2px solid
-    top -0.4rem
-    left 1.1825rem
-    @extend $bdc, $dib, $posr  
-  &:after
-    content: "+"
-    size 1rem
-    left -0.01rem
-    top 0.5rem
-    @extend $dib, $posr
+  size 2rem
+  margin: 0 0 0 1rem
+  vertical-align bottom
+  @extend $dib
+  
 
 .about-tree
   position absolute \* 0 0 \*
@@ -296,14 +229,6 @@
   margin 2rem 0
   
 
-  
-
-// justme.
-
-.justme
-  width 60%
-  opacity 0
-
 
 
 // logo.
@@ -317,7 +242,7 @@
   @extend $flex, $flexmc, $flexac
 
 .logo-right
-  @extend $flex, $flexcol, $flexmc    
+  @extend $flex, $flexcol, $flexmc
 
 .logo-text
   margin 0 1rem

@@ -1,0 +1,4 @@
+{
+    "table": "screen and (min-width: 641px)",
+    "pc": "screen and (min-width: 1025px)"
+}

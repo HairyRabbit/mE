@@ -1,0 +1,69 @@
+@require '../placeholder'
+json('../../media-queries')
+
+
+// home.
+.home
+  size 100%
+  @extend $flex
+
+.home-right
+  display none
+
+.home-left
+  size 100%
+  @extend $posr
+
+.home-justme
+  position absolute 0 0 0 0
+
+.home-nav
+  position absolute \* 60% 20% \*
+  @extend $tar
+
+.home-post
+  size 25rem 16rem
+
+.home-header
+  position absolute 15% \* \* 15%
+
+.home-header .logo-right
+  display none
+
+
+
+@media table
+  .home
+    size 58rem 35rem
+    @extend $posr
+    
+  .home-left
+    width 50%
+    position absolute 0 0 0 \*
+    
+  .home-right
+    width 50%
+    position absolute 0 \* 0 0
+    display flex
+    @extend $flex, $flexi, $flexmc, $flexac, $posr
+    
+  .home-header .logo-right
+    display flex
+    
+  .home-header
+    left 0%
+    
+  .home-nav
+    right 50%
+    bottom 30%
+
+
+
+// justme.
+
+.justme
+  size 100%
+  padding 1rem
+  opacity 0
+  @extend $box, $tar
+  

@@ -10,6 +10,7 @@ import Html    exposing (..)
 import Effects exposing (Effects, Never)
 import Task
 import StartApp
+import Json.Encode   as Json
 
 
 import App.Init      exposing (init)
@@ -35,7 +36,7 @@ app =
     , view   = view
     }
 
-main : Signal.Signal Html
+main : Signal Html
 main =
   app.html
 
@@ -52,6 +53,11 @@ port routeRunTask =
 port routing : Signal String
 port routing =
   Signal.map (.routing >> toString) app.model
+
+
+port model : Signal String
+port model =
+  Signal.map toString app.model
 
 
 port contacts : List Contact

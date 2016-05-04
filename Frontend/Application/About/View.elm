@@ -73,7 +73,7 @@ propView =
     , span [] [ text "Age " ]
     , span [ class "about-age" ] [ text "17 forever" ]
     , span [] [ text "," ]
-    , span [ class "about-sex" ] [ text "" ]
+    , span [ class "about-sex" ] [ image "./Image/sex.svg" ]
     , span [ class "about-div" ] [ text "}" ]
     ]
 

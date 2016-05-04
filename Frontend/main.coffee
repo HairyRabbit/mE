@@ -34,7 +34,7 @@ ports   =
   langs:    icon.lang
 
 elm = Elm.fullscreen Elm.Main, ports
-console.log profile
+
 
 # Page routing animation.
 initAnimate = ->
@@ -42,3 +42,8 @@ initAnimate = ->
   node.classList.add "anim"
 
 elm.ports.routing.subscribe -> setTimeout initAnimate, 300
+
+
+# Hack for elm model
+showModel = (model) -> console.log model
+elm.ports.model.subscribe showModel
