@@ -1,0 +1,26 @@
+#%RAML 1.0
+title: User API
+version: v1
+baseUri: http://yufi.me/api/{version}/user
+mediaType: application/json
+types:
+  User:
+    type: object
+    properties:
+      avatar: Avatar
+      username: string
+      email: Email
+      githubId: string
+      qqId: string
+      isvip: boolean
+      github: string
+
+  Avatar:
+    type: string
+    pattern: "\\w+\\.[jpg|png|svg]"
+    examples: "example.jpg"
+
+  Email:
+    type: string
+    pattern: "\\w+@\\w+\\.com"
+    examples: "example@domain.com"

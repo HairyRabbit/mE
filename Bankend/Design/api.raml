@@ -7,6 +7,7 @@ protocols: [ HTTP ]
 mediaType: application/json
 types:
   Post: !include types/post.raml
+  User: !include types/user.raml
 
 /post:
   get:
@@ -21,4 +22,12 @@ types:
         200:
           body:
             application/json:
-              schema: Post  
+              schema: Post
+
+    /more/{index}:
+    #@todo
+    /index:
+    /comment:
+      /{commentId}:
+        /reply:
+          /{replyId}:
