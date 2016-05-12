@@ -2,11 +2,11 @@
 #-*- mode: julia -*-
 #-*- code: utf-8 -*-
 
-const rFlag = r"^##"
-const rName = r"^(.+)\.md$"
+const rFlag = r"^##" :: Regex
+const rName = r"^(.+)\.md$" :: Regex
 
 
-function splitF(f)
+function splitF(f :: IOStream)
     tmp = []
     out = []
 
@@ -23,8 +23,8 @@ function splitF(f)
 end
 
 
-function writeF(fn)
-    return function(list)
+function writeF(fn :: AbstractString)
+    return function(list :: Array{Any})
         rm(fn, force=true, recursive=true)
         mkdir(fn)
 
@@ -35,7 +35,7 @@ function writeF(fn)
 end
 
 
-function main(f)
+function main(f :: AbstractString)
     if !ismatch(rName, f)
         error("Input is not a markdown file.")
     end
