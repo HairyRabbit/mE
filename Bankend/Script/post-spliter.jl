@@ -1,28 +1,47 @@
-file = ARGS[1]
+#!/usr/bin/env julia
+#-*- mode: julia -*-
+#-*- code: utf-8 -*-
 
-fs = open(file)
+const rFlag = r"^##"
+const rName = r"^(.+)\.md$"
 
-filename = match(r"^(.+)\.md$", file)[1]
 
-tmp = []
-tag = []
-out = []
-
-while !eof(fs)
-  x = readline(fs)
-  if ismatch(r"^##", x)
-    push!(tag, x)
-    push!(out, tmp)
+function splitF(f)
     tmp = []
-  end
-  push!(tmp, x)
+    out = []
+
+    while !eof(f)
+        x = readline(f)
+        if ismatch(rFlag, x)
+            push!(out, tmp)
+            tmp = []
+        end
+        push!(tmp, x)
+    end
+
+    push!(out, tmp)
 end
 
-push!(out, tmp)
 
-rm(filename, force=true, recursive=true)
-mkdir(filename)
+function writeF(fn)
+    return function(list)
+        rm(fn, force=true, recursive=true)
+        mkdir(fn)
 
-@sync @parallel for i=1:length(out)
-  write(string(filename, "/", i), out[i])
+        @sync @parallel for i=1:length(list)
+            write(string(fn, "/", i), list[i])
+        end
+    end
 end
+
+
+function main(f)
+    if !ismatch(rName, f)
+        error("Input is not a markdown file.")
+    end
+    fn = match(rName, f)[1]
+    open(f) |> splitF |> writeF(fn)
+end
+
+
+ARGS[1] |> main
